@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class ElencoPrestiti {
 
-    private List<Prestito> listaPrestiti;
+    private ArrayList<Prestito> listaPrestiti;
 
     
-    public ElencoPrestiti(List<Prestito> listaPrestiti) {
-        this.listaPrestiti = new ArrayList<>();
+    public ElencoPrestiti(ArrayList<Prestito> listaPrestiti) {
+        this.listaPrestiti = listaPrestiti;
     }
 
     //  Registra un prestito

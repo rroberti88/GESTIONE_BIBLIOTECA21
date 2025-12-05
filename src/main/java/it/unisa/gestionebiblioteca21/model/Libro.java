@@ -87,7 +87,7 @@ public class Libro {
    
     
     public boolean isValid(){
-        
+        return true;
     }
     
 }

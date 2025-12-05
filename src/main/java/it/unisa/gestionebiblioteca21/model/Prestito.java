@@ -55,12 +55,11 @@ public class Prestito {
    public void setDataRestituzione(){
       this.dataRestituzione = dataRestituzione;
   }
-}
    public boolean isOverdue(){
-      return ;
+      return true;
 }
    public boolean isLent(){
-      return prestitoAttivo;
+      return true;
 }
    
 }
