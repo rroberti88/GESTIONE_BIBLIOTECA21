@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package it.unisa.gestionebiblioteca21.model;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
@@ -12,7 +11,7 @@ import java.util.ArrayList;
  */
 public class ElencoPrestiti {
 
-    private ArrayList<Prestito> listaPrestiti;
+    private final ArrayList<Prestito> listaPrestiti;
 
     
     public ElencoPrestiti(ArrayList<Prestito> listaPrestiti) {
@@ -30,7 +29,7 @@ public class ElencoPrestiti {
     }
 
     
-    public List<Prestito> getPrestiti() {
+    public ArrayList<Prestito> getPrestiti() {
         return listaPrestiti;
     }
 }

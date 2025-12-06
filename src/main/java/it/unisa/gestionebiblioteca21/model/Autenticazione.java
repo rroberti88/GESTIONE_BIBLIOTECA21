@@ -5,7 +5,6 @@
  */
 package it.unisa.gestionebiblioteca21.model;
 import it.unisa.gestionebiblioteca21.actor.Bibliotecario;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
@@ -20,7 +19,7 @@ public class Autenticazione {
     public boolean login (String username, String password){
     return true;
     }
-    public boolean logout (){
+    public boolean logout (String username){
     return true;
     }
     public boolean modificaPassword (String nuovaPassword){

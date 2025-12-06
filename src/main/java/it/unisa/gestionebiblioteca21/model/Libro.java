@@ -13,16 +13,16 @@ public class Libro {
     private String ISBN;
     private String titolo;
     private String autore;
-    private int annoPublicazione;
+    private int annoPubblicazione;
     private String Categoria;
     private int copieTotali;
     private int copieDisponibili;
 
-    public Libro(String ISBN, String titolo, String autore, int annoPublicazione, String Categoria, int copieTotali, int copieDisponibili) {
+    public Libro(String ISBN, String titolo, String autore, int annoPubblicazione, String Categoria, int copieTotali, int copieDisponibili) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
-        this.annoPublicazione = annoPublicazione;
+        this.annoPubblicazione = annoPubblicazione;
         this.Categoria = Categoria;
         this.copieTotali = copieTotali;
         this.copieDisponibili = copieDisponibili;
@@ -53,11 +53,11 @@ public class Libro {
     }
 
     public int getAnnoPublicazione() {
-        return annoPublicazione;
+        return annoPubblicazione;
     }
 
     public void setAnnoPublicazione(int annoPublicazione) {
-        this.annoPublicazione = annoPublicazione;
+        this.annoPubblicazione = annoPublicazione;
     }
 
     public String getCategoria() {
@@ -83,8 +83,6 @@ public class Libro {
     public void setCopieDisponibili(int copieDisponibili) {
         this.copieDisponibili = copieDisponibili;
     }
-
-   
     
     public boolean isValid(){
         return true;

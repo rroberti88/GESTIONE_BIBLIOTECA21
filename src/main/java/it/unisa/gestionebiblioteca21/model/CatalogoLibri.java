@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * @author Roberto Roberti
  */
 public class CatalogoLibri {
-    private List<Libro> listaLibri;
+    private ArrayList<Libro> listaLibri;
 
-    public CatalogoLibri(List<Libro> listaLibri) {
+    public CatalogoLibri(ArrayList<Libro> listaLibri) {
         this.listaLibri = listaLibri;
     }
 
-    public List<Libro> getListaLibri() {
+    public ArrayList<Libro> getListaLibri() {
         return listaLibri;
     }
     public void inserimentoLibro (Libro libro) {
@@ -29,7 +29,7 @@ public class CatalogoLibri {
     public void modificaLibro (Libro libro) {
 
     }
-    public List<Libro> ricercaLibro(String chiaveRicerca) {
+    public ArrayList<Libro> ricercaLibro(String titolo, String autore, String ISBN) {
         return new ArrayList<Libro>();
     }
 }

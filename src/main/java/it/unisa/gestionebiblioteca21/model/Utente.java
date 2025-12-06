@@ -57,5 +57,7 @@ public class Utente {
         this.email = email;
     }
     
-    
+    public String countPrestiti (String matricola){
+    return matricola;
+} 
 }
