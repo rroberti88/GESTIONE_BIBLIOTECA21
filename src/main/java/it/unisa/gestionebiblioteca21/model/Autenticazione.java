@@ -11,21 +11,33 @@ import java.util.ArrayList;
  * @author Roberto Roberti
  */
 public class Autenticazione {
-    private ArrayList<Bibliotecario> utentiAutorizzati; 
+    private final ArrayList<Bibliotecario> utentiAutorizzati; 
 
     public Autenticazione(ArrayList<Bibliotecario> utentiAutorizzati) {
         this.utentiAutorizzati = utentiAutorizzati;
     }
     public boolean login (String username, String password){
+    for (Bibliotecario b : utentiAutorizzati) {
+    if (b.getUsername().equals(username) && b.getPassword().equals(password))
+    {
     return true;
+    }
+    }
+    return false;
     }
     public boolean logout (String username){
     return true;
     }
-    public boolean modificaPassword (String nuovaPassword){
+    public boolean modificaPassword (String username, String nuovaPassword){
+    for (Bibliotecario b : utentiAutorizzati) {
+    if (b.getUsername().equals(username))
+    {
+    b.setPassword(nuovaPassword);
+    }
+    }
     return false;
     }
     public boolean reimpostaPassword (String username, String nuovaPassword){
-    return false;
+    return modificaPassword (username,nuovaPassword);
     }
 }
