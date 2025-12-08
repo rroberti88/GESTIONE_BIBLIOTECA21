@@ -21,6 +21,7 @@ public Bibliotecario (String nome, String cognome, String username,String passwo
 this.nome = nome;
 this.cognome = cognome;
 this.username = username;
+this.password = password;
 }
 
     public String getNome() {
