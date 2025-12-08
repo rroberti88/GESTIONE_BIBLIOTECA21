@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package it.unisa.gestionebiblioteca21.view;
-
+import it.unisa.gestionebiblioteca21.actor.Bibliotecario;
 /**
  *
  * @author Felice Iandoli
