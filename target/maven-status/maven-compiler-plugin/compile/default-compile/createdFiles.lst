@@ -8,6 +8,7 @@ it\unisa\gestionebiblioteca21\view\UtenteView.class
 it\unisa\gestionebiblioteca21\model\Prestito.class
 it\unisa\gestionebiblioteca21\controller\GestioneUtentiController.class
 it\unisa\gestionebiblioteca21\model\CatalogoLibri.class
+it\unisa\gestionebiblioteca21\Main\Main.class
 it\unisa\gestionebiblioteca21\view\PrestitoView.class
 it\unisa\gestionebiblioteca21\model\ElencoPrestiti.class
 it\unisa\gestionebiblioteca21\actor\Bibliotecario.class
