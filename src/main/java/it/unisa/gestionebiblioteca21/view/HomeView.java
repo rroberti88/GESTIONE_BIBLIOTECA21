@@ -10,5 +10,6 @@ package it.unisa.gestionebiblioteca21.view;
  * @author Felice Iandoli
  */
 public class HomeView {
-    
+    public HomeView(){
+}
 }
