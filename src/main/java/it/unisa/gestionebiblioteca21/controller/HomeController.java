@@ -71,7 +71,6 @@ public void setModelAut(Autenticazione modelAut) {
         try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/GestioneCatalogoView.fxml"));
                 Parent root = loader.load();
-
                 GestioneCatalogoController gestioneCatalogoController = loader.getController();
                 gestioneCatalogoController.setModelAut(modelAut);
                 gestioneCatalogoController.setCatalogo(catalogo);
