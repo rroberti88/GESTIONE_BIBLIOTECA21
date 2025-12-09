@@ -56,8 +56,8 @@ this.stage = stage;
 public void initialize() {
     colTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
     colAutore.setCellValueFactory(new PropertyValueFactory<>("autore"));
-    colAnnoDiEdizione.setCellValueFactory(new PropertyValueFactory<>("annoDiEdizione"));
-    colIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+    colAnnoDiEdizione.setCellValueFactory(new PropertyValueFactory<>("annoPubblicazione"));
+    colIsbn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
     colCopieDisponibili.setCellValueFactory(new PropertyValueFactory<>("copieDisponibili"));
     
     
@@ -94,7 +94,7 @@ public void handleInserimentoLibro(){
 
 @FXML
 public void handleModificaLibro(){
-  
+    
 }
 
 @FXML

@@ -4,6 +4,7 @@ import it.unisa.gestionebiblioteca21.model.Autenticazione;
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Utente;
 import it.unisa.gestionebiblioteca21.model.Prestito;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -75,7 +76,7 @@ public void setModelAut(Autenticazione modelAut) {
                 gestioneCatalogoController.setModelAut(modelAut);
                 gestioneCatalogoController.setCatalogo(catalogo);
                 gestioneCatalogoController.setStage(stage);
-
+                gestioneCatalogoController.setCatalogo(new CatalogoLibri(new ArrayList<>()));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.setTitle("Gestione Libri");
