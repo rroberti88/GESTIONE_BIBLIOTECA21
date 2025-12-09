@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaLibroController>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaLibroController">
    <children>
       <HBox prefHeight="49.0" prefWidth="600.0">
          <children>
@@ -20,15 +20,20 @@
          </children>
       </HBox>
       <Button fx:id="btnAnnulla" layoutX="319.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleAnnulla" prefHeight="25.0" prefWidth="112.0" text="Annulla" />
-      <Button fx:id="btnSalvaModifiche" layoutX="469.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleSalvaModifiche" prefHeight="25.0" prefWidth="106.0" text="Salva modifiche" />
+      <Button fx:id="btnSalvaModifiche" layoutX="469.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleSalva" prefHeight="25.0" prefWidth="106.0" text="Salva modifiche" />
       <TextField fx:id="txtTitolo" layoutX="32.0" layoutY="80.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="txtAutore" layoutX="32.0" layoutY="133.0" prefHeight="25.0" prefWidth="172.0" />
+      <TextField fx:id="txtISBN" layoutX="250.0" layoutY="80.0" prefHeight="25.0" prefWidth="172.0" />
+
       <TextField fx:id="txtAnnoPubblicazione" layoutX="32.0" layoutY="188.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="txtCategoria" layoutX="32.0" layoutY="239.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="txtCopieTotali" layoutX="32.0" layoutY="291.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="txtCopieDisponibili" layoutX="32.0" layoutY="338.0" prefHeight="25.0" prefWidth="172.0" />
+      
       <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="55.0" prefHeight="25.0" prefWidth="112.0" text="Titolo" />
       <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="108.0" prefHeight="25.0" prefWidth="112.0" text="Autore" />
+      <Label alignment="BOTTOM_LEFT" layoutX="250.0" layoutY="55.0" prefHeight="25.0" prefWidth="112.0" text="ISBN" />
+
       <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="163.0" prefHeight="25.0" prefWidth="130.0" text="Anno di Pubblicazione" />
       <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="213.0" prefHeight="25.0" prefWidth="130.0" text="Categoria" />
       <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="266.0" prefHeight="25.0" prefWidth="130.0" text="Copie Totali" />

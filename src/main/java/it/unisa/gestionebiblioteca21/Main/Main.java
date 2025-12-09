@@ -16,23 +16,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Creiamo utenti di test
         ArrayList<Bibliotecario> utenti = new ArrayList<>();
         utenti.add(new Bibliotecario("fabrizio", "frizzi", "admin", "admin123"));
 
-        // Model autenticazione
         Autenticazione modelAut = new Autenticazione(utenti);
 
-        // Carichiamo FXML login
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
         Parent root = loader.load();
 
-        // Controller Login
         LoginController loginController = loader.getController();
-        loginController.setModelAut(modelAut);   // Passiamo solo il model autenticazione
+        loginController.setModelAut(modelAut);   
         loginController.setStage(primaryStage);
 
-        // Scene e stage
         primaryStage.setTitle("Login Bibliotecario");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

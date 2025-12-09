@@ -94,7 +94,47 @@ public void handleInserimentoLibro(){
 
 @FXML
 public void handleModificaLibro(){
-    
+    try {
+
+        Libro selezionato = tableview.getSelectionModel().getSelectedItem();
+
+        if (selezionato == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attenzione");
+            alert.setHeaderText("Nessun libro selezionato");
+            alert.setContentText("Seleziona un libro dalla lista per modificarlo.");
+            alert.showAndWait();
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/it/unisa/gestionebiblioteca21/view/ModificaLibroView.fxml")
+        );
+        Parent root = loader.load();
+
+        ModificaLibroController controller = loader.getController();
+
+        Stage popup = new Stage();
+        controller.setStage(popup);
+        controller.setCatalogo(catalogo);
+        controller.setLibro(selezionato); 
+
+        popup.setScene(new Scene(root));
+        popup.setTitle("Modifica Libro");
+        popup.initOwner(stage);
+        popup.showAndWait();
+
+       
+        aggiornaTableView();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Impossibile modificare il libro");
+        alert.setContentText("Si è verificato un errore inatteso.");
+        alert.showAndWait();
+    }
 }
 
 @FXML
