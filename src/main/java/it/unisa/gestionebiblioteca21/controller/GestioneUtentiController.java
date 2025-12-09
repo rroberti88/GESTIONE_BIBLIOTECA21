@@ -6,6 +6,7 @@
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.Utente;
+import it.unisa.gestionebiblioteca21.model.Autenticazione;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -26,6 +27,12 @@ public GestioneUtentiController () {
 }
 public void setModelUt (Utente modelUt){
 this.modelUt = modelUt;
+}
+
+private Autenticazione modelAut; // dichiarazione campo
+
+public void setModelAut(Autenticazione modelAut) {
+    this.modelAut = modelAut;
 }
 
 public void setStage(Stage stage) {

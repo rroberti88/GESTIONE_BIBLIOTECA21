@@ -1,7 +1,7 @@
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.Autenticazione;
-import it.unisa.gestionebiblioteca21.model.Libro;
+import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Utente;
 import it.unisa.gestionebiblioteca21.model.Prestito;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import javafx.scene.control.Alert;
  */
 public class HomeController {
 
-    private Libro modelLib;
+    private CatalogoLibri catalogo;
     private Utente modelUt;
     private Prestito modelPres;
     private Autenticazione modelAut;
@@ -35,8 +35,8 @@ public class HomeController {
 
     public HomeController() {}
 
-    public void setModelLib(Libro modelLib) {
-    this.modelLib = modelLib;
+    public void setCatalogo(CatalogoLibri catalogo) {
+    this.catalogo = catalogo;
 }
 
 public void setModelUt(Utente modelUt) {
@@ -72,7 +72,8 @@ public void setModelAut(Autenticazione modelAut) {
                 Parent root = loader.load();
 
                 GestioneCatalogoController gestioneCatalogoController = loader.getController();
-                gestioneCatalogoController.setModelLib(modelLib);
+                gestioneCatalogoController.setModelAut(modelAut);
+                gestioneCatalogoController.setCatalogo(catalogo);
                 gestioneCatalogoController.setStage(stage);
 
                 Scene scene = new Scene(root);
@@ -91,6 +92,7 @@ public void setModelAut(Autenticazione modelAut) {
                 Parent root = loader.load();
 
                 GestioneUtentiController gestioneUtentiController = loader.getController();
+                gestioneUtentiController.setModelAut(modelAut);
                 gestioneUtentiController.setModelUt(modelUt);
                 gestioneUtentiController.setStage(stage);
 
@@ -109,6 +111,7 @@ public void setModelAut(Autenticazione modelAut) {
                 Parent root = loader.load();
 
                 GestionePrestitiController gestionePrestitiController = loader.getController();
+                gestionePrestitiController.setModelAut(modelAut);
                 gestionePrestitiController.setModelPres(modelPres);
                 gestionePrestitiController.setStage(stage);
 

@@ -6,6 +6,7 @@
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.Prestito;
+import it.unisa.gestionebiblioteca21.model.Autenticazione;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -26,7 +27,11 @@ public GestionePrestitiController () {}
 public void setModelPres (Prestito modelPres){
 this.modelPres = modelPres;
 }
+private Autenticazione modelAut; // dichiarazione campo
 
+public void setModelAut(Autenticazione modelAut) {
+    this.modelAut = modelAut;
+}
 public void setStage(Stage stage) {
 this.stage = stage;
 }
