@@ -15,12 +15,14 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
+    private int numeroPrestiti;
 
-    public Utente(String matricola, String nome, String cognome, String email) {
+    public Utente(String matricola, String nome, String cognome, String email, int numeroPrestiti) {
         this.matricola = matricola;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
+        this.numeroPrestiti=numeroPrestiti;
     }
 
     
@@ -56,8 +58,20 @@ public class Utente {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public int getNumeroPrestiti() {
+        return numeroPrestiti;
+    }
+
+    public void setNumeroPrestiti(int numeroPrestiti) {
+        this.numeroPrestiti = numeroPrestiti;
+    }
     
-    public String countPrestiti (String matricola){
-    return matricola;
-} 
+    public boolean isValid(){
+        if ((nome != null ) && (cognome != null ) && (email != null ) && (matricola != null )){
+        return matricola.matches("\\d{10}");
+    }   
+    return false;
+    }
+    
 }
