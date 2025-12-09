@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 /**
  *
  * @author Felice Iandoli
@@ -64,7 +65,11 @@ if (model.login(username, password)){
 }        
         }
     else {
-    System.out.println("Credenziali non valide");
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Errore credenziali");
+    alert.setHeaderText("Credenziali errate");
+    alert.setContentText("Username o password non validi");
+    alert.showAndWait();
 }
 }
 }

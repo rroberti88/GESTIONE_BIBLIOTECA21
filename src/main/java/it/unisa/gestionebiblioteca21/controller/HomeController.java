@@ -4,6 +4,9 @@ import it.unisa.gestionebiblioteca21.model.Autenticazione;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  * Roberto Roberti
@@ -60,7 +63,21 @@ public class HomeController {
 
     @FXML
     private void handleLogout() {
-        System.out.println("Logout effettuato per l'utente " + username);
-        stage.close();
+    if (model.logout(username))
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
+                Parent root = loader.load();
+
+                LoginController loginController = loader.getController();
+                loginController.setModel(model);
+                loginController.setStage(stage);
+
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("Login");
+                stage.show();
+    } catch (Exception f){
+    }
+
     }
 }
