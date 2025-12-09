@@ -70,7 +70,26 @@ private void aggiornaTableView(){
 
 @FXML
 public void handleInserimentoLibro(){
-    
+     try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/InserimentoView.fxml"));
+        Parent root = loader.load();
+
+        InserimentoLibroController inserimentoLibroController = loader.getController();
+        inserimentoLibroController.setCatalogo(catalogo);
+
+        Stage popupStage = new Stage();
+        inserimentoLibroController.setStage(popupStage);
+        popupStage.setScene(new Scene(root));
+        popupStage.setTitle("Inserimento Nuovo Libro");
+        popupStage.initOwner(stage); 
+        popupStage.showAndWait();   
+
+        
+        aggiornaTableView();
+
+            } catch (Exception e) {
+
+}  
 }
 
 @FXML
