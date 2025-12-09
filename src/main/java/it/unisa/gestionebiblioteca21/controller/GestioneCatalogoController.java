@@ -71,7 +71,7 @@ private void aggiornaTableView(){
 @FXML
 public void handleInserimentoLibro(){
      try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/InserimentoView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/InserimentoLibroView.fxml"));
         Parent root = loader.load();
 
         InserimentoLibroController inserimentoLibroController = loader.getController();
