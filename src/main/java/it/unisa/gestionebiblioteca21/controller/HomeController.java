@@ -76,6 +76,7 @@ public void setModelAut(Autenticazione modelAut) {
                 gestioneCatalogoController.setCatalogo(catalogo);
                 gestioneCatalogoController.setStage(stage);
                 gestioneCatalogoController.setCatalogo(new CatalogoLibri(new ArrayList<>()));
+
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.setTitle("Gestione Libri");

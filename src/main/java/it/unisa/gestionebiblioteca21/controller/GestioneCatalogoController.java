@@ -44,6 +44,8 @@ public void setCatalogo (CatalogoLibri catalogo){
 this.catalogo = catalogo;
 aggiornaTableView();
 }
+
+
 public void setModelAut(Autenticazione modelAut){
     this.modelAut = modelAut;
 }
@@ -67,6 +69,7 @@ private void aggiornaTableView(){
         tableview.getItems().setAll(catalogo.getListaLibri());
     }
 }
+
 
 @FXML
 public void handleInserimentoLibro(){
@@ -139,9 +142,44 @@ public void handleModificaLibro(){
 
 @FXML
 public void handleCancellazioneLibro(){
-   
-}
+    try {
+        Libro selezionato = tableview.getSelectionModel().getSelectedItem();
 
+        if (selezionato == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attenzione");
+            alert.setHeaderText("Nessun libro selezionato");
+            alert.setContentText("Seleziona un libro dalla tabella per eliminarlo.");
+            alert.showAndWait();
+            return;
+        }
+
+        Alert conferma = new Alert(Alert.AlertType.CONFIRMATION);
+        conferma.setTitle("Conferma eliminazione");
+        conferma.setHeaderText("Eliminare il libro selezionato?");
+        conferma.setContentText("Questa operazione non può essere annullata.");
+        conferma.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                catalogo.cancellazioneLibro(selezionato);
+                aggiornaTableView();
+
+                Alert ok = new Alert(Alert.AlertType.INFORMATION);
+                ok.setTitle("Eliminazione completata");
+                ok.setHeaderText(null);
+                ok.setContentText("Libro eliminato correttamente.");
+                ok.showAndWait();
+            }
+        });
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        Alert errore = new Alert(Alert.AlertType.ERROR);
+        errore.setTitle("Errore");
+        errore.setHeaderText("Errore durante l'eliminazione");
+        errore.setContentText("Si è verificato un errore imprevisto.");
+        errore.showAndWait();
+    }
+}
 
 @FXML
 public void handleBackDashboard(){
