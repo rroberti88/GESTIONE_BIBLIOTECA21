@@ -5,10 +5,29 @@
  */
 package it.unisa.gestionebiblioteca21.controller;
 
+import it.unisa.gestionebiblioteca21.model.Prestito;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
 /**
  *
  * @author Felice Iandoli
  */
 public class GestionePrestitiController {
-    
+private Prestito modelPres;
+private Stage stage;  
+
+public GestionePrestitiController () {}
+
+public void setModelPres (Prestito modelPres){
+this.modelPres = modelPres;
+}
+
+public void setStage(Stage stage) {
+this.stage = stage;
+}
 }

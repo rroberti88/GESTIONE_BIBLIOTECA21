@@ -22,7 +22,7 @@ import javafx.scene.control.Alert;
 
 public class LoginController {
 
-private Autenticazione model;
+private Autenticazione modelAut;
 private Stage stage;
 
 @FXML
@@ -33,8 +33,8 @@ private PasswordField txtPassword;
 
 public LoginController () {}
 
-public void setModel (Autenticazione model){
-this.model = model;
+public void setModelAut (Autenticazione modelAut){
+this.modelAut = modelAut;
 }
 
 public void setStage(Stage stage) {
@@ -45,13 +45,13 @@ this.stage = stage;
 private void handleLogin() {
 String username = txtUsername.getText();
 String password = txtPassword.getText();
-if (model.login(username, password)){
+if (modelAut.login(username, password)){
     try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/HomeView.fxml"));
                 Parent root = loader.load();
 
                 HomeController homeController = loader.getController();
-                homeController.setModel(model);
+                homeController.setModelAut(modelAut);
                 homeController.setStage(stage);
                 homeController.setUsername(username);
 
