@@ -26,11 +26,11 @@
       </HBox>
       <HBox layoutX="176.0" layoutY="154.0" prefHeight="25.0" prefWidth="247.0">
          <children>
-            <TextField fx:id="txtUsername" prefHeight="26.0" prefWidth="217.0" />
+            <TextField fx:id="txtUsername" prefHeight="26.0" prefWidth="217.0" promptText="Inserisci Username..."/>
          </children>
       </HBox>
       <HBox layoutX="218.0" layoutY="211.0" prefHeight="10.0" prefWidth="147.0" />
-      <PasswordField fx:id="txtPassword" layoutX="174.0" layoutY="219.0" prefHeight="25.0" prefWidth="218.0" />
+      <PasswordField fx:id="txtPassword" layoutX="174.0" layoutY="219.0" prefHeight="25.0" prefWidth="218.0" promptText="Inserisci Password..."  />
       <Button fx:id="btnAccedi" layoutX="262.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="26.0" prefWidth="67.0" text="Accedi" />
       <HBox layoutX="177.0" layoutY="182.0" prefHeight="37.0" prefWidth="186.0">
          <children>
