@@ -40,22 +40,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnInserimentoNuovoUtente" layoutX="70.0" layoutY="312.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Inserisci nuovo utente">
+      <Button fx:id="btnInserimentoNuovoUtente" layoutX="70.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleInserimentoUtente" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Inserisci nuovo utente">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnModificaUtente" layoutX="348.0" layoutY="312.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Modifica utente ">
+      <Button fx:id="btnModificaUtente" layoutX="348.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleModificaUtente" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Modifica utente ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnCancellazioneUtente" layoutX="70.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Cancella utente">
+      <Button fx:id="btnCancellazioneUtente" layoutX="70.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleCancellazioneUtente" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Cancella utente">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnDashboard" layoutX="348.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Dashboard">
+      <Button fx:id="btnDashboard" layoutX="348.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleBackDashboard" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: lightgrey;" text="Dashboard">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

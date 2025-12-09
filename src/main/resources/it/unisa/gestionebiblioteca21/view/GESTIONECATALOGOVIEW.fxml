@@ -42,22 +42,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnDashboard" layoutX="347.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Dashboard">
+      <Button fx:id="btnDashboard" layoutX="347.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleBackDashboard" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Dashboard">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnModificaLibro" layoutX="347.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Modifica Libro">
+      <Button fx:id="btnModificaLibro" layoutX="347.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleModificaLibro" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Modifica Libro">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnInserimentoLibro" layoutX="77.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Inserisci nuovo libro">
+      <Button fx:id="btnInserimentoLibro" layoutX="77.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleInserimentoLibro" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Inserisci nuovo libro">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnCancellazioneLibro" layoutX="77.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Cancella Libro">
+      <Button fx:id="btnCancellazioneLibro" layoutX="77.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleCancellazioneLibro" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: lightgrey;" text="Cancella Libro">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

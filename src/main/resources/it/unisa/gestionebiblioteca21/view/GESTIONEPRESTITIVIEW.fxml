@@ -42,22 +42,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnRegistraPrestito" layoutX="73.0" layoutY="308.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra Prestito">
+      <Button fx:id="btnRegistraPrestito" layoutX="73.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRegistraPrestito" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra Prestito">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnVisualizzaPrestitiScaduti" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Vedi Prestiti Scaduti">
+      <Button fx:id="btnVisualizzaPrestitiScaduti" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleVisualizzaPrestitiScaduti" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Vedi Prestiti Scaduti">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnRegistraRestituzione" layoutX="350.0" layoutY="308.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra restituzione">
+      <Button fx:id="btnRegistraRestituzione" layoutX="350.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRegistraRestituzione" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra restituzione">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnDashboard" layoutX="350.0" layoutY="356.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Dashboard">
+      <Button fx:id="btnDashboard" layoutX="350.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleBackDashboard" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Dashboard">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

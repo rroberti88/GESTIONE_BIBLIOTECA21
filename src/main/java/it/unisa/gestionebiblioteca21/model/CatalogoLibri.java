@@ -21,13 +21,13 @@ public class CatalogoLibri {
         return listaLibri;
     }
     public void inserimentoLibro (Libro libro) {
-    
+    listaLibri.add(libro);
     }
     public void cancellazioneLibro (Libro libro) {
-
+    listaLibri.remove(libro);
     }
     public void modificaLibro (Libro libro) {
-
+    
     }
     public ArrayList<Libro> ricercaLibro(String titolo, String autore, String ISBN) {
         return new ArrayList<Libro>();
