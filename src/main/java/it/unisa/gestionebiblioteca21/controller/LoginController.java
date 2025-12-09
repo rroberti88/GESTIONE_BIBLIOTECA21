@@ -13,8 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
+import javafx.beans.binding.Bindings;
+
 /**
  *
  * @author Felice Iandoli
@@ -31,6 +34,9 @@ private TextField txtUsername;
 @FXML
 private PasswordField txtPassword;
 
+@FXML
+private Button btnAccedi;
+
 public LoginController () {}
 
 public void setModelAut (Autenticazione modelAut){
@@ -40,6 +46,13 @@ this.modelAut = modelAut;
 public void setStage(Stage stage) {
 this.stage = stage;
 }
+
+
+@FXML
+public void initialize(){
+btnAccedi.disableProperty().bind(txtUsername.textProperty().isEmpty().or(txtPassword.textProperty().isEmpty()));
+}
+
 
 @FXML
 private void handleLogin() {
