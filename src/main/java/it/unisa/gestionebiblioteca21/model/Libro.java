@@ -52,11 +52,11 @@ public class Libro {
         this.autore = autore;
     }
 
-    public int getAnnoPublicazione() {
+    public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 
-    public void setAnnoPublicazione(int annoPublicazione) {
+    public void setAnnoPubblicazione(int annoPublicazione) {
         this.annoPubblicazione = annoPublicazione;
     }
 
