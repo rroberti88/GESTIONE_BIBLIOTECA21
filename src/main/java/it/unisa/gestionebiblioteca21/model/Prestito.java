@@ -14,14 +14,14 @@ public class Prestito {
   private LocalDate dataInizio ; 
   private LocalDate dataFinePrevista;
   private LocalDate dataRestituzione;
-  private final boolean prestitoAttivo;
+ 
   
-  public Prestito(int idPrestito, LocalDate dataInizio, LocalDate dataFinePrevista, LocalDate dataRestituzione, boolean prestitoAttivo){
+  public Prestito(int idPrestito, LocalDate dataInizio, LocalDate dataFinePrevista, LocalDate dataRestituzione){
       this.idPrestito = idPrestito;
       this.dataInizio = dataInizio;
       this.dataFinePrevista = dataFinePrevista;
-      this.dataRestituzione = null;
-      this.prestitoAttivo = false;
+      this.dataRestituzione = dataRestituzione;
+      
   }
   
   public int getIdPrestito(){
@@ -57,10 +57,11 @@ public void setDataFinePrevista(LocalDate dataFinePrevista){
   }
   
    public boolean isOverdue(){
-      return true;
+       return dataRestituzione== null && LocalDate.now().isAfter(dataFinePrevista);
+            
 }
    public boolean isLent(){
-      return true;
+     return dataRestituzione== null;
 }
    
 }
