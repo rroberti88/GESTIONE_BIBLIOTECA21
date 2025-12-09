@@ -85,7 +85,10 @@ public class Libro {
     }
     
     public boolean isValid(){
-        return true;
+        if ((titolo != null ) && (autore != null ) && (annoPubblicazione > 0 ) && (ISBN != null ) && (copieDisponibili > 0 ) && (copieTotali > 0)){
+        return ISBN.matches("\\d{13}");
+    }   
+    return false;
     }
     
 }

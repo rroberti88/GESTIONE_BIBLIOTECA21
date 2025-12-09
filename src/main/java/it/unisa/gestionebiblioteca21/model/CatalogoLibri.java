@@ -21,7 +21,7 @@ public class CatalogoLibri {
         return listaLibri;
     }
     public void inserimentoLibro (Libro libro) {
-
+    
     }
     public void cancellazioneLibro (Libro libro) {
 
