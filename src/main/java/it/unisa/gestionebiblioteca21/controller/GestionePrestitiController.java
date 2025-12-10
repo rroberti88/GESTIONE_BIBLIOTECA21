@@ -57,7 +57,7 @@ public void initialize() {
     colUtente.setCellValueFactory(new PropertyValueFactory<>("utente"));
     colDataPrestito.setCellValueFactory(new PropertyValueFactory<>("dataPrestito"));
     colDataScadenza.setCellValueFactory(new PropertyValueFactory<>("dataScadenza"));
-
+    
     
     txtRicercaPrestito.textProperty().addListener((obs, oldValue, newValue) -> {
         handleRicercaPrestito();
@@ -110,6 +110,29 @@ public void handleRicercaPrestito() {
     tableview.getItems().setAll(risultati);
 }
 
+@FXML
+public void handleRegistraRestituzione() {
+   try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/RegistraRestituzioneView.fxml"));
+        Parent root = loader.load();
+
+        RegistraRestituzioneController registraRestituzioneController = loader.getController();
+        registraRestituzioneController.setListaPrestiti(listaPrestiti);
+
+        Stage popupStage = new Stage();
+        registraRestituzioneController.setStage(popupStage);
+        popupStage.setScene(new Scene(root));
+        popupStage.setTitle("Registrazione Restituzione Prestito");
+        popupStage.initOwner(stage); 
+        popupStage.showAndWait();   
+
+        
+        aggiornaTableView();
+
+            } catch (Exception e) {
+
+}  
+} 
 
 @FXML
 public void handleBackDashboard(){

@@ -25,8 +25,16 @@ public class ElencoPrestiti {
     listaPrestiti.add(prestito);
     }
 
-    public void registraRestituzione(Prestito prestito) {
-    listaPrestiti.remove(prestito);
+    public boolean registraRestituzione(String libro, String utente) {
+    for (Prestito p : listaPrestiti) {
+        if (p.getLibro().equalsIgnoreCase(libro) &&
+            p.getUtente().equalsIgnoreCase(utente)) {
+
+            listaPrestiti.remove(p);
+            return true;
+        }
+    }
+    return false;
     }
 
     

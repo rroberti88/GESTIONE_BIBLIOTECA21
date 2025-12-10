@@ -22,12 +22,12 @@
       <TextField fx:id="txtLibro" layoutX="31.0" layoutY="73.0" promptText="Inserisci il libro..." />
       <TextField fx:id="txtUtente" layoutX="31.0" layoutY="147.0" promptText="Inserisci l'utente..." />
       <TextField fx:id="txtDataPrestito" layoutX="31.0" layoutY="225.0" promptText="Inserisci la data prestito..." />
-      <TextField fx:id="txtDataRestituzione" layoutX="31.0" layoutY="304.0" promptText="Inserisci la data restituzione..." />
+      <TextField fx:id="txtDataScadenza" layoutX="31.0" layoutY="304.0" promptText="Inserisci la data restituzione..." />
       <Label alignment="BOTTOM_LEFT" layoutX="31.0" layoutY="40.0" prefHeight="33.0" prefWidth="119.0" text="Libro" />
       <Label alignment="BOTTOM_LEFT" layoutX="31.0" layoutY="114.0" prefHeight="33.0" prefWidth="119.0" text="Utente" />
       <Label alignment="BOTTOM_LEFT" layoutX="31.0" layoutY="192.0" prefHeight="33.0" prefWidth="119.0" text="Data Prestito" />
       <Label alignment="BOTTOM_LEFT" layoutX="31.0" layoutY="271.0" prefHeight="33.0" prefWidth="119.0" text="Data Restituzione" />
-      <Button fx:id="btnAnnulla" layoutX="274.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Annulla" />
-      <Button fx:id="btnSalva" layoutX="437.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Salva" />
+      <Button fx:id="btnAnnulla" layoutX="274.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleAnnulla" prefHeight="25.0" prefWidth="149.0" text="Annulla" />
+      <Button fx:id="btnSalva" layoutX="437.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSalva" prefHeight="25.0" prefWidth="149.0" text="Salva" />
    </children>
 </Pane>

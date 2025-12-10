@@ -31,7 +31,7 @@
             </Label>
          </children>
       </HBox>
-      <TableView fx:id="tableview3" layoutX="-1.0" layoutY="153.0" prefHeight="138.0" prefWidth="601.0">
+      <TableView fx:id="tableview" layoutX="-1.0" layoutY="153.0" prefHeight="138.0" prefWidth="601.0">
         <columns>
           <TableColumn fx:id="colLibro" prefWidth="75.0" text="LIBRO" />
           <TableColumn fx:id="colUtente" prefWidth="75.0" text="UTENTE" />

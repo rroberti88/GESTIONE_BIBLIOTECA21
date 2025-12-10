@@ -21,11 +21,11 @@
       </HBox>
       <TextField fx:id="txtLibro" layoutX="53.0" layoutY="109.0" promptText="Libro da restituire..." />
       <TextField fx:id="txtUtente" layoutX="53.0" layoutY="200.0" promptText="Chi lo restituisce.." />
-      <TextField fx:id="txtDatadiScadenza" layoutX="53.0" layoutY="293.0" promptText="data di scandeza" />
+      <TextField fx:id="txtDatadiScadenza" layoutX="53.0" layoutY="293.0" promptText="data di scadenza" />
       <Label alignment="BOTTOM_LEFT" layoutX="53.0" layoutY="74.0" prefHeight="38.0" prefWidth="149.0" text="Libro" />
       <Label alignment="BOTTOM_LEFT" layoutX="53.0" layoutY="162.0" prefHeight="38.0" prefWidth="149.0" text="Utente" />
       <Label alignment="BOTTOM_LEFT" layoutX="53.0" layoutY="255.0" prefHeight="38.0" prefWidth="149.0" text="Data di Scadenza" />
-      <Button fx:id="btnAnnulla" layoutX="282.0" layoutY="293.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="120.0" text="Annulla" />
-      <Button fx:id="btnSalva" layoutX="444.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Salva (Cancella libro)" />
+      <Button fx:id="btnAnnulla" layoutX="282.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleAnnulla" prefHeight="19.0" prefWidth="120.0" text="Annulla" />
+      <Button fx:id="btnSalva" layoutX="444.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleSalva" prefHeight="25.0" prefWidth="135.0" text="Salva (Cancella libro)" />
    </children>
 </Pane>
