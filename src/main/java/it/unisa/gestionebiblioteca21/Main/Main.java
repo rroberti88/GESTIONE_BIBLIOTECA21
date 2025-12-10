@@ -8,6 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
+import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
+import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
+import it.unisa.gestionebiblioteca21.database.Archivio;
 
 import java.util.ArrayList;
 import static javafx.application.Application.launch;
@@ -20,6 +24,9 @@ public class Main extends Application {
         utenti.add(new Bibliotecario("fabrizio", "frizzi", "admin", "admin123"));
 
         Autenticazione modelAut = new Autenticazione(utenti);
+        CatalogoLibri catalogo = new CatalogoLibri(Archivio.caricaLibri());
+        ElencoUtenti elencoUtenti  = new ElencoUtenti(Archivio.caricaUtenti());
+        ElencoPrestiti elencoPrestiti = new ElencoPrestiti(Archivio.caricaPrestiti());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
         Parent root = loader.load();

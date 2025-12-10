@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package it.unisa.gestionebiblioteca21.model;
-import java.util.List;
+import it.unisa.gestionebiblioteca21.database.Archivio;
 import java.util.ArrayList;
 /**
  *
@@ -26,10 +26,12 @@ public class CatalogoLibri {
 
     public void inserimentoLibro (Libro libro) {
     listaLibri.add(libro);
+    Archivio.salvaLibri(this);
     }
 
     public void cancellazioneLibro (Libro libro) {
     listaLibri.remove(libro);
+    Archivio.salvaLibri(this);
     }
 
     public void modificaLibro (Libro libro) {
@@ -42,6 +44,7 @@ public class CatalogoLibri {
        L.setAutore(libro.getAutore());
        L.setAnnoPubblicazione(libro.getAnnoPubblicazione());
        L.setCategoria(libro.getCategoria());
+       Archivio.salvaLibri(this);
        return;
     }
     }
