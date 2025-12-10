@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
@@ -20,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 /**
  *
  * @author Felice Iandoli
- */
+*/
 public class GestioneCatalogoController {
 private CatalogoLibri catalogo;
 private Autenticazione modelAut;

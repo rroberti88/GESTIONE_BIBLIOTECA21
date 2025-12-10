@@ -16,6 +16,10 @@ public class Utente {
     private String cognome;
     private String email;
     private int numeroPrestiti;
+    
+    public Utente() {
+    }
+
 
     public Utente(String matricola, String nome, String cognome, String email, int numeroPrestiti) {
         this.matricola = matricola;

@@ -27,7 +27,7 @@ public GestionePrestitiController () {}
 public void setModelPres (Prestito modelPres){
 this.modelPres = modelPres;
 }
-private Autenticazione modelAut; // dichiarazione campo
+private Autenticazione modelAut; 
 
 public void setModelAut(Autenticazione modelAut) {
     this.modelAut = modelAut;
