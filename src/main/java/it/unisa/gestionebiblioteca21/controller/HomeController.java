@@ -18,7 +18,7 @@ import javafx.scene.control.Alert;
  */
 public class HomeController {
 
-    private CatalogoLibri catalogo;
+    private CatalogoLibri catalogo = new CatalogoLibri();
     private Utente modelUt;
     private Prestito modelPres;
     private Autenticazione modelAut;
@@ -75,7 +75,7 @@ public void setModelAut(Autenticazione modelAut) {
                 gestioneCatalogoController.setModelAut(modelAut);
                 gestioneCatalogoController.setCatalogo(catalogo);
                 gestioneCatalogoController.setStage(stage);
-                gestioneCatalogoController.setCatalogo(new CatalogoLibri(new ArrayList<>()));
+                /*gestioneCatalogoController.setCatalogo(new CatalogoLibri(new ArrayList<>()));*/
 
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

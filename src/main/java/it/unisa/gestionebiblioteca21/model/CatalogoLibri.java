@@ -13,8 +13,11 @@ import java.util.ArrayList;
 public class CatalogoLibri {
     private ArrayList<Libro> listaLibri;
 
-    public CatalogoLibri(ArrayList<Libro> listaLibri) {
-        this.listaLibri = listaLibri;
+    public CatalogoLibri() {
+        this.listaLibri = new ArrayList<>();
+    }
+     public CatalogoLibri(ArrayList<Libro> listaLibri) {
+        this.listaLibri = listaLibri != null ? listaLibri : new ArrayList<>();
     }
 
     public ArrayList<Libro> getListaLibri() {
@@ -54,7 +57,7 @@ public class CatalogoLibri {
 
         boolean ISBNuguale = (ISBN == null || ISBN.isEmpty()) || l.getISBN().equalsIgnoreCase(ISBN);
         
-        if (Titolouguale && Autoreuguale && ISBNuguale)
+        if (Titolouguale || Autoreuguale || ISBNuguale)
         {
             listarisultati.add(l);
         }

@@ -8,6 +8,7 @@ package it.unisa.gestionebiblioteca21.controller;
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Libro;
 import it.unisa.gestionebiblioteca21.model.Autenticazione;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -62,6 +63,9 @@ public void initialize() {
     colIsbn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
     colCopieDisponibili.setCellValueFactory(new PropertyValueFactory<>("copieDisponibili"));
     
+    txtRicercaLibro.textProperty().addListener((obs, oldValue, newValue) -> {
+        handleRicercaLibro();
+    });
     
 }
 private void aggiornaTableView(){
@@ -180,6 +184,20 @@ public void handleCancellazioneLibro(){
         errore.showAndWait();
     }
 }
+
+@FXML
+public void handleRicercaLibro() {
+    String ricerca = txtRicercaLibro.getText();
+
+    if (ricerca == null || ricerca.isEmpty()) {
+        aggiornaTableView();
+        return;
+    }
+
+    ArrayList<Libro> risultati = catalogo.ricercaLibro(ricerca, ricerca, ricerca);
+    tableview.getItems().setAll(risultati);
+}
+
 
 @FXML
 public void handleBackDashboard(){
