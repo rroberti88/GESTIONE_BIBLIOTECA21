@@ -22,7 +22,7 @@ public class HomeController {
 
     private CatalogoLibri catalogo = new CatalogoLibri();
     private Utente modelUt;
-    private Prestito modelPres;
+    private ElencoPrestiti listaPrestiti;
     private Autenticazione modelAut;
     private Stage stage;
     private String username; 
@@ -46,8 +46,8 @@ public class HomeController {
         this.modelUt = modelUt;
     }
 
-    public void setModelPres(Prestito modelPres) {
-        this.modelPres = modelPres;
+    public void setListaPrestiti(Prestito modelPres) {
+        this.listaPrestiti = listaPrestiti;
     }
 
     public void setModelAut(Autenticazione modelAut) {
@@ -122,7 +122,7 @@ public class HomeController {
 
             GestionePrestitiController gestionePrestitiController = loader.getController();
             gestionePrestitiController.setModelAut(modelAut);
-            gestionePrestitiController.setModelPres(modelPres);
+            gestionePrestitiController.setListaPrestiti(listaPrestiti);
             gestionePrestitiController.setStage(stage);
 
             Scene scene = new Scene(root);

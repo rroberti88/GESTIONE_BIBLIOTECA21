@@ -36,4 +36,22 @@ public class ElencoPrestiti {
     public ArrayList<Prestito> getListaPrestiti() {
         return listaPrestiti;
     }
+    
+     public ArrayList<Prestito> ricercaPrestito(String libro, String utente) {
+        ArrayList<Prestito> listaRisultatiPrestiti = new ArrayList<>();
+        for (Prestito p : listaPrestiti)
+    {
+        boolean libroUguale = (libro == null || libro.isEmpty()) || p.getLibro().toLowerCase().contains(libro.toLowerCase());
+
+        boolean utenteUguale = (utente == null || utente.isEmpty()) || p.getUtente().toLowerCase().contains(utente.toLowerCase());
+
+       
+        
+        if (libroUguale || utenteUguale)
+        {
+            listaRisultatiPrestiti.add(p);
+        }
+    }
+        return listaRisultatiPrestiti;
+    }
 }
