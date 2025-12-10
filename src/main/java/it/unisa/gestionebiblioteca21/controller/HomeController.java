@@ -22,7 +22,7 @@ public class HomeController {
 
     private CatalogoLibri catalogo = new CatalogoLibri();
     private Utente modelUt;
-    private ElencoPrestiti listaPrestiti;
+    private ElencoPrestiti listaPrestiti = new ElencoPrestiti();
     private Autenticazione modelAut;
     private Stage stage;
     private String username; 
@@ -46,7 +46,7 @@ public class HomeController {
         this.modelUt = modelUt;
     }
 
-    public void setListaPrestiti(Prestito modelPres) {
+    public void setListaPrestiti(ElencoPrestiti listaPrestiti) {
         this.listaPrestiti = listaPrestiti;
     }
 
@@ -84,6 +84,7 @@ public class HomeController {
             stage.show();
 
         } catch (Exception f){
+            f.printStackTrace();
         }
     }
 
@@ -111,6 +112,7 @@ public class HomeController {
             stage.show();
 
         } catch (Exception f){
+            f.printStackTrace();
         }
     }
 
@@ -131,6 +133,7 @@ public class HomeController {
             stage.show();
 
         } catch (Exception f){
+            f.printStackTrace();
         }
     }
 
@@ -151,6 +154,7 @@ public class HomeController {
                 stage.show();
 
             } catch (Exception f){
+                f.printStackTrace();
             }
         }
         else{
