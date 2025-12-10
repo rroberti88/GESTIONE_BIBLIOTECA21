@@ -25,16 +25,16 @@
       </HBox>
 
       <Label layoutX="30.0" layoutY="60.0" text="Matricola" />
-      <TextField fx:id="txtMatricola" layoutX="150.0" layoutY="55.0" prefWidth="250.0" editable="false" />
+      <TextField fx:id="txtMatricola" layoutX="150.0" layoutY="55.0" prefWidth="250.0" editable="false" promptText="Modifica la matricola"/>
 
       <Label layoutX="30.0" layoutY="100.0" text="Nome" />
-      <TextField fx:id="txtNome" layoutX="150.0" layoutY="95.0" prefWidth="250.0" />
+      <TextField fx:id="txtNome" layoutX="150.0" layoutY="95.0" prefWidth="250.0" promptText="Modifica il nome"/>
 
       <Label layoutX="30.0" layoutY="140.0" text="Cognome" />
-      <TextField fx:id="txtCognome" layoutX="150.0" layoutY="135.0" prefWidth="250.0" />
+      <TextField fx:id="txtCognome" layoutX="150.0" layoutY="135.0" prefWidth="250.0" promptText="Modifica il cognome"/>
 
       <Label layoutX="30.0" layoutY="180.0" text="Email" />
-      <TextField fx:id="txtEmail" layoutX="150.0" layoutY="175.0" prefWidth="250.0" />
+      <TextField fx:id="txtEmail" layoutX="150.0" layoutY="175.0" prefWidth="250.0" promptText="Modifica l'email"/>
 
       <Button fx:id="btnSalvaModifiche" layoutX="260.0" layoutY="230.0"
               mnemonicParsing="false" onAction="#handleSalva"

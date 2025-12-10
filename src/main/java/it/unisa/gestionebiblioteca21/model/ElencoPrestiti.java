@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package it.unisa.gestionebiblioteca21.model;
-import it.unisa.gestionebiblioteca21.database.Archivio;
 import java.util.ArrayList;
 /**
  *
@@ -23,13 +22,11 @@ public class ElencoPrestiti {
     }
 
     public void registraPrestito(Prestito prestito) {
-        listaPrestiti.add(prestito);
-    Archivio.salvaPrestiti(this);
+    listaPrestiti.add(prestito);
     }
 
     public void registraRestituzione(Prestito prestito) {
-        listaPrestiti.remove(prestito);
-    Archivio.salvaPrestiti(this);
+    listaPrestiti.remove(prestito);
     }
 
     

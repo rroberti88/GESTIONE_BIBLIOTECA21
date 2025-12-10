@@ -15,13 +15,13 @@
             <Label alignment="BOTTOM_LEFT" prefHeight="23.0" prefWidth="84.0" text="Autore" />
          </children>
       </HBox>
-      <TextField fx:id="txtAutore" layoutX="17.0" layoutY="102.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtTitolo" layoutX="17.0" layoutY="54.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtISBN" layoutX="17.0" layoutY="151.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtAnnoPubblicazione" layoutX="17.0" layoutY="200.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtCategoria" layoutX="17.0" layoutY="251.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtCopieTotali" layoutX="17.0" layoutY="302.0" prefHeight="25.0" prefWidth="190.0" />
-      <TextField fx:id="txtCopieDisponibili" layoutX="17.0" layoutY="348.0" prefHeight="25.0" prefWidth="190.0" />
+      <TextField fx:id="txtAutore" layoutX="17.0" layoutY="102.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'autore"/>
+      <TextField fx:id="txtTitolo" layoutX="17.0" layoutY="54.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci il titolo"/>
+      <TextField fx:id="txtISBN" layoutX="17.0" layoutY="151.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'ISBN"/>
+      <TextField fx:id="txtAnnoPubblicazione" layoutX="17.0" layoutY="200.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'anno di Pubblicazione"/>
+      <TextField fx:id="txtCategoria" layoutX="17.0" layoutY="251.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci la categoria"/>
+      <TextField fx:id="txtCopieTotali" layoutX="17.0" layoutY="302.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci num di copie totali"/>
+      <TextField fx:id="txtCopieDisponibili" layoutX="17.0" layoutY="348.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci num di copie disponibili"/>
       <HBox layoutX="17.0" layoutY="26.0" prefHeight="28.0" prefWidth="196.0">
          <children>
             <Label alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="94.0" text="Titolo" />
