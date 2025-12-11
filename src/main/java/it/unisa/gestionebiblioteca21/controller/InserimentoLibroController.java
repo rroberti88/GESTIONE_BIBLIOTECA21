@@ -49,32 +49,11 @@ public class InserimentoLibroController {
             String ISBN = txtISBN.getText();
             String categoria = txtCategoria.getText();
 
-            if (titolo.isEmpty() || autore.isEmpty() || categoria.isEmpty() || ISBN.isEmpty()) {
-                throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
-            }
-
             int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
             int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
             int copieTotali = Integer.parseInt(txtCopieTotali.getText());
 
-            if (copieDisponibili > copieTotali) {
-                throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
-            }
-
-            if (!ISBN.matches("\\d{13}")) {
-                throw new IllegalArgumentException("L'ISBN deve contenere esattamente 13 cifre numeriche.");
-            }
-
-            Libro libro = new Libro(
-                    ISBN,
-                    titolo,
-                    autore,
-                    annoPubblicazione,
-                    categoria,
-                    copieTotali,
-                    copieDisponibili
-            );
-
+            Libro libro = new Libro(ISBN, titolo, autore, annoPubblicazione, categoria, copieTotali, copieDisponibili);
             catalogo.inserimentoLibro(libro);
 
             if (archivio != null) {

@@ -46,21 +46,21 @@ public class RegistraPrestitoController {
             LocalDate dataPrestito = LocalDate.parse(txtDataPrestito.getText().trim());
             LocalDate dataScadenza = LocalDate.parse(txtDataScadenza.getText().trim());
 
-            if (libro.isEmpty() || utente.isEmpty()) {
-                mostraErrore("Tutti i campi devono essere compilati.");
-                return;
-            }
+            Libro libroObj = catalogo.getLibroperilnome(libro);
 
-            Prestito p = new Prestito(libro, utente, dataPrestito, dataScadenza, null);
+            Prestito prestito = new Prestito(libro, utente, dataPrestito, dataScadenza, null);
 
-            elencoPrestiti.registraPrestito(p);
+            elencoPrestiti.registraPrestito(prestito, libroObj);
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
 
             stage.close();
 
+        }  catch (IllegalStateException | IllegalArgumentException e) {
+            mostraErrore(e.getMessage());
         } catch (Exception e) {
-            mostraErrore("Errore nei dati inseriti.");
+            mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
+            e.printStackTrace();
         }
     }
 
@@ -74,5 +74,6 @@ public class RegistraPrestitoController {
         a.showAndWait();
     }
 }
+
 
 

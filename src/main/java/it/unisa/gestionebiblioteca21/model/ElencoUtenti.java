@@ -24,28 +24,48 @@ public class ElencoUtenti {
     public ArrayList<Utente> getListaUtenti() {
         return listaUtenti;
     }
+    
+    private boolean emailValida(String email) {
+    return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$");
+    }
 
     public void inserimentoUtente(Utente utente) {
-        if (utente == null) return;
-        if (!exists(utente.getMatricola())) {
-            listaUtenti.add(utente);
+
+    if (utente.getMatricola().isEmpty() || utente.getNome().isEmpty() || utente.getCognome().isEmpty() || utente.getEmail().isEmpty()) {
+        throw new IllegalArgumentException("Tutti i campi sono obbligatori.");
+    }
+    
+    if (!emailValida(utente.getEmail())){
+            throw new IllegalArgumentException("email non valida. Esempio di formato valido: giacomo21@gmail.com");
         }
+        
+    for (Utente u : listaUtenti){
+    if (u.getMatricola().equals(utente.getMatricola())){
+        throw new IllegalArgumentException("Utente già presente");
+    }
+    }
+    listaUtenti.add(utente);
     }
 
     public void cancellazioneUtente(Utente utente) {
-        if (utente == null) return;
+    if (utente == null) return;
         listaUtenti.removeIf(u -> u.getMatricola().equalsIgnoreCase(utente.getMatricola()));
     }
-    public void modificaUtente(Utente utente) {
-        if (utente == null) return;
 
-        for (int i = 0; i < listaUtenti.size(); i++) {
-            Utente u = listaUtenti.get(i);
-            if (u.getMatricola().equalsIgnoreCase(utente.getMatricola())) {
-                listaUtenti.set(i, utente);
-                return;
-            }
-        }
+    public void modificaUtente(Utente utenteOriginale, Utente utenteModificato) {
+        if (utenteOriginale == null || utenteModificato == null) return;
+
+    if (utenteModificato.getNome().isEmpty() || utenteModificato.getCognome().isEmpty() || utenteModificato.getEmail().isEmpty()) {
+        throw new IllegalArgumentException("Tutti i campi sono obbligatori.");
+    }
+    
+    if (!emailValida(utenteModificato.getEmail())){
+        throw new IllegalArgumentException("Email non valida. Esempio: giacomo21@gmail.com");
+    }
+
+    utenteOriginale.setNome(utenteModificato.getNome());
+    utenteOriginale.setCognome(utenteModificato.getCognome());
+    utenteOriginale.setEmail(utenteModificato.getEmail());
     }
 
     public ArrayList<Utente> ricercaUtente(String cognome, String nome, String matricola) {
