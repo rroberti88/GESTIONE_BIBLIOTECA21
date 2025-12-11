@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "ISBN": "1111111111111",
+    "titolo": "Le avventure di Pinocchio",
+    "autore": "Carlo Collodi",
+    "annoPubblicazione": 1981,
+    "Categoria": "Bambini",
+    "copieTotali": 4,
+    "copieDisponibili": 3
+  },
+  {
+    "ISBN": "2222222222222",
+    "titolo": "Moby Dick",
+    "autore": "Herman Melville",
+    "annoPubblicazione": 2000,
+    "Categoria": "Avventuresco",
+    "copieTotali": 4,
+    "copieDisponibili": 4
+  },
+  {
+    "ISBN": "3333333333333",
+    "titolo": "IT",
+    "autore": "Stephen King",
+    "annoPubblicazione": 2002,
+    "Categoria": "Horror",
+    "copieTotali": 3,
+    "copieDisponibili": 2
+  },
+  {
+    "ISBN": "4444444444444",
+    "titolo": "Sandokan",
+    "autore": "Emilio Salgari",
+    "annoPubblicazione": 2003,
+    "Categoria": "Fantasy",
+    "copieTotali": 3,
+    "copieDisponibili": 2
+  },
+  {
+    "ISBN": "5555555555555",
+    "titolo": "La Sacra Bibbia",
+    "autore": "Gesù",
+    "annoPubblicazione": 1455,
+    "Categoria": "Religioso",
+    "copieTotali": 3,
+    "copieDisponibili": 1
+  }
+]

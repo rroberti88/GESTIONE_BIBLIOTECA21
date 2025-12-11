@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "matricola": "0612709470",
+    "nome": "Roberto",
+    "cognome": "Roberti",
+    "email": "robertiroberto56@gmail.com",
+    "numeroPrestiti": 0
+  },
+  {
+    "matricola": "0612708916",
+    "nome": "Cosimo",
+    "cognome": "Rivellini",
+    "email": "c.rivellini@studenti.unisa.it",
+    "numeroPrestiti": 0
+  },
+  {
+    "matricola": "0612709720",
+    "nome": "Felice",
+    "cognome": "Iandoli",
+    "email": "ludopatico88@gmail.com",
+    "numeroPrestiti": 0
+  },
+  {
+    "matricola": "0612709558",
+    "nome": "Jacopo Pio",
+    "cognome": "Ricciardelli",
+    "email": "interista@yahoo.it",
+    "numeroPrestiti": 0
+  },
+  {
+    "matricola": "0612709468",
+    "nome": "Mario",
+    "cognome": "Mele",
+    "email": "melemario12@libero.it",
+    "numeroPrestiti": 0
+  }
+]
