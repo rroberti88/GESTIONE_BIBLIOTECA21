@@ -49,14 +49,7 @@ public class RegistraPrestitoController {
             LocalDate dataPrestito = LocalDate.parse(txtDataPrestito.getText().trim());
             LocalDate dataScadenza = LocalDate.parse(txtDataScadenza.getText().trim());
 
-            if (nomeLibro.isEmpty() || utente.isEmpty()) {
-                throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
-            }
-
             Libro libroObj = catalogoLibri.getLibroperilnome(nomeLibro);
-            if (libroObj == null) {
-                throw new IllegalArgumentException("Libro non trovato nel catalogo.");
-            }
 
             Prestito prestito = new Prestito(nomeLibro, utente, dataPrestito, dataScadenza, null);
 

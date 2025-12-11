@@ -22,12 +22,20 @@ public class ElencoPrestiti {
     }
 
     public void registraPrestito(Prestito prestito, Libro libro) {
-    long prestitiUtente = listaPrestiti.stream().filter(p -> p.getUtente().equalsIgnoreCase(prestito.getUtente()) && p.isLent()).count();
+         if (prestito == null || libro == null) {
+            throw new IllegalArgumentException("Prestito o libro non possono essere null.");
+        }
+
+        if (prestito.getLibro().isEmpty() || prestito.getUtente().isEmpty() ||
+            prestito.getDataPrestito() == null || prestito.getDataScadenza() == null) {
+            throw new IllegalArgumentException("Tutti i campi del prestito devono essere compilati.");
+        }
+
+        long prestitiUtente = listaPrestiti.stream().filter(p -> p.getUtente().equalsIgnoreCase(prestito.getUtente()) && p.isLent()).count();
         if (prestitiUtente >= 3) {
             throw new IllegalStateException("L'utente ha già 3 prestiti attivi.");
         }
 
-        // Controllo disponibilità del libro
         if (libro.getCopieDisponibili() <= 0) {
             throw new IllegalStateException("Nessuna copia disponibile per questo libro.");
         }

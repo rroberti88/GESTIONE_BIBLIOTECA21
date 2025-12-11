@@ -96,6 +96,6 @@ public class CatalogoLibri {
                 return l;
             }
         }
-        return null; // se non trovato
+        throw new IllegalArgumentException("Libro non trovato nel catalogo.");
     }
 }
