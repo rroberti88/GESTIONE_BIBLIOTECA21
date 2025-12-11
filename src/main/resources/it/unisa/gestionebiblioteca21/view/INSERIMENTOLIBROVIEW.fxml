@@ -3,65 +3,116 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Rectangle?>
+
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="400"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="it.unisa.gestionebiblioteca21.controller.InserimentoLibroController"
+      styleClass="root-light"
+      stylesheets="@../css/appstyle.css">
+
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="90" prefWidth="600"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 0 0 25 25;
+                 -fx-padding: 0 20;">
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" /></image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="Inserimento Libro"
+               style="-fx-font-size: 26px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;" />
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" /></image>
+        </ImageView>
+    </HBox>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.InserimentoLibroController">
-   <children>
-      <HBox layoutX="17.0" layoutY="79.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="23.0" prefWidth="84.0" text="Autore" />
-         </children>
-      </HBox>
-      <TextField fx:id="txtAutore" layoutX="17.0" layoutY="102.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'autore"/>
-      <TextField fx:id="txtTitolo" layoutX="17.0" layoutY="54.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci il titolo"/>
-      <TextField fx:id="txtISBN" layoutX="17.0" layoutY="151.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'ISBN"/>
-      <TextField fx:id="txtAnnoPubblicazione" layoutX="17.0" layoutY="200.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci l'anno di Pubblicazione"/>
-      <TextField fx:id="txtCategoria" layoutX="17.0" layoutY="251.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci la categoria"/>
-      <TextField fx:id="txtCopieTotali" layoutX="17.0" layoutY="302.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci num di copie totali"/>
-      <TextField fx:id="txtCopieDisponibili" layoutX="17.0" layoutY="348.0" prefHeight="25.0" prefWidth="190.0" promptText="Inserisci num di copie disponibili"/>
-      <HBox layoutX="17.0" layoutY="26.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="94.0" text="Titolo" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="127.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="26.0" prefWidth="68.0" text="ISBN" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="172.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="144.0" text="AnnoPubblicazione" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="225.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="89.0" text="Categoria" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="276.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label prefHeight="30.0" prefWidth="100.0" text="Copie totali" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="327.0" prefHeight="28.0" prefWidth="196.0">
-         <children>
-            <Label prefHeight="22.0" prefWidth="149.0" text="Copie Disponibili" />
-         </children>
-      </HBox>
-      <Button fx:id="btnSalva" layoutX="442.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSalva" prefHeight="28.0" prefWidth="130.0" text="Salva" />
-      <HBox layoutY="-4.0" prefHeight="37.0" prefWidth="600.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="44.0" prefWidth="698.0" text="DATI DA INSERIRE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <Button fx:id="btnAnnulla" layoutX="293.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleAnnulla" prefHeight="28.0" prefWidth="130.0" text="Annulla" />
-   </children>
-</Pane>
+    <VBox spacing="12" maxWidth="350">
+
+        <VBox spacing="5">
+            <Label text="Titolo" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtTitolo" promptText="Inserisci il titolo"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Autore" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtAutore" promptText="Inserisci l'autore"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="ISBN" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtISBN" promptText="Inserisci l'ISBN"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Anno di Pubblicazione" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtAnnoPubblicazione" promptText="Inserisci l'anno"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Categoria" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCategoria" promptText="Inserisci la categoria"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Copie Totali" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCopieTotali" promptText="Inserisci numero copie totali"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Copie Disponibili" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCopieDisponibili" promptText="Inserisci numero copie disponibili"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+    </VBox>
+
+
+    <HBox spacing="20" alignment="CENTER">
+        
+        <Button fx:id="btnSalva"
+                text="Salva"
+                onAction="#handleSalva"
+                prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #007AFF;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;" />
+
+        <Button fx:id="btnAnnulla"
+                text="Annulla"
+                onAction="#handleAnnulla"
+                prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #FF3B30;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;" />
+    </HBox>
+
+</VBox>

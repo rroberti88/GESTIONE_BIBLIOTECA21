@@ -3,45 +3,98 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
 
-<Pane prefHeight="400.0" prefWidth="600.0"
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="400"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="it.unisa.gestionebiblioteca21.controller.RegistraRestituzioneController">
+      fx:controller="it.unisa.gestionebiblioteca21.controller.RegistraRestituzioneController"
+      styleClass="root-light"
+      stylesheets="@../css/appstyle.css">
 
-   <children>
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="90" prefWidth="600"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 0 0 25 25;
+                 -fx-padding: 0 20;">
 
-      <HBox prefHeight="55.0" prefWidth="600.0">
-         <children>
-            <Label alignment="CENTER" prefWidth="600.0" text="DATI RESTITUZIONE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/></image>
+        </ImageView>
 
-      <Label layoutX="50.0" layoutY="85.0" text="ISBN del Libro" />
-      <TextField fx:id="txtLibro" layoutX="50.0" layoutY="115.0"
-                 prefWidth="300.0" promptText="Inserisci ISBN..." />
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Label layoutX="50.0" layoutY="165.0" text="Matricola Utente" />
-      <TextField fx:id="txtUtente" layoutX="50.0" layoutY="195.0"
-                 prefWidth="300.0" promptText="Inserisci matricola..." />
+        <Label text="Registra Restituzione"
+               style="-fx-font-size: 26px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;" />
 
-      <Label layoutX="50.0" layoutY="245.0" text="Data di Scadenza" />
-      <TextField fx:id="txtDatadiScadenza" layoutX="50.0" layoutY="275.0"
-                 prefWidth="300.0" promptText="AAAA-MM-GG" />
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Button fx:id="btnAnnulla" layoutX="380.0" layoutY="275.0"
-              prefWidth="100.0" text="Annulla" onAction="#handleAnnulla" />
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/></image>
+        </ImageView>
+    </HBox>
 
-      <Button fx:id="btnSalva" layoutX="485.0" layoutY="275.0"
-              prefWidth="100.0" text="Salva (Cancella)"
-              onAction="#handleSalva" />
 
-   </children>
-</Pane>
+    <VBox spacing="12" maxWidth="350">
+
+        <VBox spacing="5">
+            <Label text="ISBN del Libro"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+            <TextField fx:id="txtLibro"
+                       promptText="Inserisci ISBN..."
+                       styleClass="apple-textfield" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Matricola Utente"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+            <TextField fx:id="txtUtente"
+                       promptText="Inserisci matricola..."
+                       styleClass="apple-textfield" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Data di Scadenza"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+            <TextField fx:id="txtDatadiScadenza"
+                       promptText="AAAA-MM-GG"
+                       styleClass="apple-textfield" />
+        </VBox>
+
+    </VBox>
+
+
+    <HBox spacing="20" alignment="CENTER">
+
+        <Button fx:id="btnSalva"
+                text="Salva (Cancella)"
+                onAction="#handleSalva"
+                prefWidth="180" prefHeight="40"
+                style="-fx-background-color: #007AFF;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;" />
+
+        <Button fx:id="btnAnnulla"
+                text="Annulla"
+                onAction="#handleAnnulla"
+                prefWidth="150" prefHeight="40"
+                style="-fx-background-color: #FF3B30;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;" />
+
+    </HBox>
+
+</VBox>

@@ -1,41 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.LoginController">
-   <children>
-      <HBox alignment="CENTER" prefHeight="78.0" prefWidth="600.0" style="-fx-background-color: grey;">
-         <children>
-            <Label alignment="CENTER" prefHeight="74.0" prefWidth="154.0" text="LOGIN" textAlignment="CENTER" textFill="#f4f1f1">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox layoutX="177.0" layoutY="123.0" prefHeight="31.0" prefWidth="165.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="166.0" text="USERNAME" />
-         </children>
-      </HBox>
-      <HBox layoutX="176.0" layoutY="154.0" prefHeight="25.0" prefWidth="247.0">
-         <children>
-            <TextField fx:id="txtUsername" prefHeight="26.0" prefWidth="217.0" promptText="Inserisci Username..."/>
-         </children>
-      </HBox>
-      <HBox layoutX="218.0" layoutY="211.0" prefHeight="10.0" prefWidth="147.0" />
-      <PasswordField fx:id="txtPassword" layoutX="174.0" layoutY="219.0" prefHeight="25.0" prefWidth="218.0" promptText="Inserisci Password..."  />
-      <Button fx:id="btnAccedi" layoutX="262.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="26.0" prefWidth="67.0" text="Accedi" />
-      <HBox layoutX="177.0" layoutY="182.0" prefHeight="37.0" prefWidth="186.0">
-         <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="171.0" text="PASSWORD" />
-         </children>
-      </HBox>
-   </children>
-</Pane>
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="400"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="it.unisa.gestionebiblioteca21.controller.LoginController"
+      style="-fx-background-color: #F5F5F7;">
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="90" prefWidth="600"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 25;
+                 -fx-padding: 0 20 0 20;">
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
+            </image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Label text="Login"
+               style="-fx-font-size: 30px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;"/>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
+            </image>
+        </ImageView>
+
+    </HBox>
+
+
+    <VBox spacing="6" alignment="CENTER_LEFT" maxWidth="260">
+        <Label text="Username"
+               style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+        <TextField fx:id="txtUsername"
+                   promptText="Inserisci Username..."
+                   prefWidth="260"
+                   style="-fx-background-radius: 12;
+                          -fx-border-radius: 12;
+                          -fx-background-color: white;
+                          -fx-border-color: #D2D2D7;
+                          -fx-padding: 10;
+                          -fx-font-size: 14px;"/>
+    </VBox>
+
+    <VBox spacing="6" alignment="CENTER_LEFT" maxWidth="260">
+        <Label text="Password"
+               style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+        <PasswordField fx:id="txtPassword"
+                       promptText="Inserisci Password..."
+                       prefWidth="260"
+                       style="-fx-background-radius: 12;
+                              -fx-border-radius: 12;
+                              -fx-background-color: white;
+                              -fx-border-color: #D2D2D7;
+                              -fx-padding: 10;
+                              -fx-font-size: 14px;"/>
+    </VBox>
+
+    <Button fx:id="btnAccedi"
+            text="Accedi"
+            onAction="#handleLogin"
+            prefWidth="260" prefHeight="40"
+            style="-fx-background-color: #007AFF;
+                   -fx-background-radius: 12;
+                   -fx-font-size: 16px;
+                   -fx-text-fill: white;
+                   -fx-font-weight: bold;"/>
+
+</VBox>

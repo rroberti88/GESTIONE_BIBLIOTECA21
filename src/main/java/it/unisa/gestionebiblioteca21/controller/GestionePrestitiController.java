@@ -148,6 +148,41 @@ public class GestionePrestitiController {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+public void handleCancellazionePrestito() {
+    try {
+        Prestito sel = tableview.getSelectionModel().getSelectedItem();
+
+        if (sel == null) {
+            new Alert(Alert.AlertType.WARNING,
+                "Seleziona un prestito da eliminare.").show();
+            return;
+        }
+
+        Alert conf = new Alert(Alert.AlertType.CONFIRMATION,
+                "Confermi l'eliminazione del prestito selezionato?");
+        conf.showAndWait().ifPresent(r -> {
+
+            if (r == ButtonType.OK) {
+
+                elencoPrestiti.cancellazionePrestito(sel);
+
+                // salva su archivio se presente
+                if (archivio != null) {
+                    archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
+                }
+
+                // aggiorna la tabella
+                aggiorna();
+            }
+        });
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 
     @FXML
     public void handleRicercaPrestito() {

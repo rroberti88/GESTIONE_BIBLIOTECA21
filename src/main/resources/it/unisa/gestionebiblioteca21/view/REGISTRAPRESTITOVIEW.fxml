@@ -3,49 +3,110 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
 
-<Pane prefHeight="400.0" prefWidth="600.0"
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="400"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="it.unisa.gestionebiblioteca21.controller.RegistraPrestitoController">
+      fx:controller="it.unisa.gestionebiblioteca21.controller.RegistraPrestitoController"
+      styleClass="root-light"
+      stylesheets="@../css/appstyle.css">
 
-   <children>
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="90" prefWidth="600"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 0 0 25 25;
+                 -fx-padding: 0 20;">
 
-      <HBox prefHeight="40.0" prefWidth="600.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="70.0" prefWidth="660.0" text="DATI PRESTITO">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/>
+            </image>
+        </ImageView>
 
-      <Label layoutX="31.0" layoutY="45.0" text="ISBN del Libro" />
-      <TextField fx:id="txtISBN" layoutX="31.0" layoutY="75.0" prefWidth="250.0"
-                 promptText="Inserisci ISBN..." />
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Label layoutX="31.0" layoutY="125.0" text="Matricola Utente" />
-      <TextField fx:id="txtMatricola" layoutX="31.0" layoutY="155.0" prefWidth="250.0"
-                 promptText="Inserisci matricola..." />
+        <Label text="Registra Prestito"
+               style="-fx-font-size: 26px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;" />
 
-      <Label layoutX="31.0" layoutY="205.0" text="Data Prestito (AAAA-MM-GG)" />
-      <TextField fx:id="txtDataPrestito" layoutX="31.0" layoutY="235.0" prefWidth="250.0"
-                 promptText="AAAA-MM-GG" />
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Label layoutX="31.0" layoutY="285.0" text="Data Scadenza (AAAA-MM-GG)" />
-      <TextField fx:id="txtDataScadenza" layoutX="31.0" layoutY="315.0" prefWidth="250.0"
-                 promptText="AAAA-MM-GG" />
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/>
+            </image>
+        </ImageView>
 
-      <Button fx:id="btnAnnulla" layoutX="330.0" layoutY="315.0"
-              prefWidth="110.0" text="Annulla" onAction="#handleAnnulla" />
+    </HBox>
 
-      <Button fx:id="btnSalva" layoutX="450.0" layoutY="315.0"
-              prefWidth="110.0" text="Salva" onAction="#handleSalva" />
 
-   </children>
-</Pane>
+    <VBox spacing="12" maxWidth="350">
 
+        <VBox spacing="5">
+            <Label text="ISBN del Libro"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtISBN"
+                       promptText="Inserisci ISBN..."
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Matricola Utente"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtMatricola"
+                       promptText="Inserisci matricola..."
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Data Prestito (AAAA-MM-GG)"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtDataPrestito"
+                       promptText="AAAA-MM-GG"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Data Scadenza (AAAA-MM-GG)"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtDataScadenza"
+                       promptText="AAAA-MM-GG"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+    </VBox>
+
+
+    <HBox spacing="20" alignment="CENTER">
+
+        <Button fx:id="btnSalva"
+                text="Salva"
+                onAction="#handleSalva"
+                prefWidth="150" prefHeight="40"
+                style="-fx-background-color: #007AFF;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+
+        <Button fx:id="btnAnnulla"
+                text="Annulla"
+                onAction="#handleAnnulla"
+                prefWidth="150" prefHeight="40"
+                style="-fx-background-color: #FF3B30;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+    </HBox>
+
+</VBox>

@@ -3,45 +3,107 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="300.0" prefWidth="450.0"
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="450" prefHeight="350"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaUtenteController">
+      fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaUtenteController"
+      styleClass="root-light"
+      stylesheets="@../css/appstyle.css">
 
-   <children>
-      <HBox prefHeight="40.0" prefWidth="450.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="40.0" prefWidth="450.0" text="MODIFICA UTENTE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="70" prefWidth="450"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 0 0 25 25;
+                 -fx-padding: 0 15;">
 
-      <Label layoutX="30.0" layoutY="60.0" text="Matricola" />
-      <TextField fx:id="txtMatricola" layoutX="150.0" layoutY="55.0" prefWidth="250.0" editable="false" promptText="Modifica la matricola"/>
+        <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
+            </image>
+        </ImageView>
 
-      <Label layoutX="30.0" layoutY="100.0" text="Nome" />
-      <TextField fx:id="txtNome" layoutX="150.0" layoutY="95.0" prefWidth="250.0" promptText="Modifica il nome"/>
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Label layoutX="30.0" layoutY="140.0" text="Cognome" />
-      <TextField fx:id="txtCognome" layoutX="150.0" layoutY="135.0" prefWidth="250.0" promptText="Modifica il cognome"/>
+        <Label text="Modifica Utente"
+               style="-fx-font-size: 22px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;" />
 
-      <Label layoutX="30.0" layoutY="180.0" text="Email" />
-      <TextField fx:id="txtEmail" layoutX="150.0" layoutY="175.0" prefWidth="250.0" promptText="Modifica l'email"/>
+        <Region HBox.hgrow="ALWAYS"/>
 
-      <Button fx:id="btnSalvaModifiche" layoutX="260.0" layoutY="230.0"
-              mnemonicParsing="false" onAction="#handleSalva"
-              prefHeight="28.0" prefWidth="120.0" text="Salva modifiche" />
+        <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
+            <image>
+                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
+            </image>
+        </ImageView>
 
-      <Button fx:id="btnAnnulla" layoutX="120.0" layoutY="230.0"
-              mnemonicParsing="false" onAction="#handleAnnulla"
-              prefHeight="28.0" prefWidth="120.0" text="Annulla" />
-   </children>
-</Pane>
+    </HBox>
+
+
+    <VBox spacing="12" maxWidth="320">
+
+        <VBox spacing="5">
+            <Label text="Matricola" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtMatricola"
+                       promptText="Modifica la matricola"
+                       editable="false"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Nome" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtNome"
+                       promptText="Modifica il nome"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Cognome" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCognome"
+                       promptText="Modifica il cognome"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Email" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtEmail"
+                       promptText="Modifica l'email"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+    </VBox>
+
+
+    <HBox spacing="20" alignment="CENTER">
+
+        <Button fx:id="btnSalvaModifiche"
+                text="Salva Modifiche"
+                onAction="#handleSalva"
+                prefWidth="150" prefHeight="38"
+                style="-fx-background-color: #007AFF;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+
+        <Button fx:id="btnAnnulla"
+                text="Annulla"
+                onAction="#handleAnnulla"
+                prefWidth="120" prefHeight="38"
+                style="-fx-background-color: #FF3B30;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+    </HBox>
+
+</VBox>

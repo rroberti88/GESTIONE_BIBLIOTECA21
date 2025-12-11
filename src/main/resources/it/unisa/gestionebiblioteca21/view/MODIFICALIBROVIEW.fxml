@@ -3,39 +3,124 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
+
+<VBox alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="400"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaLibroController"
+      styleClass="root-light"
+      stylesheets="@../css/appstyle.css">
+
+    <HBox alignment="CENTER_LEFT"
+          spacing="10"
+          prefHeight="90" prefWidth="600"
+          style="-fx-background-color: #4A4A4C;
+                 -fx-background-radius: 0 0 25 25;
+                 -fx-padding: 0 20;">
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/></image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Label text="Modifica Libro"
+               style="-fx-font-size: 26px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: white;" />
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+            <image><Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/></image>
+        </ImageView>
+
+    </HBox>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaLibroController">
-   <children>
-      <HBox prefHeight="49.0" prefWidth="600.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="611.0" text="DATI DA MODIFICARE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <Button fx:id="btnAnnulla" layoutX="319.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleAnnulla" prefHeight="25.0" prefWidth="112.0" text="Annulla" />
-      <Button fx:id="btnSalvaModifiche" layoutX="469.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleSalva" prefHeight="25.0" prefWidth="106.0" text="Salva modifiche" />
-      <TextField fx:id="txtTitolo" layoutX="32.0" layoutY="80.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica il titolo"/>
-      <TextField fx:id="txtAutore" layoutX="32.0" layoutY="133.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica l'autore"/>
-      <TextField fx:id="txtISBN" layoutX="250.0" layoutY="80.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica l'ISBN"/>
-      <TextField fx:id="txtAnnoPubblicazione" layoutX="32.0" layoutY="188.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica l'anno di pubblicazione"/>
-      <TextField fx:id="txtCategoria" layoutX="32.0" layoutY="239.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica la categoria"/>
-      <TextField fx:id="txtCopieTotali" layoutX="32.0" layoutY="291.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica num di copie totali"/>
-      <TextField fx:id="txtCopieDisponibili" layoutX="32.0" layoutY="338.0" prefHeight="25.0" prefWidth="172.0" promptText="Modifica num di copie disponibili"/>
-      
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="55.0" prefHeight="25.0" prefWidth="112.0" text="Titolo" />
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="108.0" prefHeight="25.0" prefWidth="112.0" text="Autore" />
-      <Label alignment="BOTTOM_LEFT" layoutX="250.0" layoutY="55.0" prefHeight="25.0" prefWidth="112.0" text="ISBN" />
+    <VBox spacing="12" maxWidth="350">
 
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="163.0" prefHeight="25.0" prefWidth="130.0" text="Anno di Pubblicazione" />
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="213.0" prefHeight="25.0" prefWidth="130.0" text="Categoria" />
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="266.0" prefHeight="25.0" prefWidth="130.0" text="Copie Totali" />
-      <Label alignment="BOTTOM_LEFT" layoutX="32.0" layoutY="316.0" prefHeight="25.0" prefWidth="130.0" text="Copie Disponibili" />
-   </children>
-</Pane>
+        <VBox spacing="5">
+            <Label text="Titolo" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtTitolo"
+                       promptText="Modifica il titolo"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Autore" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtAutore"
+                       promptText="Modifica l'autore"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="ISBN" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtISBN"
+                       promptText="Modifica l'ISBN"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Anno di Pubblicazione" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtAnnoPubblicazione"
+                       promptText="Modifica anno di pubblicazione"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Categoria" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCategoria"
+                       promptText="Modifica la categoria"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Copie Totali" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCopieTotali"
+                       promptText="Modifica numero copie totali"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Copie Disponibili" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCopieDisponibili"
+                       promptText="Modifica numero copie disponibili"
+                       styleClass="apple-textfield"/>
+        </VBox>
+
+    </VBox>
+
+
+    <HBox spacing="20" alignment="CENTER">
+
+        <Button fx:id="btnSalvaModifiche"
+                text="Salva Modifiche"
+                onAction="#handleSalva"
+                prefWidth="160" prefHeight="40"
+                style="-fx-background-color: #007AFF;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+
+        <Button fx:id="btnAnnulla"
+                text="Annulla"
+                onAction="#handleAnnulla"
+                prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #FF3B30;
+                       -fx-background-radius: 12;
+                       -fx-font-size: 16px;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+
+    </HBox>
+
+</VBox>

@@ -92,4 +92,12 @@ public class ElencoPrestiti {
         }
         return null;
     }
+    
+    public boolean cancellazionePrestito(Prestito p) {
+    if (p == null) return false;
+    return listaPrestiti.remove(p);
+}
+
+
+
 }

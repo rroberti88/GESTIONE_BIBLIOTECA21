@@ -1,19 +1,5 @@
 [
   {
-    "libro": "io",
-    "utente": "io",
-    "dataPrestito": {
-      "year": 2222,
-      "month": 2,
-      "day": 22
-    },
-    "dataScadenza": {
-      "year": 2222,
-      "month": 2,
-      "day": 21
-    }
-  },
-  {
     "libro": "3333333333333",
     "utente": "0612709470",
     "dataPrestito": {
