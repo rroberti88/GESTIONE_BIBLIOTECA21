@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
 
-/**
- *
- * @author cosim
- */
 import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
 import it.unisa.gestionebiblioteca21.model.Utente;
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -27,15 +25,22 @@ public class ModificaUtenteController {
     private Stage stage;
     private Runnable onSalvato;
 
+    private ArchivioDati archivio;
+
     public void setModel(ElencoUtenti model) {
         this.model = model;
     }
 
+    public void setArchivio(ArchivioDati archivio) {
+        this.archivio = archivio;
+    }
+
     public void setUtente(Utente utente) {
         this.utente = utente;
+
         if (utente != null) {
             txtMatricola.setText(utente.getMatricola());
-            txtMatricola.setDisable(true); 
+            txtMatricola.setDisable(true);
             txtNome.setText(utente.getNome());
             txtCognome.setText(utente.getCognome());
             txtEmail.setText(utente.getEmail());
@@ -52,6 +57,7 @@ public class ModificaUtenteController {
 
     @FXML
     private void handleSalva() {
+
         if (utente == null) {
             mostraErrore("Nessun utente da modificare.");
             return;
@@ -76,6 +82,10 @@ public class ModificaUtenteController {
         }
 
         model.modificaUtente(utente);
+
+        if (archivio != null) {
+            archivio.salvaUtenti(model.getListaUtenti());
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Successo");
@@ -103,3 +113,4 @@ public class ModificaUtenteController {
         alert.showAndWait();
     }
 }
+

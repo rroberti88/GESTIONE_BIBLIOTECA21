@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
+
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Libro;
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-/**
- *
- * @author Felice Iandoli
- */
+
 public class InserimentoLibroController {
+
     private CatalogoLibri catalogo;
+    private ArchivioDati archivio;
     private Stage stage;
 
     @FXML private TextField txtTitolo;
@@ -30,65 +32,81 @@ public class InserimentoLibroController {
     public void setCatalogo(CatalogoLibri catalogo) {
         this.catalogo = catalogo;
     }
+
+    public void setArchivio(ArchivioDati archivio) {
+        this.archivio = archivio;
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-    
+
     @FXML
-private void handleSalva() {
-    try {
+    private void handleSalva() {
+        try {
+            String titolo = txtTitolo.getText();
+            String autore = txtAutore.getText();
+            String ISBN = txtISBN.getText();
+            String categoria = txtCategoria.getText();
 
-        String titolo = txtTitolo.getText();
-        String autore = txtAutore.getText();
-        String ISBN = txtISBN.getText();
-        String categoria = txtCategoria.getText();
+            if (titolo.isEmpty() || autore.isEmpty() || categoria.isEmpty() || ISBN.isEmpty()) {
+                throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
+            }
 
-        if (titolo.isEmpty() || autore.isEmpty() || categoria.isEmpty() || ISBN.isEmpty()) {
-            throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
+            int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
+            int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
+            int copieTotali = Integer.parseInt(txtCopieTotali.getText());
+
+            if (copieDisponibili > copieTotali) {
+                throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
+            }
+
+            if (!ISBN.matches("\\d{13}")) {
+                throw new IllegalArgumentException("L'ISBN deve contenere esattamente 13 cifre numeriche.");
+            }
+
+            Libro libro = new Libro(
+                    ISBN,
+                    titolo,
+                    autore,
+                    annoPubblicazione,
+                    categoria,
+                    copieTotali,
+                    copieDisponibili
+            );
+
+            catalogo.inserimentoLibro(libro);
+
+            if (archivio != null) {
+                archivio.salvaLibri(catalogo.getListaLibri());
+            }
+
+            stage.close();
+
+        } catch (NumberFormatException e) {
+            mostraErrore("I campi numerici (anno, copie totali, copie disponibili) devono contenere solo numeri.");
+
+        } catch (IllegalArgumentException e) {
+            mostraErrore(e.getMessage());
+
+        } catch (Exception e) {
+            mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
+            e.printStackTrace();
         }
+    }
 
-        int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
-        int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
-        int copieTotali = Integer.parseInt(txtCopieTotali.getText());
+    private void mostraErrore(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Dati non validi");
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 
-        if (copieDisponibili > copieTotali) {
-            throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
-        }
-
-        if (!ISBN.matches("\\d{13}")) {
-            throw new IllegalArgumentException("L'ISBN deve contenere esattamente 13 cifre numeriche.");
-        }
-
-        Libro libro = new Libro(ISBN, titolo, autore, annoPubblicazione, categoria, copieTotali, copieDisponibili);
-
-        catalogo.inserimentoLibro(libro);
-
+    @FXML
+    private void handleAnnulla() {
         stage.close();
-
-    } catch (NumberFormatException e) {
-
-        mostraErrore("I campi numerici (anno, copie totali, copie disponibili) devono contenere solo numeri.");
-
-    } catch (IllegalArgumentException e) {
-
-        mostraErrore(e.getMessage());
-
-    } catch (Exception e) {
-
-        mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
-        e.printStackTrace();
     }
 }
 
-private void mostraErrore(String msg) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Errore");
-    alert.setHeaderText("Dati non validi");
-    alert.setContentText(msg);
-    alert.showAndWait();
-}
-    @FXML
-    private void handleAnnulla(){
-        stage.close();  
-    }
-}
+

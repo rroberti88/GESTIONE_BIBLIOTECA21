@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
 
-/**
- *
- * @author cosim
-*/
 import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
 import it.unisa.gestionebiblioteca21.model.Utente;
-
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -23,16 +20,22 @@ public class InserimentoUtenteController {
     @FXML private TextField txtCognome;
     @FXML private TextField txtEmail;
 
-    private ElencoUtenti modelUt;   
-    private Stage stage;            
+    private ElencoUtenti modelUt;
+    private ArchivioDati archivio;
+    private Stage stage;
 
     public void setModel(ElencoUtenti modelUt) {
         this.modelUt = modelUt;
     }
 
+    public void setArchivio(ArchivioDati archivio) {
+        this.archivio = archivio;
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 
     @FXML
     private void handleSalva() {
@@ -66,6 +69,10 @@ public class InserimentoUtenteController {
 
         modelUt.inserimentoUtente(nuovo);
 
+        if (archivio != null) {
+            archivio.salvaUtenti(modelUt.getListaUtenti());
+        }
+
         Alert ok = new Alert(Alert.AlertType.INFORMATION);
         ok.setTitle("Successo");
         ok.setHeaderText(null);
@@ -88,6 +95,7 @@ public class InserimentoUtenteController {
         a.showAndWait();
     }
 }
+
 
 
 

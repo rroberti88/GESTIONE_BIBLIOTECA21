@@ -1,169 +1,148 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package it.unisa.gestionebiblioteca21.controller;
 
-import it.unisa.gestionebiblioteca21.model.Autenticazione;
-import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
-import it.unisa.gestionebiblioteca21.model.Utente;
-import it.unisa.gestionebiblioteca21.model.Prestito;
-import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
-import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
-import java.util.ArrayList;
+import it.unisa.gestionebiblioteca21.model.*;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-
-/**
- * Roberto Roberti
- */
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 public class HomeController {
 
-    private CatalogoLibri catalogo = new CatalogoLibri();
-    private Utente modelUt;
-    private ElencoPrestiti listaPrestiti = new ElencoPrestiti();
-    private Autenticazione modelAut;
+    private CatalogoLibri catalogo;
+    private ElencoUtenti elencoUtenti;
+    private ElencoPrestiti elencoPrestiti;
+    private Autenticazione autenticazione;
+    private ArchivioDati archivio;
+
     private Stage stage;
-    private String username; 
 
-    @FXML
-    private Button btnGestioneLibri;
-    @FXML
-    private Button btnGestioneUtenti;
-    @FXML
-    private Button btnGestionePrestiti;
-    @FXML
-    private Button btnLogout;
+    public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
 
-    public HomeController() {}
+    public void setElencoUtenti(ElencoUtenti e) { this.elencoUtenti = e; }
 
-    public void setCatalogo(CatalogoLibri catalogo) {
-        this.catalogo = catalogo;
-    }
+    public void setListaPrestiti(ElencoPrestiti p) { this.elencoPrestiti = p; }
 
-    public void setModelUt(Utente modelUt) {
-        this.modelUt = modelUt;
-    }
+    public void setModelAut(Autenticazione a) { this.autenticazione = a; }
 
-    public void setListaPrestiti(ElencoPrestiti listaPrestiti) {
-        this.listaPrestiti = listaPrestiti;
-    }
+    public void setArchivio(ArchivioDati ar) { this.archivio = ar; }
 
-    public void setModelAut(Autenticazione modelAut) {
-        this.modelAut = modelAut;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void mostraDashboard(String username) {
-        this.username = username;
-        stage.show(); 
-        System.out.println("Benvenuto, " + username + "! Dashboard caricata.");
-    }
+    public void setStage(Stage stage) { this.stage = stage; }
 
     @FXML
     private void handleGestioneLibri() {
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/GestioneCatalogoView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/it/unisa/gestionebiblioteca21/view/GestioneCatalogoView.fxml"));
             Parent root = loader.load();
 
-            GestioneCatalogoController gestioneCatalogoController = loader.getController();
-            gestioneCatalogoController.setModelAut(modelAut);
-            gestioneCatalogoController.setCatalogo(catalogo);
-            gestioneCatalogoController.setStage(stage);
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestione Libri");
+            GestioneCatalogoController ctrl = loader.getController();
+            ctrl.setStage(stage);
+            ctrl.setArchivio(archivio);
+            ctrl.setCatalogo(catalogo);
+            ctrl.setModelAut(autenticazione);
+            ctrl.setElencoUtenti(elencoUtenti);
+            ctrl.setListaPrestiti(elencoPrestiti);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Gestione Catalogo Libri");
             stage.show();
 
-        } catch (Exception f){
-            f.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-
     @FXML
     private void handleGestioneUtenti() {
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/GestioneUtentiView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/it/unisa/gestionebiblioteca21/view/GestioneUtentiView.fxml"));
             Parent root = loader.load();
 
-            GestioneUtentiController gestioneUtentiController = loader.getController();
-            gestioneUtentiController.setModelAut(modelAut);
+            GestioneUtentiController ctrl = loader.getController();
 
-            ElencoUtenti elenco = new ElencoUtenti(new ArrayList<>());
-            if (modelUt != null) {
-                elenco.inserimentoUtente(modelUt);
-            }
+            ctrl.setStage(stage);
+            ctrl.setArchivio(archivio);
+            ctrl.setModelAut(autenticazione);
+            ctrl.setElencoUtenti(elencoUtenti);
+            ctrl.setCatalogo(catalogo);
+            ctrl.setListaPrestiti(elencoPrestiti);
 
-            gestioneUtentiController.setElencoUtenti(elenco);
-            gestioneUtentiController.setStage(stage);
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root));
             stage.setTitle("Gestione Utenti");
             stage.show();
 
-        } catch (Exception f){
-            f.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @FXML
     private void handleGestionePrestiti() {
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/GestionePrestitiView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/it/unisa/gestionebiblioteca21/view/GestionePrestitiView.fxml"));
             Parent root = loader.load();
 
-            GestionePrestitiController gestionePrestitiController = loader.getController();
-            gestionePrestitiController.setModelAut(modelAut);
-            gestionePrestitiController.setListaPrestiti(listaPrestiti);
-            gestionePrestitiController.setStage(stage);
+            GestionePrestitiController ctrl = loader.getController();
 
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            ctrl.setStage(stage);
+            ctrl.setArchivio(archivio);
+            ctrl.setModelAut(autenticazione);
+            ctrl.setCatalogo(catalogo);
+            ctrl.setListaPrestiti(elencoPrestiti);
+            ctrl.setElencoUtenti(elencoUtenti);
+
+            stage.setScene(new Scene(root));
             stage.setTitle("Gestione Prestiti");
             stage.show();
 
-        } catch (Exception f){
-            f.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 
     @FXML
     private void handleLogout() {
-        if (modelAut.logout(username)) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
-                Parent root = loader.load();
 
-                LoginController loginController = loader.getController();
-                loginController.setModelAut(modelAut);
-                loginController.setStage(stage);
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setTitle("Login");
-                stage.show();
+            LoginController login = loader.getController();
 
-            } catch (Exception f){
-                f.printStackTrace();
-            }
-        }
-        else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore ");
-            alert.setHeaderText("Impossibile caricare la schermata di Login");
-            alert.setContentText("Logout non riuscito");
-            alert.showAndWait();
+            login.setStage(stage);
+            login.setModelAut(autenticazione);
+            login.setArchivio(archivio);
+            login.setCatalogo(catalogo);
+            login.setElencoUtenti(elencoUtenti);
+            login.setElencoPrestiti(elencoPrestiti);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Login");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
+
+
+
+
 

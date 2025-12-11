@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.model;
 import java.util.ArrayList;
-/**
- *
- * @author Roberto Roberti
- */
+
 public class CatalogoLibri {
     private ArrayList<Libro> listaLibri;
 
@@ -63,4 +61,7 @@ public class CatalogoLibri {
     }
         return listarisultati;
     }
+    
+   
+
 }

@@ -3,54 +3,60 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
-import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
-import it.unisa.gestionebiblioteca21.model.Prestito;
-import java.time.LocalDate;
+
+import it.unisa.gestionebiblioteca21.model.*;
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Felice Iandoli
- */
 public class RegistraRestituzioneController {
-    private ElencoPrestiti listaPrestiti;
+
+    private ElencoPrestiti elencoPrestiti;
+    private ArchivioDati archivio;
     private Stage stage;
 
     @FXML private TextField txtLibro;
     @FXML private TextField txtUtente;
-    @FXML private TextField txtDatadiScadenza;
-    @FXML private TextField txtDatadiPrestito;
 
-    public void setListaPrestiti(ElencoPrestiti listaPrestiti) {
-        this.listaPrestiti = listaPrestiti;
-    }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
+    public void setListaPrestiti(ElencoPrestiti e) { this.elencoPrestiti = e; }
+
+    public void setArchivio(ArchivioDati a) { this.archivio = a; }
+
+    public void setStage(Stage s) { this.stage = s; }
+
 
     @FXML
     private void handleSalva() {
 
-        String libro = txtLibro.getText();
-        String utente = txtUtente.getText();
+        try {
+            String libro = txtLibro.getText().trim();
+            String utente = txtUtente.getText().trim();
 
-        if (libro.isEmpty() || utente.isEmpty()) {
-            mostraErrore("Inserire libro e utente.");
-            return;
-        }
+            if (libro.isEmpty() || utente.isEmpty()) {
+                mostraErrore("Inserisci sia libro che utente.");
+                return;
+            }
 
-        boolean rimosso = listaPrestiti.registraRestituzione(libro, utente);
+            boolean ok = elencoPrestiti.registraRestituzione(libro, utente);
 
-        if (rimosso) {
+            if (!ok) {
+                mostraErrore("Prestito non trovato.");
+                return;
+            }
+
+            archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
+
             stage.close();
-        } else {
-            mostraErrore("Prestito non trovato.");
+
+        } catch (Exception e) {
+            mostraErrore("Errore durante la restituzione.");
         }
     }
+
 
     @FXML
     private void handleAnnulla() {
@@ -58,10 +64,9 @@ public class RegistraRestituzioneController {
     }
 
     private void mostraErrore(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Restituzione non riuscita");
-        alert.setContentText(msg);
-        alert.showAndWait();
+        Alert a = new Alert(Alert.AlertType.ERROR, msg);
+        a.showAndWait();
     }
 }
+
+

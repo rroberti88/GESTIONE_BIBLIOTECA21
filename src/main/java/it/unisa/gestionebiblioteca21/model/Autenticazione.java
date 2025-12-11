@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.model;
+
 import it.unisa.gestionebiblioteca21.actor.Bibliotecario;
 import java.util.ArrayList;
-/**
- *
- * @author Roberto Roberti
- */
+
 public class Autenticazione {
     private final ArrayList<Bibliotecario> utentiAutorizzati; 
 

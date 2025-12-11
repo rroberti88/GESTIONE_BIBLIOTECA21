@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unisa.gestionebiblioteca21.controller;
 
-/**
- *
- * @author cosim
- */
+package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Libro;
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -19,8 +16,9 @@ import javafx.stage.Stage;
 public class ModificaLibroController {
 
     private CatalogoLibri catalogo;
+    private ArchivioDati archivio;
     private Stage stage;
-    private Libro libroOriginale; // libro selezionato dalla tableview
+    private Libro libroOriginale;
 
     @FXML private TextField txtTitolo;
     @FXML private TextField txtAutore;
@@ -36,12 +34,17 @@ public class ModificaLibroController {
         this.catalogo = catalogo;
     }
 
+    public void setArchivio(ArchivioDati archivio) {
+        this.archivio = archivio;
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
     public void setLibro(Libro libro) {
         this.libroOriginale = libro;
+
         txtTitolo.setText(libro.getTitolo());
         txtAutore.setText(libro.getAutore());
         txtISBN.setText(libro.getISBN());
@@ -85,12 +88,18 @@ public class ModificaLibroController {
 
             catalogo.modificaLibro(libroOriginale);
 
+            if (archivio != null) {
+                archivio.salvaLibri(catalogo.getListaLibri());
+            }
+
             stage.close();
 
         } catch (NumberFormatException e) {
             mostraErrore("I campi numerici (anno, copie totali, copie disponibili) devono contenere solo numeri.");
+
         } catch (IllegalArgumentException e) {
             mostraErrore(e.getMessage());
+
         } catch (Exception e) {
             mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
             e.printStackTrace();
@@ -110,3 +119,4 @@ public class ModificaLibroController {
         stage.close();
     }
 }
+

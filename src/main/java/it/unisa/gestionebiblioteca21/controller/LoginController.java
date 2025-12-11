@@ -1,88 +1,75 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
-import it.unisa.gestionebiblioteca21.model.Autenticazione;
+
+import it.unisa.gestionebiblioteca21.model.*;
+import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import javafx.beans.binding.Bindings;
-
-/**
- *
- * @author Felice Iandoli
- */
+import javafx.scene.control.*;
 
 public class LoginController {
 
-private Autenticazione modelAut;
-private Stage stage;
+    private Autenticazione autenticazione;
+    private Stage stage;
 
-@FXML
-private TextField txtUsername;
+    private ArchivioDati archivio;
+    private CatalogoLibri catalogo;
+    private ElencoUtenti elencoUtenti;
+    private ElencoPrestiti elencoPrestiti;
 
-@FXML
-private PasswordField txtPassword;
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+    @FXML private Button btnAccedi;
 
-@FXML
-private Button btnAccedi;
+    public void setModelAut(Autenticazione aut) { this.autenticazione = aut; }
+    public void setStage(Stage stage) { this.stage = stage; }
+    public void setArchivio(ArchivioDati archivio) { this.archivio = archivio; }
+    public void setCatalogo(CatalogoLibri catalogo) { this.catalogo = catalogo; }
+    public void setElencoUtenti(ElencoUtenti elenco) { this.elencoUtenti = elenco; }
+    public void setElencoPrestiti(ElencoPrestiti elenco) { this.elencoPrestiti = elenco; }
 
-public LoginController () {}
+    @FXML
+    private void handleLogin() {
 
-public void setModelAut (Autenticazione modelAut){
-this.modelAut = modelAut;
-}
+        String user = txtUsername.getText();
+        String pass = txtPassword.getText();
 
-public void setStage(Stage stage) {
-this.stage = stage;
-}
-
-
-@FXML
-public void initialize(){
-btnAccedi.disableProperty().bind(txtUsername.textProperty().isEmpty().or(txtPassword.textProperty().isEmpty()));
-}
-
-
-@FXML
-private void handleLogin() {
-String username = txtUsername.getText();
-String password = txtPassword.getText();
-if (modelAut.login(username, password)){
-    try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unisa/gestionebiblioteca21/view/HomeView.fxml"));
-                Parent root = loader.load();
-
-                HomeController homeController = loader.getController();
-                homeController.setModelAut(modelAut);
-                homeController.setStage(stage);
-                homeController.setUsername(username);
-
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setTitle("Dashboard Bibliotecario");
-                stage.show();
-
-            } catch (Exception e) {
-
-}        
+        if (!autenticazione.login(user, pass)) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Credenziali errate.");
+            a.showAndWait();
+            return;
         }
-    else {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Errore credenziali");
-    alert.setHeaderText("Credenziali errate");
-    alert.setContentText("Username o password non validi");
-    alert.showAndWait();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/it/unisa/gestionebiblioteca21/view/HomeView.fxml"));
+            Parent root = loader.load();
+
+            HomeController home = loader.getController();
+            home.setStage(stage);
+            home.setModelAut(autenticazione);
+            home.setArchivio(archivio);
+            home.setCatalogo(catalogo);
+            home.setElencoUtenti(elencoUtenti);
+            home.setListaPrestiti(elencoPrestiti);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Dashboard Bibliotecario");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
-}
-}
+
+
+
