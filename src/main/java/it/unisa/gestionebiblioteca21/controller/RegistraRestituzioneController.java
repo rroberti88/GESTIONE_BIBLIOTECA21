@@ -12,51 +12,81 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class RegistraRestituzioneController {
 
     private ElencoPrestiti elencoPrestiti;
     private ArchivioDati archivio;
     private Stage stage;
+    private CatalogoLibri catalogo;     
 
-    @FXML private TextField txtLibro;
-    @FXML private TextField txtUtente;
-
+    @FXML private TextField txtLibro;     
+    @FXML private TextField txtUtente;    
+    @FXML private TextField txtDatadiScadenza; 
 
     public void setListaPrestiti(ElencoPrestiti e) { this.elencoPrestiti = e; }
 
     public void setArchivio(ArchivioDati a) { this.archivio = a; }
 
-    public void setStage(Stage s) { this.stage = s; }
+    public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }  
 
+    public void setStage(Stage s) { this.stage = s; }
 
     @FXML
     private void handleSalva() {
-
         try {
-            String libro = txtLibro.getText().trim();
-            String utente = txtUtente.getText().trim();
+            String isbn = txtLibro.getText().trim();
+            String matricola = txtUtente.getText().trim();
+            String dataScadInput = txtDatadiScadenza.getText().trim();
 
-            if (libro.isEmpty() || utente.isEmpty()) {
-                mostraErrore("Inserisci sia libro che utente.");
+            if (isbn.isEmpty() || matricola.isEmpty() || dataScadInput.isEmpty()) {
+                mostraErrore("Inserisci ISBN, Matricola e Data di Scadenza.");
                 return;
             }
 
-            boolean ok = elencoPrestiti.registraRestituzione(libro, utente);
-
-            if (!ok) {
-                mostraErrore("Prestito non trovato.");
+            LocalDate dataScadenzaInserita;
+            try {
+                dataScadenzaInserita = LocalDate.parse(dataScadInput);
+            } catch (Exception e) {
+                mostraErrore("Formato data non valido. Usa: YYYY-MM-DD");
                 return;
+            }
+
+            Prestito prestito = elencoPrestiti.cercaPrestitoISBNMatricola(isbn, matricola);
+
+            if (prestito == null) {
+                mostraErrore("Prestito non trovato per questi dati.");
+                return;
+            }
+
+            if (!prestito.getDataScadenza().equals(dataScadenzaInserita)) {
+                mostraErrore("La data di scadenza inserita non corrisponde al prestito registrato.");
+                return;
+            }
+
+            boolean completato = elencoPrestiti.registraRestituzione(isbn, matricola);
+
+            if (!completato) {
+                mostraErrore("Errore nella restituzione.");
+                return;
+            }
+
+            Libro libro = catalogo.cercaLibroPerISBN(isbn);
+            if (libro != null) {
+                libro.setCopieDisponibili(libro.getCopieDisponibili() + 1);
             }
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
+            archivio.salvaLibri(catalogo.getListaLibri());
 
             stage.close();
 
         } catch (Exception e) {
             mostraErrore("Errore durante la restituzione.");
+            e.printStackTrace();
         }
     }
-
 
     @FXML
     private void handleAnnulla() {
@@ -68,4 +98,3 @@ public class RegistraRestituzioneController {
         a.showAndWait();
     }
 }
-

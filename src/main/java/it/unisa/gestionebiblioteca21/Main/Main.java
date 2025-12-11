@@ -32,7 +32,7 @@ public class Main extends Application {
 
         ArrayList<Utente> utentiNormali = archivio.caricaUtenti();
         ArrayList<Bibliotecario> bibliotecari = new ArrayList<>();
-        bibliotecari.add(new Bibliotecario("fabrizio", "frizzi", "fabriziofrizzi", "11111"));
+        bibliotecari.add(new Bibliotecario("fabrizio", "frizzi", "ff", "11"));
         
         autenticazione = new Autenticazione(bibliotecari);
         elencoUtenti = new ElencoUtenti(utentiNormali);

@@ -9,53 +9,62 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<Pane prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="it.unisa.gestionebiblioteca21.controller.GestionePrestitiController">
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.gestionebiblioteca21.controller.GestionePrestitiController">
    <children>
+
       <HBox prefHeight="61.0" prefWidth="600.0" style="-fx-background-color: grey;">
          <children>
             <Label alignment="CENTER" prefHeight="62.0" prefWidth="600.0" text="GESTIONE PRESTITI">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="txtRicercaPrestito" layoutX="14.0" layoutY="68.0" prefHeight="28.0" prefWidth="567.0" promptText="Ricerca un prestito..." />
-      <HBox layoutY="114.0" prefHeight="39.0" prefWidth="600.0">
+
+      <TextField fx:id="txtRicercaPrestito" layoutX="14.0" layoutY="70.0"
+                 prefWidth="570.0" promptText="Ricerca per libro o utente..." />
+
+      <HBox layoutY="115.0" prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Label alignment="CENTER" prefHeight="38.0" prefWidth="606.0" text="ELENCO PRESTITI">
+            <Label alignment="CENTER" prefWidth="600.0" text="ELENCO PRESTITI">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <TableView fx:id="tableview" layoutX="-1.0" layoutY="153.0" prefHeight="138.0" prefWidth="601.0">
-        <columns>
-          <TableColumn fx:id="colLibro" prefWidth="75.0" text="LIBRO" />
-          <TableColumn fx:id="colUtente" prefWidth="75.0" text="UTENTE" />
-            <TableColumn fx:id="colDataPrestito" prefWidth="75.0" text="DATA PRESTITO" />
-            <TableColumn fx:id="colDataScadenza" prefWidth="75.0" text="DATA SCADENZA" />
-        </columns>
+
+      <TableView fx:id="tableview" layoutX="0.0" layoutY="150.0"
+                 prefWidth="600.0" prefHeight="150.0">
+
+         <columns>
+            <TableColumn fx:id="colLibro" prefWidth="150.0" text="LIBRO" />
+            <TableColumn fx:id="colUtente" prefWidth="150.0" text="UTENTE" />
+            <TableColumn fx:id="colDataPrestito" prefWidth="150.0" text="DATA PRESTITO" />
+            <TableColumn fx:id="colDataScadenza" prefWidth="150.0" text="SCADENZA" />
+         </columns>
+
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnRegistraPrestito" layoutX="73.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRegistraPrestito" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra Prestito">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRegistraRestituzione" layoutX="350.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRegistraRestituzione" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Registra restituzione">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnDashboard" layoutX="350.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleBackDashboard" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: lightgrey;" text="Dashboard">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
+
+      <Button fx:id="btnRegistraPrestito" layoutX="50.0" layoutY="320.0"
+              prefWidth="200.0" text="Registra Prestito"
+              style="-fx-background-color: lightgrey;" onAction="#handleRegistraPrestito" />
+
+      <Button fx:id="btnRegistraRestituzione" layoutX="350.0" layoutY="320.0"
+              prefWidth="200.0" text="Registra Restituzione"
+              style="-fx-background-color: lightgrey;" onAction="#handleRegistraRestituzione" />
+
+      <Button fx:id="btnDashboard" layoutX="350.0" layoutY="360.0"
+              prefWidth="200.0" text="Dashboard"
+              style="-fx-background-color: lightgrey;" onAction="#handleBackDashboard" />
+
    </children>
 </Pane>

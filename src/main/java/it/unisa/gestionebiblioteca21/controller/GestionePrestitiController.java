@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 
 package it.unisa.gestionebiblioteca21.controller;
 
@@ -14,9 +14,8 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleStringProperty;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GestionePrestitiController {
@@ -33,41 +32,58 @@ public class GestionePrestitiController {
     @FXML private TableView<Prestito> tableview;
     @FXML private TableColumn<Prestito, String> colLibro;
     @FXML private TableColumn<Prestito, String> colUtente;
-    @FXML private TableColumn<Prestito, LocalDate> colDataPrestito;
-    @FXML private TableColumn<Prestito, LocalDate> colDataScadenza;
+    @FXML private TableColumn<Prestito, String> colDataPrestito;
+    @FXML private TableColumn<Prestito, String> colDataScadenza;
 
     public void setListaPrestiti(ElencoPrestiti e) {
         this.elencoPrestiti = e;
         aggiorna();
     }
 
-    public void setCatalogo(CatalogoLibri c) {
-        this.catalogo = c;
-    }
-
-    public void setElencoUtenti(ElencoUtenti u) {
-        this.elencoUtenti = u;
-    }
-
-    public void setArchivio(ArchivioDati a) {
-        this.archivio = a;
-    }
-
-    public void setModelAut(Autenticazione aut) {
-        this.autenticazione = aut;
-    }
-
-    public void setStage(Stage stage) { this.stage = stage; }
+    public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
+    public void setElencoUtenti(ElencoUtenti u) { this.elencoUtenti = u; }
+    public void setArchivio(ArchivioDati a) { this.archivio = a; }
+    public void setModelAut(Autenticazione a) { this.autenticazione = a; }
+    public void setStage(Stage s) { this.stage = s; }
 
     @FXML
     public void initialize() {
 
-        colLibro.setCellValueFactory(new PropertyValueFactory<>("libro"));
-        colUtente.setCellValueFactory(new PropertyValueFactory<>("utente"));
-        colDataPrestito.setCellValueFactory(new PropertyValueFactory<>("dataPrestito"));
-        colDataScadenza.setCellValueFactory(new PropertyValueFactory<>("dataScadenza"));
+        colLibro.setCellValueFactory(p -> {
+            Libro l = catalogo.cercaLibroPerISBN(p.getValue().getLibro());
+            return new SimpleStringProperty(l != null ? l.getTitolo() : "Libro non trovato");
+        });
 
-        txtRicercaPrestito.textProperty().addListener((obs, old, newVal) -> handleRicercaPrestito());
+        colUtente.setCellValueFactory(p -> {
+            Utente u = elencoUtenti.cercaPerMatricola(p.getValue().getUtente());
+            return new SimpleStringProperty(u != null ? u.getNome() : "Utente non trovato");
+        });
+
+        colDataPrestito.setCellValueFactory(p ->
+                new SimpleStringProperty(p.getValue().getDataPrestito().toString()));
+
+        colDataScadenza.setCellValueFactory(p ->
+                new SimpleStringProperty(p.getValue().getDataScadenza().toString()));
+
+        tableview.setRowFactory(tv -> new TableRow<Prestito>() {
+            @Override
+            protected void updateItem(Prestito p, boolean empty) {
+                super.updateItem(p, empty);
+
+                if (empty || p == null) {
+                    setStyle("");
+                    return;
+                }
+
+                if (p.isOverdue()) {
+                    setStyle("-fx-background-color: #ff9999;");
+                } else {
+                    setStyle("-fx-background-color: #99ff99;");
+                }
+            }
+        });
+
+        txtRicercaPrestito.textProperty().addListener((o, oldV, newV) -> handleRicercaPrestito());
     }
 
     private void aggiorna() {
@@ -77,7 +93,6 @@ public class GestionePrestitiController {
 
     @FXML
     public void handleRegistraPrestito() {
-
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/it/unisa/gestionebiblioteca21/view/RegistraPrestitoView.fxml"));
@@ -107,7 +122,6 @@ public class GestionePrestitiController {
 
     @FXML
     public void handleRegistraRestituzione() {
-
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/it/unisa/gestionebiblioteca21/view/RegistraRestituzioneView.fxml"));
@@ -116,6 +130,7 @@ public class GestionePrestitiController {
             RegistraRestituzioneController ctrl = loader.getController();
             ctrl.setListaPrestiti(elencoPrestiti);
             ctrl.setArchivio(archivio);
+            ctrl.setCatalogo(catalogo);
 
             Stage popup = new Stage();
             ctrl.setStage(popup);
@@ -126,6 +141,7 @@ public class GestionePrestitiController {
             popup.showAndWait();
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
+            archivio.salvaLibri(catalogo.getListaLibri());
             aggiorna();
 
         } catch (Exception e) {
@@ -135,7 +151,6 @@ public class GestionePrestitiController {
 
     @FXML
     public void handleRicercaPrestito() {
-
         if (elencoPrestiti == null) return;
 
         String key = txtRicercaPrestito.getText();
@@ -153,7 +168,6 @@ public class GestionePrestitiController {
 
     @FXML
     public void handleBackDashboard() {
-
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/it/unisa/gestionebiblioteca21/view/HomeView.fxml"));
@@ -164,7 +178,6 @@ public class GestionePrestitiController {
             home.setStage(stage);
             home.setArchivio(archivio);
             home.setModelAut(autenticazione);
-
             home.setCatalogo(catalogo);
             home.setElencoUtenti(elencoUtenti);
             home.setListaPrestiti(elencoPrestiti);
@@ -178,7 +191,3 @@ public class GestionePrestitiController {
         }
     }
 }
-
-
-
-

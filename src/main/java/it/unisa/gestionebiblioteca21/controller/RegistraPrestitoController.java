@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 
 package it.unisa.gestionebiblioteca21.controller;
 
@@ -22,8 +22,8 @@ public class RegistraPrestitoController {
     private ArchivioDati archivio;
     private Stage stage;
 
-    @FXML private TextField txtLibro;
-    @FXML private TextField txtUtente;
+    @FXML private TextField txtISBN;
+    @FXML private TextField txtMatricola;
     @FXML private TextField txtDataPrestito;
     @FXML private TextField txtDataScadenza;
 
@@ -40,26 +40,44 @@ public class RegistraPrestitoController {
     @FXML
     private void handleSalva() {
         try {
-            String libro = txtLibro.getText().trim();
-            String utente = txtUtente.getText().trim();
+            String isbn = txtISBN.getText().trim();
+            String matricola = txtMatricola.getText().trim();
+
+            if (isbn.isEmpty() || matricola.isEmpty()) {
+                mostraErrore("Inserisci ISBN e Matricola.");
+                return;
+            }
 
             LocalDate dataPrestito = LocalDate.parse(txtDataPrestito.getText().trim());
             LocalDate dataScadenza = LocalDate.parse(txtDataScadenza.getText().trim());
 
-            Libro libroObj = catalogo.getLibroperilnome(libro);
+            Libro libroObj = catalogo.cercaLibroPerISBN(isbn);
+            if (libroObj == null) {
+                mostraErrore("Nessun libro trovato con ISBN: " + isbn);
+                return;
+            }
 
-            Prestito prestito = new Prestito(libro, utente, dataPrestito, dataScadenza, null);
+            Utente utenteObj = elencoUtenti.cercaPerMatricola(matricola);
+            if (utenteObj == null) {
+                mostraErrore("Nessun utente con matricola: " + matricola);
+                return;
+            }
+
+            Prestito prestito = new Prestito(
+                    isbn,
+                    matricola,
+                    dataPrestito,
+                    dataScadenza,
+                    null
+            );
 
             elencoPrestiti.registraPrestito(prestito, libroObj);
-
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
 
             stage.close();
 
-        }  catch (IllegalStateException | IllegalArgumentException e) {
-            mostraErrore(e.getMessage());
         } catch (Exception e) {
-            mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
+            mostraErrore("Errore nei dati inseriti. Controlla formati e valori.");
             e.printStackTrace();
         }
     }
@@ -74,6 +92,3 @@ public class RegistraPrestitoController {
         a.showAndWait();
     }
 }
-
-
-
