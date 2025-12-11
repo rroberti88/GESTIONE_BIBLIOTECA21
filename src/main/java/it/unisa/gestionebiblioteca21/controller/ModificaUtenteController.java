@@ -57,37 +57,30 @@ public class ModificaUtenteController {
             return;
         }
 
-        String nome = txtNome.getText().trim();
-        String cognome = txtCognome.getText().trim();
-        String email = txtEmail.getText().trim();
+        Utente utenteModificato = new Utente();
+    utenteModificato.setMatricola(utente.getMatricola()); // matricola fissa
+    utenteModificato.setNome(txtNome.getText().trim());
+    utenteModificato.setCognome(txtCognome.getText().trim());
+    utenteModificato.setEmail(txtEmail.getText().trim());
 
-        if (nome.isEmpty() || cognome.isEmpty() || email.isEmpty()) {
-            mostraErrore("Tutti i campi sono obbligatori.");
-            return;
-        }
-
-        utente.setNome(nome);
-        utente.setCognome(cognome);
-        utente.setEmail(email);
-
-        if (!utente.isValid()) {
-            mostraErrore("Dati utente non validi.");
-            return;
-        }
-
-        model.modificaUtente(utente);
+    try {
+        model.modificaUtente(utente, utenteModificato); // passa originale + modificato
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Successo");
         alert.setHeaderText("Utente modificato correttamente");
-        alert.setContentText(nome + " " + cognome + " (matricola: " + utente.getMatricola() + ")");
+        alert.setContentText(utenteModificato.getNome() + " " + utenteModificato.getCognome() + 
+                             " (matricola: " + utenteModificato.getMatricola() + ")");
         alert.showAndWait();
 
-        if (onSalvato != null) {
-            onSalvato.run();
-        }
-
         stage.close();
+
+    } catch (IllegalArgumentException e) {
+        mostraErrore(e.getMessage());
+    } catch (Exception e) {
+        mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
+        e.printStackTrace();
+    }
     }
 
     @FXML

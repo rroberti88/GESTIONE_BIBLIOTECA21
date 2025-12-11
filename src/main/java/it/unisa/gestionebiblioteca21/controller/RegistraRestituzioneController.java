@@ -5,6 +5,7 @@
  */
 package it.unisa.gestionebiblioteca21.controller;
 import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
+import it.unisa.gestionebiblioteca21.model.Libro;
 import it.unisa.gestionebiblioteca21.model.Prestito;
 import java.time.LocalDate;
 import javafx.fxml.FXML;

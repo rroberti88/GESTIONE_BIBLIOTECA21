@@ -59,31 +59,13 @@ public class ModificaLibroController {
             String ISBN = txtISBN.getText();
             String categoria = txtCategoria.getText();
 
-            if (titolo.isEmpty() || autore.isEmpty() || categoria.isEmpty() || ISBN.isEmpty()) {
-                throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
-            }
-
             int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
             int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
             int copieTotali = Integer.parseInt(txtCopieTotali.getText());
 
-            if (copieDisponibili > copieTotali) {
-                throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
-            }
+            Libro libroModificato = new Libro(ISBN, titolo, autore, annoPubblicazione, categoria, copieTotali, copieDisponibili);
 
-            if (!ISBN.matches("\\d{13}")) {
-                throw new IllegalArgumentException("L'ISBN deve contenere esattamente 13 cifre numeriche.");
-            }
-
-            libroOriginale.setTitolo(titolo);
-            libroOriginale.setAutore(autore);
-            libroOriginale.setISBN(ISBN);
-            libroOriginale.setAnnoPubblicazione(annoPubblicazione);
-            libroOriginale.setCategoria(categoria);
-            libroOriginale.setCopieTotali(copieTotali);
-            libroOriginale.setCopieDisponibili(copieDisponibili);
-
-            catalogo.modificaLibro(libroOriginale);
+            catalogo.modificaLibro(libroOriginale, libroModificato);
 
             stage.close();
 

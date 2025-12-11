@@ -33,6 +33,8 @@ public class InserimentoUtenteController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+    
+    
 
     @FXML
     private void handleSalva() {
@@ -41,16 +43,8 @@ public class InserimentoUtenteController {
         String nome = txtNome.getText().trim();
         String cognome = txtCognome.getText().trim();
         String email = txtEmail.getText().trim();
-
-        if (matricola.isEmpty() || nome.isEmpty() || cognome.isEmpty() || email.isEmpty()) {
-            mostraErrore("Tutti i campi sono obbligatori.");
-            return;
-        }
-
-        if (modelUt.exists(matricola)) {
-            mostraErrore("Esiste già un utente con questa matricola.");
-            return;
-        }
+       
+        
 
         Utente nuovo = new Utente();
         nuovo.setMatricola(matricola);
@@ -59,12 +53,8 @@ public class InserimentoUtenteController {
         nuovo.setEmail(email);
         nuovo.setNumeroPrestiti(0);
 
-        if (!nuovo.isValid()) {
-            mostraErrore("Dati utente non validi.");
-            return;
-        }
-
-        modelUt.inserimentoUtente(nuovo);
+        try {
+        modelUt.inserimentoUtente(nuovo); 
 
         Alert ok = new Alert(Alert.AlertType.INFORMATION);
         ok.setTitle("Successo");
@@ -73,6 +63,13 @@ public class InserimentoUtenteController {
         ok.showAndWait();
 
         stage.close();
+
+    } catch (IllegalArgumentException e) {
+        mostraErrore(e.getMessage()); 
+    } catch (Exception e) {
+        mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
+        e.printStackTrace();
+    }
     }
 
     @FXML
