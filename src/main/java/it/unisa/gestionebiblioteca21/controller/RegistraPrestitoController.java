@@ -50,6 +50,11 @@ public class RegistraPrestitoController {
 
             LocalDate dataPrestito = LocalDate.parse(txtDataPrestito.getText().trim());
             LocalDate dataScadenza = LocalDate.parse(txtDataScadenza.getText().trim());
+            
+            if (!dataScadenza.isAfter(dataPrestito)) {
+            mostraErrore("La data di scadenza deve essere successiva alla data di prestito.");
+            return;
+            }
 
             Libro libroObj = catalogo.cercaLibroPerISBN(isbn);
             if (libroObj == null) {
