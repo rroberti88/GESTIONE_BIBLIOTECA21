@@ -67,6 +67,7 @@ public class RegistraPrestitoController {
                 mostraErrore("Nessun utente con matricola: " + matricola);
                 return;
             }
+            
 
             Prestito prestito = new Prestito(
                     isbn,

@@ -165,15 +165,17 @@ public void handleCancellazionePrestito() {
         conf.showAndWait().ifPresent(r -> {
 
             if (r == ButtonType.OK) {
-
+                 
+                Libro libro = catalogo.cercaLibroPerISBN(sel.getLibro());
+            if (libro != null) {
+                libro.setCopieDisponibili((libro.getCopieDisponibili() + 1));
+            } 
                 elencoPrestiti.cancellazionePrestito(sel);
 
-                // salva su archivio se presente
                 if (archivio != null) {
                     archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
                 }
-
-                // aggiorna la tabella
+                
                 aggiorna();
             }
         });

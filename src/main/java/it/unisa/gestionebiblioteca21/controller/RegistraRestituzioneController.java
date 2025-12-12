@@ -53,17 +53,14 @@ public class RegistraRestituzioneController {
                 return;
             }
 
-            Prestito prestito = elencoPrestiti.cercaPrestitoISBNMatricola(isbn, matricola);
+            Prestito prestito = elencoPrestiti.cercaPrestito(isbn, matricola, dataScadenzaInserita);
 
             if (prestito == null) {
                 mostraErrore("Prestito non trovato per questi dati.");
                 return;
             }
 
-            if (!(prestito.getDataScadenza().isEqual(dataScadenzaInserita))) {
-                mostraErrore("La data di scadenza inserita non corrisponde al prestito registrato.");
-                return;
-            }
+        
 
             LocalDate oggi = LocalDate.now();
             if (oggi.isAfter(prestito.getDataScadenza())) {
@@ -73,7 +70,7 @@ public class RegistraRestituzioneController {
             avviso.setContentText("La data di scadenza era: " + prestito.getDataScadenza() + "\nData odierna: " + oggi );
             avviso.showAndWait();
             }
-            boolean completato = elencoPrestiti.registraRestituzione(isbn, matricola);
+            boolean completato = elencoPrestiti.registraRestituzione(isbn, matricola, dataScadenzaInserita);
 
             if (!completato) {
                 mostraErrore("Errore nella restituzione.");
@@ -84,6 +81,7 @@ public class RegistraRestituzioneController {
             if (libro != null) {
                 libro.setCopieDisponibili((libro.getCopieDisponibili() + 1));
             }
+            
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
             archivio.salvaLibri(catalogo.getListaLibri());

@@ -6,6 +6,7 @@
 
 package it.unisa.gestionebiblioteca21.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ElencoPrestiti {
@@ -47,11 +48,11 @@ public class ElencoPrestiti {
         libro.setCopieDisponibili(libro.getCopieDisponibili() - 1);
     }
 
-    public boolean registraRestituzione(String isbn, String matricola) {
+    public boolean registraRestituzione(String isbn, String matricola, LocalDate dataRestituzione) {
         for (Prestito p : listaPrestiti) {
             if (p.getLibro().equalsIgnoreCase(isbn)
                     && p.getUtente().equalsIgnoreCase(matricola)
-                    && p.isLent()) {
+                    && p.isLent()&&p.getDataScadenza().equals(dataRestituzione)) {
 
                 listaPrestiti.remove(p);
                 return true;
@@ -96,8 +97,21 @@ public class ElencoPrestiti {
     public boolean cancellazionePrestito(Prestito p) {
     if (p == null) return false;
     return listaPrestiti.remove(p);
+    }
+    
+    public Prestito cercaPrestito(String isbn, String matricola, LocalDate dataScadenza) {
+    for (Prestito p : listaPrestiti) {
+        if (p.getLibro().equals(isbn)
+                && p.getUtente().equalsIgnoreCase(matricola)
+                && p.getDataScadenza().isEqual(dataScadenza)) {
+            return p;
+        }
+    }
+    return null;
 }
 
 
+    
 
 }
+
