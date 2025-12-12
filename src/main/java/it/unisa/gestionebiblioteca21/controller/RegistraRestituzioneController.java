@@ -60,11 +60,19 @@ public class RegistraRestituzioneController {
                 return;
             }
 
-            if (!prestito.getDataScadenza().equals(dataScadenzaInserita)) {
+            if (!(prestito.getDataScadenza().isEqual(dataScadenzaInserita))) {
                 mostraErrore("La data di scadenza inserita non corrisponde al prestito registrato.");
                 return;
             }
 
+            LocalDate oggi = LocalDate.now();
+            if (oggi.isAfter(prestito.getDataScadenza())) {
+            Alert avviso = new Alert(Alert.AlertType.WARNING);
+            avviso.setTitle("Avviso");
+            avviso.setHeaderText("Restituzione in ritardo");
+            avviso.setContentText("La data di scadenza era: " + prestito.getDataScadenza() + "\nData odierna: " + oggi );
+            avviso.showAndWait();
+            }
             boolean completato = elencoPrestiti.registraRestituzione(isbn, matricola);
 
             if (!completato) {
@@ -74,7 +82,7 @@ public class RegistraRestituzioneController {
 
             Libro libro = catalogo.cercaLibroPerISBN(isbn);
             if (libro != null) {
-                libro.setCopieDisponibili(libro.getCopieDisponibili() + 1);
+                libro.setCopieDisponibili((libro.getCopieDisponibili() + 1));
             }
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());

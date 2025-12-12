@@ -28,20 +28,6 @@
     }
   },
   {
-    "libro": "5555555555555",
-    "utente": "0612709720",
-    "dataPrestito": {
-      "year": 2025,
-      "month": 12,
-      "day": 10
-    },
-    "dataScadenza": {
-      "year": 2025,
-      "month": 12,
-      "day": 11
-    }
-  },
-  {
     "libro": "1111111111111",
     "utente": "0612709558",
     "dataPrestito": {
@@ -53,6 +39,20 @@
       "year": 2023,
       "month": 7,
       "day": 22
+    }
+  },
+  {
+    "libro": "5555555555555",
+    "utente": "0612709720",
+    "dataPrestito": {
+      "year": 2025,
+      "month": 12,
+      "day": 8
+    },
+    "dataScadenza": {
+      "year": 2025,
+      "month": 12,
+      "day": 11
     }
   }
 ]
