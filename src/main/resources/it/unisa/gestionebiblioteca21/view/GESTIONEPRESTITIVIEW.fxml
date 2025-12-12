@@ -19,7 +19,7 @@
       fx:controller="it.unisa.gestionebiblioteca21.controller.GestionePrestitiController"
       stylesheets="@../css/appstyle.css"
       styleClass="root-light"
-      prefWidth="600" prefHeight="400">
+      prefWidth="650" prefHeight="550">
 
     
     <HBox alignment="CENTER_LEFT"

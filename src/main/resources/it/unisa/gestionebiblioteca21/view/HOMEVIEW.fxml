@@ -14,7 +14,7 @@
 
 <VBox alignment="TOP_CENTER"
       spacing="30"
-      prefWidth="600" prefHeight="400"
+      prefWidth="650" prefHeight="550"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="it.unisa.gestionebiblioteca21.controller.HomeController"
