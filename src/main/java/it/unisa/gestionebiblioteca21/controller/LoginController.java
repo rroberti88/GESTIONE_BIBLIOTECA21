@@ -37,6 +37,12 @@ public class LoginController {
     public void setElencoPrestiti(ElencoPrestiti elenco) { this.elencoPrestiti = elenco; }
 
     @FXML
+    private void initialize() {
+        
+        btnAccedi.disableProperty().bind( txtUsername.textProperty().isEmpty().or(txtPassword.textProperty().isEmpty()) );
+    } 
+    
+    @FXML
     private void handleLogin() {
 
         String user = txtUsername.getText();
