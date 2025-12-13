@@ -25,7 +25,7 @@ public class LibroTest {
     public void setUp() {
         
         instance = new Libro(
-                "9781234567890",   
+                "1234567890123",   
                 "Il Nome della Rosa",
                 "Umberto Eco",
                 1980,
@@ -44,126 +44,105 @@ public class LibroTest {
     @Test
     public void testGetISBN() {
         System.out.println("getISBN");
-        String expResult = "9781234567890";
-        String result = instance.getISBN();
-        assertEquals(expResult, result);
+        assertEquals("1234567890123", instance.getISBN());
     }
 
   
     @Test
     public void testSetISBN() {
         System.out.println("setISBN");
-        String ISBN = "1234567890123";
-        instance.setISBN(ISBN);
-        assertEquals(ISBN, instance.getISBN());
+        instance.setISBN("1234567890124");
+        assertEquals("1234567890124", instance.getISBN());
     }
 
     
     @Test
     public void testGetTitolo() {
         System.out.println("getTitolo");
-        String expResult = "Il Nome della Rosa";
-        String result = instance.getTitolo();
-        assertEquals(expResult, result);
+        assertEquals("Il Nome della Rosa", instance.getTitolo());
     }
 
     
     @Test
     public void testSetTitolo() {
         System.out.println("setTitolo");
-        String titolo = "Titolo nuovo";
-        instance.setTitolo(titolo);
-        assertEquals(titolo, instance.getTitolo());
+        instance.setTitolo("Titolo nuovo");
+        assertEquals("Titolo nuovo", instance.getTitolo());
     }
 
     
     @Test
     public void testGetAutore() {
         System.out.println("getAutore");
-        String expResult = "Umberto Eco";
-        String result = instance.getAutore();
-        assertEquals(expResult, result);
+        assertEquals("Umberto Eco", instance.getAutore());
     }
 
    
     @Test
     public void testSetAutore() {
         System.out.println("setAutore");
-        String autore = "Autore nuovo";
-        instance.setAutore(autore);
-        assertEquals(autore, instance.getAutore());
+        instance.setAutore("Autore nuovo");
+        assertEquals("Autore nuovo", instance.getAutore());
     }
 
     
     @Test
     public void testGetAnnoPubblicazione() {
         System.out.println("getAnnoPubblicazione");
-        int expResult = 1980;
-        int result = instance.getAnnoPubblicazione();
-        assertEquals(expResult, result);
+        assertEquals(1980, instance.getAnnoPubblicazione());
     }
 
     
     @Test
     public void testSetAnnoPubblicazione() {
         System.out.println("setAnnoPubblicazione");
-        int annoPubblicazione = 2020;
-        instance.setAnnoPubblicazione(annoPubblicazione);
-        assertEquals(annoPubblicazione, instance.getAnnoPubblicazione());
+        instance.setAnnoPubblicazione(2020);
+        assertEquals(2020, instance.getAnnoPubblicazione());
     }
 
    
     @Test
     public void testGetCategoria() {
         System.out.println("getCategoria");
-        String expResult = "Narrativa";
-        String result = instance.getCategoria();
-        assertEquals(expResult, result);
+        assertEquals("Narrativa", instance.getCategoria());
     }
 
     
     @Test
     public void testSetCategoria() {
         System.out.println("setCategoria");
-        String categoria = "Saggio";
-        instance.setCategoria(categoria);
-        assertEquals(categoria, instance.getCategoria());
+        instance.setCategoria("Saggio");
+        assertEquals("Saggio", instance.getCategoria());
     }
 
     
     @Test
     public void testGetCopieTotali() {
         System.out.println("getCopieTotali");
-        int expResult = 10;
-        int result = instance.getCopieTotali();
-        assertEquals(expResult, result);
+        assertEquals(10, instance.getCopieTotali());
     }
 
     
     @Test
     public void testSetCopieTotali() {
         System.out.println("setCopieTotali");
-        int copieTotali = 20;
-        instance.setCopieTotali(copieTotali);
-        assertEquals(copieTotali, instance.getCopieTotali());
+        instance.setCopieTotali(20);
+        assertEquals(20, instance.getCopieTotali());
     }
 
     
     @Test
     public void testGetCopieDisponibili() {
         System.out.println("getCopieDisponibili");
-        int expResult = 5;
-        int result = instance.getCopieDisponibili();
-        assertEquals(expResult, result);
+        assertEquals(5, instance.getCopieDisponibili());
     }
 
     
     @Test
     public void testSetCopieDisponibili() {
         System.out.println("setCopieDisponibili");
-        int copieDisponibili = 7;
-        instance.setCopieDisponibili(copieDisponibili);
-        assertEquals(copieDisponibili, instance.getCopieDisponibili());
+        instance.setCopieDisponibili(7);
+        assertEquals(7, instance.getCopieDisponibili());
     }
 
    
