@@ -69,10 +69,15 @@ public class Utente {
     }
     
     public boolean isValid(){
-        if ((nome != null ) && (cognome != null ) && (email != null ) && (matricola != null )){
-        return matricola.matches("\\d{10}");
-    }   
-    return false;
+       if (nome == null || cognome == null || email == null || matricola == null) {
+        return false;
     }
+
+    boolean matricolaValida = matricola.matches("\\d{10}");
+    boolean emailValida = email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+
+    return matricolaValida && emailValida;
+    
+}
     
 }
