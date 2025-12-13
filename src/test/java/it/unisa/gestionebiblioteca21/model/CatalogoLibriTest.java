@@ -13,145 +13,182 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author Felice Iandoli
- */
 public class CatalogoLibriTest {
-    
+
+    private CatalogoLibri instance;
+    private Libro l1;
+    private Libro l2;
+
     public CatalogoLibriTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
+        instance = new CatalogoLibri();
+
+        l1 = new Libro(
+                "9781234567890",
+                "Programmazione Java",
+                "Mario Rossi",
+                2020,
+                "Informatica",
+                5,
+                3
+        );
+
+        l2 = new Libro(
+                "9780987654321",
+                "Basi di Dati",
+                "Luca Bianchi",
+                2019,
+                "Informatica",
+                4,
+                2
+        );
     }
-    
+
     @AfterEach
     public void tearDown() {
+        instance = null;
+        l1 = null;
+        l2 = null;
     }
 
-    /**
-     * Test of getListaLibri method, of class CatalogoLibri.
-     */
     @Test
     public void testGetListaLibri() {
-        System.out.println("getListaLibri");
-        CatalogoLibri instance = new CatalogoLibri();
-        ArrayList<Libro> expResult = null;
-        ArrayList<Libro> result = instance.getListaLibri();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Libro> lista = instance.getListaLibri();
+        assertNotNull(lista);
+        assertTrue(lista.isEmpty());
     }
 
-    /**
-     * Test of inserimentoLibro method, of class CatalogoLibri.
-     */
     @Test
-    public void testInserimentoLibro() {
-        System.out.println("inserimentoLibro");
-        Libro libro = null;
-        CatalogoLibri instance = new CatalogoLibri();
-        instance.inserimentoLibro(libro);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testInserimentoLibro_ok() {
+        instance.inserimentoLibro(l1);
+        assertEquals(1, instance.getListaLibri().size());
     }
 
-    /**
-     * Test of cancellazioneLibro method, of class CatalogoLibri.
-     */
+    @Test
+    public void testInserimentoLibro_campiVuoti() {
+        Libro l = new Libro("", "", "", 2020, "", 1, 1);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoLibro(l));
+    }
+
+    @Test
+    public void testInserimentoLibro_isbnNonValido() {
+        Libro l = new Libro("123", "Titolo", "Autore", 2020, "Cat", 1, 1);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoLibro(l));
+    }
+
+    @Test
+    public void testInserimentoLibro_copieDisponibiliMaggiori() {
+        Libro l = new Libro("9781111111111", "Titolo", "Autore", 2020, "Cat", 2, 5);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoLibro(l));
+    }
+
+    @Test
+    public void testInserimentoLibro_duplicato() {
+        instance.inserimentoLibro(l1);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoLibro(l1));
+    }
+
     @Test
     public void testCancellazioneLibro() {
-        System.out.println("cancellazioneLibro");
-        Libro libro = null;
-        CatalogoLibri instance = new CatalogoLibri();
-        instance.cancellazioneLibro(libro);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoLibro(l1);
+        instance.cancellazioneLibro(l1);
+        assertTrue(instance.getListaLibri().isEmpty());
     }
 
-    /**
-     * Test of modificaLibro method, of class CatalogoLibri.
-     */
     @Test
-    public void testModificaLibro() {
-        System.out.println("modificaLibro");
-        Libro libroOriginale = null;
-        Libro libroModificato = null;
-        CatalogoLibri instance = new CatalogoLibri();
-        instance.modificaLibro(libroOriginale, libroModificato);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testModificaLibro_ok() {
+        instance.inserimentoLibro(l1);
+
+        Libro modificato = new Libro(
+                l1.getISBN(),
+                "Java Avanzato",
+                "Mario Rossi",
+                2021,
+                "Informatica",
+                6,
+                4
+        );
+
+        instance.modificaLibro(l1, modificato);
+
+        assertEquals("Java Avanzato", l1.getTitolo());
+        assertEquals(6, l1.getCopieTotali());
+        assertEquals(4, l1.getCopieDisponibili());
     }
 
-    /**
-     * Test of ricercaLibro method, of class CatalogoLibri.
-     */
     @Test
-    public void testRicercaLibro() {
-        System.out.println("ricercaLibro");
-        String titolo = "";
-        String autore = "";
-        String ISBN = "";
-        CatalogoLibri instance = new CatalogoLibri();
-        ArrayList<Libro> expResult = null;
-        ArrayList<Libro> result = instance.ricercaLibro(titolo, autore, ISBN);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testModificaLibro_emailNonValida() {
+        instance.inserimentoLibro(l1);
+
+        Libro modificato = new Libro(
+                "123",
+                "Java",
+                "Autore",
+                2020,
+                "Cat",
+                2,
+                1
+        );
+
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.modificaLibro(l1, modificato));
     }
 
-    /**
-     * Test of getLibroperilnome method, of class CatalogoLibri.
-     */
+    @Test
+    public void testRicercaLibroLiveSearch() {
+        instance.inserimentoLibro(l1);
+        instance.inserimentoLibro(l2);
+
+        assertEquals(2, instance.ricercaLibro("", "", "").size());
+        assertEquals(2, instance.ricercaLibro("Java", "", "").size());
+        assertEquals(2, instance.ricercaLibro("", "Mario", "").size());
+
+        assertEquals(1, instance.ricercaLibro("Java", "___", "___").size());
+        assertEquals(1, instance.ricercaLibro("___", "Bianchi", "___").size());
+        assertEquals(1, instance.ricercaLibro("___", "___", "9780987654321").size());
+    }
+
     @Test
     public void testGetLibroperilnome() {
-        System.out.println("getLibroperilnome");
-        String nome = "";
-        CatalogoLibri instance = new CatalogoLibri();
-        Libro expResult = null;
-        Libro result = instance.getLibroperilnome(nome);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoLibro(l1);
+        Libro trovato = instance.getLibroperilnome("Programmazione Java");
+        assertNotNull(trovato);
+        assertEquals(l1.getISBN(), trovato.getISBN());
     }
 
-    /**
-     * Test of cercaLibroPerISBN method, of class CatalogoLibri.
-     */
+    @Test
+    public void testGetLibroperilnome_nonTrovato() {
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.getLibroperilnome("Libro Inesistente"));
+    }
+
     @Test
     public void testCercaLibroPerISBN() {
-        System.out.println("cercaLibroPerISBN");
-        String isbn = "";
-        CatalogoLibri instance = new CatalogoLibri();
-        Libro expResult = null;
-        Libro result = instance.cercaLibroPerISBN(isbn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoLibro(l1);
+        Libro trovato = instance.cercaLibroPerISBN("9781234567890");
+        assertNotNull(trovato);
     }
 
-    /**
-     * Test of getLibroperISBN method, of class CatalogoLibri.
-     */
     @Test
     public void testGetLibroperISBN() {
-        System.out.println("getLibroperISBN");
-        String isbn = "";
-        CatalogoLibri instance = new CatalogoLibri();
-        Libro expResult = null;
-        Libro result = instance.getLibroperISBN(isbn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoLibro(l2);
+        Libro trovato = instance.getLibroperISBN("9780987654321");
+        assertNotNull(trovato);
+        assertEquals("Basi di Dati", trovato.getTitolo());
     }
-    
 }

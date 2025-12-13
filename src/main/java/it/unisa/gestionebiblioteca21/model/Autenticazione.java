@@ -27,16 +27,5 @@ public class Autenticazione {
     public boolean logout (String username){
     return true;
     }
-    public boolean modificaPassword (String username, String nuovaPassword){
-    for (Bibliotecario b : utentiAutorizzati) {
-    if (b.getUsername().equals(username))
-    {
-    b.setPassword(nuovaPassword);
-    }
-    }
-    return false;
-    }
-    public boolean reimpostaPassword (String username, String nuovaPassword){
-    return modificaPassword (username,nuovaPassword);
-    }
+  
 }

@@ -13,130 +13,154 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author Felice Iandoli
- */
+
 public class ElencoUtentiTest {
-    
+
+    private ElencoUtenti instance;
+    private Utente u1;
+    private Utente u2;
+
     public ElencoUtentiTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
+        instance = new ElencoUtenti();
+
+        u1 = new Utente("1234567890", "Mario", "Rossi", "mario@mail.com", 0);
+        u2 = new Utente("0987654321", "Luca", "Bianchi", "luca@mail.com", 0);
     }
-    
+
     @AfterEach
     public void tearDown() {
+        instance = null;
+        u1 = null;
+        u2 = null;
     }
 
-    /**
-     * Test of getListaUtenti method, of class ElencoUtenti.
-     */
     @Test
     public void testGetListaUtenti() {
-        System.out.println("getListaUtenti");
-        ElencoUtenti instance = new ElencoUtenti();
-        ArrayList<Utente> expResult = null;
-        ArrayList<Utente> result = instance.getListaUtenti();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Utente> lista = instance.getListaUtenti();
+        assertNotNull(lista);
+        assertTrue(lista.isEmpty());
     }
 
-    /**
-     * Test of inserimentoUtente method, of class ElencoUtenti.
-     */
     @Test
-    public void testInserimentoUtente() {
-        System.out.println("inserimentoUtente");
-        Utente utente = null;
-        ElencoUtenti instance = new ElencoUtenti();
-        instance.inserimentoUtente(utente);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testInserimentoUtente_ok() {
+        instance.inserimentoUtente(u1);
+        assertEquals(1, instance.getListaUtenti().size());
     }
 
-    /**
-     * Test of cancellazioneUtente method, of class ElencoUtenti.
-     */
+    @Test
+    public void testInserimentoUtente_campiVuoti() {
+        Utente u = new Utente("", "", "", "", 0);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoUtente(u));
+    }
+
+    @Test
+    public void testInserimentoUtente_emailNonValida() {
+        Utente u = new Utente("1111111111", "Anna", "Verdi", "annamail.com", 0);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoUtente(u));
+    }
+
+    @Test
+    public void testInserimentoUtente_duplicato() {
+        instance.inserimentoUtente(u1);
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.inserimentoUtente(u1));
+    }
+
     @Test
     public void testCancellazioneUtente() {
-        System.out.println("cancellazioneUtente");
-        Utente utente = null;
-        ElencoUtenti instance = new ElencoUtenti();
-        instance.cancellazioneUtente(utente);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoUtente(u1);
+        instance.cancellazioneUtente(u1);
+        assertTrue(instance.getListaUtenti().isEmpty());
     }
 
-    /**
-     * Test of modificaUtente method, of class ElencoUtenti.
-     */
     @Test
-    public void testModificaUtente() {
-        System.out.println("modificaUtente");
-        Utente utenteOriginale = null;
-        Utente utenteModificato = null;
-        ElencoUtenti instance = new ElencoUtenti();
-        instance.modificaUtente(utenteOriginale, utenteModificato);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCancellazioneUtente_null() {
+        instance.inserimentoUtente(u1);
+        instance.cancellazioneUtente(null);
+        assertEquals(1, instance.getListaUtenti().size());
     }
 
-    /**
-     * Test of ricercaUtente method, of class ElencoUtenti.
-     */
     @Test
-    public void testRicercaUtente() {
-        System.out.println("ricercaUtente");
-        String cognome = "";
-        String nome = "";
-        String matricola = "";
-        ElencoUtenti instance = new ElencoUtenti();
-        ArrayList<Utente> expResult = null;
-        ArrayList<Utente> result = instance.ricercaUtente(cognome, nome, matricola);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testModificaUtente_ok() {
+        instance.inserimentoUtente(u1);
+
+        Utente modificato = new Utente(
+                u1.getMatricola(),
+                "Marco",
+                "Neri",
+                "marco@mail.com",
+                0
+        );
+
+        instance.modificaUtente(u1, modificato);
+
+        assertEquals("Marco", u1.getNome());
+        assertEquals("Neri", u1.getCognome());
+        assertEquals("marco@mail.com", u1.getEmail());
     }
 
-    /**
-     * Test of exists method, of class ElencoUtenti.
-     */
+    @Test
+    public void testModificaUtente_emailNonValida() {
+        instance.inserimentoUtente(u1);
+
+        Utente modificato = new Utente(
+                u1.getMatricola(),
+                "Marco",
+                "Neri",
+                "marcomail.com",
+                0
+        );
+
+        assertThrows(IllegalArgumentException.class,
+                () -> instance.modificaUtente(u1, modificato));
+    }
+
+ @Test
+public void testRicercaUtenteLiveSearch() {
+    instance.inserimentoUtente(u1);
+    instance.inserimentoUtente(u2);
+
+    assertEquals(2, instance.ricercaUtente("", "", "").size());
+    assertEquals(2, instance.ricercaUtente("Rossi", "", "").size());
+    assertEquals(2, instance.ricercaUtente("", "Luca", "").size());
+
+    assertEquals(1, instance.ricercaUtente("Rossi", "___", "___").size());
+    assertEquals(1, instance.ricercaUtente("___", "Luca", "___").size());
+    assertEquals(1, instance.ricercaUtente("___", "___", "1234567890").size());
+}
+
     @Test
     public void testExists() {
-        System.out.println("exists");
-        String matricola = "";
-        ElencoUtenti instance = new ElencoUtenti();
-        boolean expResult = false;
-        boolean result = instance.exists(matricola);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoUtente(u1);
+        assertTrue(instance.exists("1234567890"));
+        assertFalse(instance.exists("0000000000"));
     }
 
-    /**
-     * Test of cercaPerMatricola method, of class ElencoUtenti.
-     */
     @Test
     public void testCercaPerMatricola() {
-        System.out.println("cercaPerMatricola");
-        String matricola = "";
-        ElencoUtenti instance = new ElencoUtenti();
-        Utente expResult = null;
-        Utente result = instance.cercaPerMatricola(matricola);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.inserimentoUtente(u1);
+        Utente trovato = instance.cercaPerMatricola("1234567890");
+        assertNotNull(trovato);
+        assertEquals("Mario", trovato.getNome());
     }
-    
+
+    @Test
+    public void testCercaPerMatricola_null() {
+        assertNull(instance.cercaPerMatricola(null));
+        assertNull(instance.cercaPerMatricola(""));
+    }
 }

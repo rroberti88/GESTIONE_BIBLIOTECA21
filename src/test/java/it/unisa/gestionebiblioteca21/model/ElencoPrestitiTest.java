@@ -121,7 +121,7 @@ public class ElencoPrestitiTest {
     }
 
     @Test
-    public void testRicercaPrestito_liveSearch_OR() {
+    public void testRicercaPrestitoLiveSearch() {
         Prestito p1 = prestitoAttivo("AAA111", "MAT001", LocalDate.now().plusDays(1));
         Prestito p2 = prestitoAttivo("BBB222", "MAT002", LocalDate.now().plusDays(2));
         Prestito p3 = prestitoAttivo("CCC333", "ALTRO", LocalDate.now().plusDays(3));
