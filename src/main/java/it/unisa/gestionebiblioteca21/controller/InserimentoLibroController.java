@@ -13,6 +13,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ * Controller per l'inserimento di un nuovo libro nel catalogo.
+ * Gestisce la validazione dei dati e l'aggiunta al catalogo libri.
+ */
 public class InserimentoLibroController {
 
     private CatalogoLibri catalogo;
@@ -29,18 +33,34 @@ public class InserimentoLibroController {
     @FXML private Button btnSalva;
     @FXML private Button btnAnnulla;
 
+    /**
+     * Imposta il catalogo dei libri.
+     * @param catalogo CatalogoLibri
+     */
     public void setCatalogo(CatalogoLibri catalogo) {
         this.catalogo = catalogo;
     }
 
+    /**
+     * Imposta l'archivio dati per la persistenza.
+     * @param archivio ArchivioDati
+     */
     public void setArchivio(ArchivioDati archivio) {
         this.archivio = archivio;
     }
 
+    /**
+     * Imposta lo stage della finestra corrente.
+     * @param stage Stage
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Gestisce il salvataggio di un nuovo libro.
+     * Valida i dati inseriti e aggiunge il libro al catalogo.
+     */
     @FXML
     private void handleSalva() {
         try {
@@ -64,16 +84,18 @@ public class InserimentoLibroController {
 
         } catch (NumberFormatException e) {
             mostraErrore("I campi numerici (anno, copie totali, copie disponibili) devono contenere solo numeri.");
-
         } catch (IllegalArgumentException e) {
             mostraErrore(e.getMessage());
-
         } catch (Exception e) {
             mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
             e.printStackTrace();
         }
     }
 
+    /**
+     * Mostra un messaggio di errore all'utente.
+     * @param msg Messaggio di errore
+     */
     private void mostraErrore(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Errore");
@@ -82,10 +104,12 @@ public class InserimentoLibroController {
         alert.showAndWait();
     }
 
+    /**
+     * Gestisce l'annullamento dell'inserimento e chiude la finestra.
+     */
     @FXML
     private void handleAnnulla() {
         stage.close();
     }
 }
-
 

@@ -8,23 +8,43 @@ package it.unisa.gestionebiblioteca21.model;
 
 import java.util.ArrayList;
 
+/**
+ * @class CatalogoLibri
+ * @brief Gestisce l'insieme dei libri del catalogo e le operazioni su di essi.
+ */
 public class CatalogoLibri {
-    private ArrayList<Libro> listaLibri;
 
+    private ArrayList<Libro> listaLibri; /**< Lista dei libri del catalogo */
+
+    /**
+     * @brief Costruttore vuoto, inizializza la lista dei libri.
+     */
     public CatalogoLibri() {
         this.listaLibri = new ArrayList<>();
     }
 
+    /**
+     * @brief Costruttore con lista predefinita.
+     * @param listaLibri Lista iniziale di libri
+     */
     public CatalogoLibri(ArrayList<Libro> listaLibri) {
         this.listaLibri = listaLibri != null ? listaLibri : new ArrayList<>();
     }
 
+    /**
+     * @brief Restituisce la lista dei libri.
+     * @return Lista dei libri
+     */
     public ArrayList<Libro> getListaLibri() {
         return listaLibri;
     }
 
+    /**
+     * @brief Inserisce un nuovo libro nel catalogo.
+     * @param libro Libro da inserire
+     * @throws IllegalArgumentException Se i campi sono incompleti o ISBN duplicato
+     */
     public void inserimentoLibro(Libro libro) {
-
         if (libro.getTitolo().isEmpty() || libro.getAutore().isEmpty()
                 || libro.getCategoria().isEmpty() || libro.getISBN().isEmpty()) {
             throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
@@ -40,18 +60,27 @@ public class CatalogoLibri {
 
         for (Libro l : listaLibri) {
             if (l.getISBN().equals(libro.getISBN())) {
-                throw new IllegalArgumentException("Libro già presente");
+                throw new IllegalArgumentException("Libro giÃ  presente");
             }
         }
         listaLibri.add(libro);
     }
 
+    /**
+     * @brief Rimuove un libro dal catalogo.
+     * @param libro Libro da rimuovere
+     */
     public void cancellazioneLibro(Libro libro) {
         listaLibri.remove(libro);
     }
 
+    /**
+     * @brief Modifica i dati di un libro esistente.
+     * @param libroOriginale Libro da modificare
+     * @param libroModificato Nuovi dati del libro
+     * @throws IllegalArgumentException Se i campi non sono validi
+     */
     public void modificaLibro(Libro libroOriginale, Libro libroModificato) {
-
         if (libroModificato.getTitolo().isEmpty() || libroModificato.getAutore().isEmpty()
                 || libroModificato.getCategoria().isEmpty() || libroModificato.getISBN().isEmpty()) {
             throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
@@ -73,6 +102,13 @@ public class CatalogoLibri {
         libroOriginale.setCopieDisponibili(libroModificato.getCopieDisponibili());
     }
 
+    /**
+     * @brief Ricerca libri nel catalogo per titolo, autore o ISBN.
+     * @param titolo Titolo del libro
+     * @param autore Autore del libro
+     * @param ISBN ISBN del libro
+     * @return Lista dei libri corrispondenti ai criteri
+     */
     public ArrayList<Libro> ricercaLibro(String titolo, String autore, String ISBN) {
         ArrayList<Libro> listarisultati = new ArrayList<>();
         for (Libro l : listaLibri) {
@@ -87,6 +123,12 @@ public class CatalogoLibri {
         return listarisultati;
     }
 
+    /**
+     * @brief Recupera un libro tramite il titolo.
+     * @param nome Titolo del libro
+     * @return Libro trovato
+     * @throws IllegalArgumentException Se il libro non esiste
+     */
     public Libro getLibroperilnome(String nome) {
         for (Libro l : listaLibri) {
             if (l.getTitolo().equalsIgnoreCase(nome)) {
@@ -96,6 +138,11 @@ public class CatalogoLibri {
         throw new IllegalArgumentException("Libro non trovato nel catalogo.");
     }
 
+    /**
+     * @brief Cerca un libro tramite ISBN.
+     * @param isbn ISBN del libro
+     * @return Libro trovato o null se non esiste
+     */
     public Libro cercaLibroPerISBN(String isbn) {
         for (Libro libro : listaLibri) {
             if (libro.getISBN().equalsIgnoreCase(isbn)) {
@@ -105,6 +152,11 @@ public class CatalogoLibri {
         return null;
     }
 
+    /**
+     * @brief Alias per cercare un libro tramite ISBN.
+     * @param isbn ISBN del libro
+     * @return Libro trovato o null
+     */
     public Libro getLibroperISBN(String isbn) {
         return cercaLibroPerISBN(isbn);
     }

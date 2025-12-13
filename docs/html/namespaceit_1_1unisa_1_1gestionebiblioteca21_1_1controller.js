@@ -1,0 +1,14 @@
+var namespaceit_1_1unisa_1_1gestionebiblioteca21_1_1controller =
+[
+    [ "GestioneCatalogoController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_catalogo_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_catalogo_controller" ],
+    [ "GestionePrestitiController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller" ],
+    [ "GestioneUtentiController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller" ],
+    [ "HomeController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_home_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_home_controller" ],
+    [ "InserimentoLibroController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_inserimento_libro_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_inserimento_libro_controller" ],
+    [ "InserimentoUtenteController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_inserimento_utente_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_inserimento_utente_controller" ],
+    [ "LoginController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_login_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_login_controller" ],
+    [ "ModificaLibroController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_modifica_libro_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_modifica_libro_controller" ],
+    [ "ModificaUtenteController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_modifica_utente_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_modifica_utente_controller" ],
+    [ "RegistraPrestitoController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_registra_prestito_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_registra_prestito_controller" ],
+    [ "RegistraRestituzioneController", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_registra_restituzione_controller.html", "classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_registra_restituzione_controller" ]
+];

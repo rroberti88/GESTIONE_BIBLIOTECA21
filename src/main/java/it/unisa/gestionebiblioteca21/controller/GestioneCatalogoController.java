@@ -18,6 +18,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Controller per la gestione del catalogo dei libri.
+ * Permette di inserire, modificare, cancellare e ricercare libri nel catalogo.
+ */
 public class GestioneCatalogoController {
 
     private CatalogoLibri catalogo;
@@ -35,21 +39,19 @@ public class GestioneCatalogoController {
     @FXML private TableColumn<Libro, String> colIsbn;
     @FXML private TableColumn<Libro, Integer> colCopieDisponibili;
 
+    /** Imposta il catalogo da gestire e aggiorna la tabella */
     public void setCatalogo(CatalogoLibri catalogo) {
         this.catalogo = catalogo;
         aggiornaTabella();
     }
 
     public void setArchivio(ArchivioDati archivio) { this.archivio = archivio; }
-
     public void setModelAut(Autenticazione aut) { this.autenticazione = aut; }
-
     public void setElencoUtenti(ElencoUtenti elenco) { this.elencoUtenti = elenco; }
-
     public void setListaPrestiti(ElencoPrestiti elenco) { this.elencoPrestiti = elenco; }
-
     public void setStage(Stage stage) { this.stage = stage; }
 
+    /** Inizializza la tabella e i listener di ricerca */
     @FXML
     public void initialize() {
         colTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
@@ -61,11 +63,13 @@ public class GestioneCatalogoController {
         txtRicercaLibro.textProperty().addListener((obs, oldVal, newVal) -> handleRicercaLibro());
     }
 
+    /** Aggiorna la tabella dei libri */
     private void aggiornaTabella() {
         if (catalogo != null)
             tableview.getItems().setAll(catalogo.getListaLibri());
     }
 
+    /** Verifica se il catalogo Ã¨ stato inizializzato */
     private boolean checkCatalogo() {
         if (catalogo == null) {
             mostraErrore("Catalogo non inizializzato.");
@@ -74,6 +78,7 @@ public class GestioneCatalogoController {
         return true;
     }
 
+    /** Apre la finestra per l'inserimento di un nuovo libro */
     @FXML
     private void handleInserimentoLibro() {
 
@@ -104,6 +109,7 @@ public class GestioneCatalogoController {
         }
     }
 
+    /** Apre la finestra per modificare il libro selezionato */
     @FXML
     private void handleModificaLibro() {
 
@@ -142,6 +148,7 @@ public class GestioneCatalogoController {
         }
     }
 
+    /** Cancella il libro selezionato dal catalogo */
     @FXML
     private void handleCancellazioneLibro() {
 
@@ -164,7 +171,7 @@ public class GestioneCatalogoController {
         });
     }
 
-
+    /** Ricerca libri filtrando per titolo, autore o ISBN */
     @FXML
     private void handleRicercaLibro() {
 
@@ -183,6 +190,7 @@ public class GestioneCatalogoController {
         tableview.getItems().setAll(risultati);
     }
 
+    /** Torna alla dashboard principale */
     @FXML
     private void handleBackDashboard() {
         try {
@@ -208,14 +216,15 @@ public class GestioneCatalogoController {
         }
     }
 
+    /** Mostra un messaggio di errore */
     private void mostraErrore(String msg) {
         Alert a = new Alert(Alert.AlertType.ERROR, msg);
         a.showAndWait();
     }
 
+    /** Mostra un messaggio di warning */
     private void mostraWarning(String msg) {
         Alert a = new Alert(Alert.AlertType.WARNING, msg);
         a.showAndWait();
     }
 }
-

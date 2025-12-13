@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 
 package it.unisa.gestionebiblioteca21.controller;
 
@@ -14,25 +14,61 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
+/**
+ * @class RegistraRestituzioneController
+ * @brief Controller per la view di restituzione dei prestiti.
+ * 
+ * Permette di registrare la restituzione di un prestito esistente,
+ * gestisce errori, segnala restituzioni in ritardo e aggiorna i dati
+ * relativi a prestiti e copie disponibili dei libri.
+ */
 public class RegistraRestituzioneController {
 
-    private ElencoPrestiti elencoPrestiti;
-    private ArchivioDati archivio;
-    private Stage stage;
-    private CatalogoLibri catalogo;     
+    private ElencoPrestiti elencoPrestiti; ///< Lista dei prestiti
+    private ArchivioDati archivio; ///< Archivio dati per salvataggio e caricamento
+    private Stage stage; ///< Stage della finestra popup
+    private CatalogoLibri catalogo; ///< Catalogo dei libri
 
-    @FXML private TextField txtLibro;     
-    @FXML private TextField txtUtente;    
-    @FXML private TextField txtDatadiScadenza; 
+    @FXML private TextField txtLibro; ///< Campo per inserire ISBN del libro
+    @FXML private TextField txtUtente; ///< Campo per inserire matricola utente
+    @FXML private TextField txtDatadiScadenza; ///< Campo per inserire data di scadenza
 
+    /**
+     * @brief Imposta la lista dei prestiti.
+     * @param e ElencoPrestiti da utilizzare
+     * @return void
+     */
     public void setListaPrestiti(ElencoPrestiti e) { this.elencoPrestiti = e; }
 
+    /**
+     * @brief Imposta l'archivio dati.
+     * @param a ArchivioDati da utilizzare
+     * @return void
+     */
     public void setArchivio(ArchivioDati a) { this.archivio = a; }
 
-    public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }  
+    /**
+     * @brief Imposta il catalogo dei libri.
+     * @param c CatalogoLibri da utilizzare
+     * @return void
+     */
+    public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
 
+    /**
+     * @brief Imposta lo stage della finestra popup.
+     * @param s Stage da utilizzare
+     * @return void
+     */
     public void setStage(Stage s) { this.stage = s; }
 
+    /**
+     * @brief Salva la restituzione di un prestito.
+     * 
+     * Controlla che tutti i campi siano compilati, che il prestito esista,
+     * segnala eventuali ritardi, aggiorna le copie disponibili del libro,
+     * salva su archivio e chiude la finestra.
+     * @return void
+     */
     @FXML
     private void handleSalva() {
         try {
@@ -60,16 +96,16 @@ public class RegistraRestituzioneController {
                 return;
             }
 
-        
-
             LocalDate oggi = LocalDate.now();
             if (oggi.isAfter(prestito.getDataScadenza())) {
-            Alert avviso = new Alert(Alert.AlertType.WARNING);
-            avviso.setTitle("Avviso");
-            avviso.setHeaderText("Restituzione in ritardo");
-            avviso.setContentText("La data di scadenza era: " + prestito.getDataScadenza() + "\nData odierna: " + oggi );
-            avviso.showAndWait();
+                Alert avviso = new Alert(Alert.AlertType.WARNING);
+                avviso.setTitle("Avviso");
+                avviso.setHeaderText("Restituzione in ritardo");
+                avviso.setContentText("La data di scadenza era: " + prestito.getDataScadenza() +
+                        "\nData odierna: " + oggi );
+                avviso.showAndWait();
             }
+
             boolean completato = elencoPrestiti.registraRestituzione(isbn, matricola, dataScadenzaInserita);
 
             if (!completato) {
@@ -81,7 +117,6 @@ public class RegistraRestituzioneController {
             if (libro != null) {
                 libro.setCopieDisponibili((libro.getCopieDisponibili() + 1));
             }
-            
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
             archivio.salvaLibri(catalogo.getListaLibri());
@@ -94,11 +129,20 @@ public class RegistraRestituzioneController {
         }
     }
 
+    /**
+     * @brief Chiude la finestra senza salvare modifiche.
+     * @return void
+     */
     @FXML
     private void handleAnnulla() {
         stage.close();
     }
 
+    /**
+     * @brief Mostra un messaggio di errore all'utente.
+     * @param msg Messaggio da visualizzare
+     * @return void
+     */
     private void mostraErrore(String msg) {
         Alert a = new Alert(Alert.AlertType.ERROR, msg);
         a.showAndWait();

@@ -13,6 +13,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ * Controller per la modifica dei dati di un libro.
+ * Permette di aggiornare titolo, autore, ISBN, anno di pubblicazione, categoria e copie disponibili/totali.
+ */
 public class ModificaLibroController {
 
     private CatalogoLibri catalogo;
@@ -30,18 +34,34 @@ public class ModificaLibroController {
     @FXML private Button btnSalva;
     @FXML private Button btnAnnulla;
 
+    /**
+     * Imposta il catalogo dei libri.
+     * @param catalogo CatalogoLibri
+     */
     public void setCatalogo(CatalogoLibri catalogo) {
         this.catalogo = catalogo;
     }
 
+    /**
+     * Imposta l'archivio dati per il salvataggio.
+     * @param archivio ArchivioDati
+     */
     public void setArchivio(ArchivioDati archivio) {
         this.archivio = archivio;
     }
 
+    /**
+     * Imposta lo stage della finestra corrente.
+     * @param stage Stage
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Imposta il libro da modificare e popola i campi della UI.
+     * @param libro Libro
+     */
     public void setLibro(Libro libro) {
         this.libroOriginale = libro;
 
@@ -54,6 +74,10 @@ public class ModificaLibroController {
         txtCopieDisponibili.setText(String.valueOf(libro.getCopieDisponibili()));
     }
 
+    /**
+     * Gestisce la pressione del pulsante Salva per modificare un libro.
+     * Valida i dati inseriti, aggiorna il catalogo e salva le modifiche sull'archivio.
+     */
     @FXML
     private void handleSalva() {
         try {
@@ -67,7 +91,7 @@ public class ModificaLibroController {
             int copieTotali = Integer.parseInt(txtCopieTotali.getText());
             Libro libroModificato = new Libro(ISBN, titolo, autore, annoPubblicazione, categoria, copieTotali, copieDisponibili);
 
-            catalogo.modificaLibro(libroOriginale,libroModificato);
+            catalogo.modificaLibro(libroOriginale, libroModificato);
 
             if (archivio != null) {
                 archivio.salvaLibri(catalogo.getListaLibri());
@@ -87,6 +111,10 @@ public class ModificaLibroController {
         }
     }
 
+    /**
+     * Mostra un messaggio di errore all'utente.
+     * @param msg Messaggio da visualizzare
+     */
     private void mostraErrore(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Errore");
@@ -95,6 +123,9 @@ public class ModificaLibroController {
         alert.showAndWait();
     }
 
+    /**
+     * Gestisce la pressione del pulsante Annulla chiudendo la finestra.
+     */
     @FXML
     private void handleAnnulla() {
         stage.close();

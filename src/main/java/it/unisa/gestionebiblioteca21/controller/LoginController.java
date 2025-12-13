@@ -15,6 +15,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 
+/**
+ * Controller per la gestione del login del bibliotecario.
+ * Controlla le credenziali e, se valide, apre la dashboard principale.
+ */
 public class LoginController {
 
     private Autenticazione autenticazione;
@@ -29,19 +33,46 @@ public class LoginController {
     @FXML private PasswordField txtPassword;
     @FXML private Button btnAccedi;
 
+    /**
+     * Imposta il modello di autenticazione.
+     * @param aut Autenticazione
+     */
     public void setModelAut(Autenticazione aut) { this.autenticazione = aut; }
+
+    /**
+     * Imposta lo stage principale.
+     * @param stage Stage
+     */
     public void setStage(Stage stage) { this.stage = stage; }
+
+    /**
+     * Imposta l'archivio dati per la gestione dei dati persistenti.
+     * @param archivio ArchivioDati
+     */
     public void setArchivio(ArchivioDati archivio) { this.archivio = archivio; }
+
+    /**
+     * Imposta il catalogo dei libri.
+     * @param catalogo CatalogoLibri
+     */
     public void setCatalogo(CatalogoLibri catalogo) { this.catalogo = catalogo; }
+
+    /**
+     * Imposta l'elenco degli utenti.
+     * @param elenco ElencoUtenti
+     */
     public void setElencoUtenti(ElencoUtenti elenco) { this.elencoUtenti = elenco; }
+
+    /**
+     * Imposta l'elenco dei prestiti.
+     * @param elenco ElencoPrestiti
+     */
     public void setElencoPrestiti(ElencoPrestiti elenco) { this.elencoPrestiti = elenco; }
 
-    @FXML
-    private void initialize() {
-        
-        btnAccedi.disableProperty().bind( txtUsername.textProperty().isEmpty().or(txtPassword.textProperty().isEmpty()) );
-    } 
-    
+    /**
+     * Gestisce il login del bibliotecario.
+     * Controlla le credenziali e, se corrette, apre la schermata principale.
+     */
     @FXML
     private void handleLogin() {
 

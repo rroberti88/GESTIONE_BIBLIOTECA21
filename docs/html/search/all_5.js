@@ -1,0 +1,14 @@
+var searchData=
+[
+  ['handlebackdashboard_0',['handleBackDashboard',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html#a665af31b98f70cbc3740a9390e4ee0f4',1,'it.unisa.gestionebiblioteca21.controller.GestionePrestitiController.handleBackDashboard()'],['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html#aa6410eb63a0a02522c2b5644336aa4e6',1,'it.unisa.gestionebiblioteca21.controller.GestioneUtentiController.handleBackDashboard()']]],
+  ['handlecancellazioneprestito_1',['handleCancellazionePrestito',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html#ae1e6e6407c2c72a2450799b317d02f88',1,'it::unisa::gestionebiblioteca21::controller::GestionePrestitiController']]],
+  ['handlecancellazioneutente_2',['handleCancellazioneUtente',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html#af68ed164cd9934ceaf812cd0b222c2d5',1,'it::unisa::gestionebiblioteca21::controller::GestioneUtentiController']]],
+  ['handleinserimentoutente_3',['handleInserimentoUtente',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html#a3ed7061610e3fe97424d17bded150f99',1,'it::unisa::gestionebiblioteca21::controller::GestioneUtentiController']]],
+  ['handlemodificautente_4',['handleModificaUtente',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html#ae591a5f3a38e100424f415a12db0d1b7',1,'it::unisa::gestionebiblioteca21::controller::GestioneUtentiController']]],
+  ['handleregistraprestito_5',['handleRegistraPrestito',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html#a1de15b094049d4eea04f8897894dad5c',1,'it::unisa::gestionebiblioteca21::controller::GestionePrestitiController']]],
+  ['handleregistrarestituzione_6',['handleRegistraRestituzione',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html#adb8785088bbf1b11ee8ccc85dab38611',1,'it::unisa::gestionebiblioteca21::controller::GestionePrestitiController']]],
+  ['handlericercaprestito_7',['handleRicercaPrestito',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_prestiti_controller.html#a8be63a760aee27a100eb9edf7710fda4',1,'it::unisa::gestionebiblioteca21::controller::GestionePrestitiController']]],
+  ['handlericercautente_8',['handleRicercaUtente',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_gestione_utenti_controller.html#af82140831b1991f3f4a69732caad56e9',1,'it::unisa::gestionebiblioteca21::controller::GestioneUtentiController']]],
+  ['homecontroller_9',['HomeController',['../classit_1_1unisa_1_1gestionebiblioteca21_1_1controller_1_1_home_controller.html',1,'it::unisa::gestionebiblioteca21::controller']]],
+  ['homecontroller_2ejava_10',['HomeController.java',['../_home_controller_8java.html',1,'']]]
+];

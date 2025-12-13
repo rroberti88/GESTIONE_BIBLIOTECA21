@@ -6,16 +6,29 @@
 
 package it.unisa.gestionebiblioteca21.model;
 
-
+/**
+ * @class Libro
+ * @brief Rappresenta un libro presente nel catalogo della biblioteca.
+ */
 public class Libro {
-    private String ISBN;
-    private String titolo;
-    private String autore;
-    private int annoPubblicazione;
-    private String Categoria;
-    private int copieTotali;
-    private int copieDisponibili;
+    private String ISBN; /**< Codice ISBN del libro */
+    private String titolo; /**< Titolo del libro */
+    private String autore; /**< Autore del libro */
+    private int annoPubblicazione; /**< Anno di pubblicazione */
+    private String Categoria; /**< Categoria o genere del libro */
+    private int copieTotali; /**< Numero totale di copie */
+    private int copieDisponibili; /**< Numero di copie disponibili per il prestito */
 
+    /**
+     * @brief Costruttore della classe Libro.
+     * @param ISBN Codice ISBN del libro
+     * @param titolo Titolo del libro
+     * @param autore Autore del libro
+     * @param annoPubblicazione Anno di pubblicazione
+     * @param Categoria Categoria del libro
+     * @param copieTotali Numero totale di copie
+     * @param copieDisponibili Numero di copie disponibili
+     */
     public Libro(String ISBN, String titolo, String autore, int annoPubblicazione, String Categoria, int copieTotali, int copieDisponibili) {
         this.ISBN = ISBN;
         this.titolo = titolo;
@@ -26,67 +39,57 @@ public class Libro {
         this.copieDisponibili = copieDisponibili;
     }
 
-    public String getISBN() {
-        return ISBN;
-    }
+    /** @brief Restituisce l'ISBN del libro */
+    public String getISBN() { return ISBN; }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
+    /** @brief Imposta l'ISBN del libro */
+    public void setISBN(String ISBN) { this.ISBN = ISBN; }
 
-    public String getTitolo() {
-        return titolo;
-    }
+    /** @brief Restituisce il titolo del libro */
+    public String getTitolo() { return titolo; }
 
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
-    }
+    /** @brief Imposta il titolo del libro */
+    public void setTitolo(String titolo) { this.titolo = titolo; }
 
-    public String getAutore() {
-        return autore;
-    }
+    /** @brief Restituisce l'autore del libro */
+    public String getAutore() { return autore; }
 
-    public void setAutore(String autore) {
-        this.autore = autore;
-    }
+    /** @brief Imposta l'autore del libro */
+    public void setAutore(String autore) { this.autore = autore; }
 
-    public int getAnnoPubblicazione() {
-        return annoPubblicazione;
-    }
+    /** @brief Restituisce l'anno di pubblicazione */
+    public int getAnnoPubblicazione() { return annoPubblicazione; }
 
-    public void setAnnoPubblicazione(int annoPublicazione) {
-        this.annoPubblicazione = annoPublicazione;
-    }
+    /** @brief Imposta l'anno di pubblicazione */
+    public void setAnnoPubblicazione(int annoPubblicazione) { this.annoPubblicazione = annoPubblicazione; }
 
-    public String getCategoria() {
-        return Categoria;
-    }
+    /** @brief Restituisce la categoria del libro */
+    public String getCategoria() { return Categoria; }
 
-    public void setCategoria(String Categoria) {
-        this.Categoria = Categoria;
-    }
+    /** @brief Imposta la categoria del libro */
+    public void setCategoria(String Categoria) { this.Categoria = Categoria; }
 
-    public int getCopieTotali() {
-        return copieTotali;
-    }
+    /** @brief Restituisce il numero totale di copie */
+    public int getCopieTotali() { return copieTotali; }
 
-    public void setCopieTotali(int copieTotali) {
-        this.copieTotali = copieTotali;
-    }
+    /** @brief Imposta il numero totale di copie */
+    public void setCopieTotali(int copieTotali) { this.copieTotali = copieTotali; }
 
-    public int getCopieDisponibili() {
-        return copieDisponibili;
-    }
+    /** @brief Restituisce il numero di copie disponibili */
+    public int getCopieDisponibili() { return copieDisponibili; }
 
-    public void setCopieDisponibili(int copieDisponibili) {
-        this.copieDisponibili = copieDisponibili;
+    /** @brief Imposta il numero di copie disponibili */
+    public void setCopieDisponibili(int copieDisponibili) { this.copieDisponibili = copieDisponibili; }
+
+    /**
+     * @brief Controlla se il libro Ã¨ valido
+     * @return true se tutti i campi obbligatori sono valorizzati correttamente e ISBN valido, false altrimenti
+     */
+    public boolean isValid() {
+        if (titolo != null && autore != null && annoPubblicazione > 0
+            && ISBN != null && copieDisponibili > 0 && copieTotali > 0) {
+            return ISBN.matches("\\d{13}");
+        }
+        return false;
     }
-    
-    public boolean isValid(){
-        if ((titolo != null ) && (autore != null ) && (annoPubblicazione > 0 ) && (ISBN != null ) && (copieDisponibili > 0 ) && (copieTotali > 0)){
-        return ISBN.matches("\\d{13}");
-    }   
-    return false;
-    }
-    
 }

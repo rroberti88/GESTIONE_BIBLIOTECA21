@@ -8,72 +8,76 @@ package it.unisa.gestionebiblioteca21.model;
 
 import java.time.LocalDate;
 
+/**
+ * @class Prestito
+ * @brief Rappresenta un prestito di un libro effettuato da un utente.
+ */
 public class Prestito {
-  private String libro;
-  private String utente;
-  private LocalDate dataPrestito ; 
-  private LocalDate dataScadenza;
-  private LocalDate dataRestituzione;
- 
-  
-  public Prestito(String libro, String utente, LocalDate dataPrestito, LocalDate dataScadenza, LocalDate dataRestituzione){
-      this.libro = libro;
-      this.utente = utente;
-      this.dataPrestito = dataPrestito;
-      this.dataScadenza = dataScadenza;
-      this.dataRestituzione = dataRestituzione;
-      
-  }
+    private String libro; /**< ISBN del libro prestato */
+    private String utente; /**< Matricola dell'utente */
+    private LocalDate dataPrestito; /**< Data in cui il prestito è stato effettuato */
+    private LocalDate dataScadenza; /**< Data di scadenza del prestito */
+    private LocalDate dataRestituzione; /**< Data di restituzione del libro, null se non restituito */
 
-    public String getLibro() {
-        return libro;
-    }
-
-    public void setLibro(String libro) {
+    /**
+     * @brief Costruttore della classe Prestito.
+     * @param libro ISBN del libro
+     * @param utente Matricola dell'utente
+     * @param dataPrestito Data del prestito
+     * @param dataScadenza Data di scadenza del prestito
+     * @param dataRestituzione Data di restituzione (null se non ancora restituito)
+     */
+    public Prestito(String libro, String utente, LocalDate dataPrestito, LocalDate dataScadenza, LocalDate dataRestituzione){
         this.libro = libro;
-    }
-
-    public String getUtente() {
-        return utente;
-    }
-
-    public void setUtente(String utente) {
         this.utente = utente;
-    }
-
-    public LocalDate getDataPrestito() {
-        return dataPrestito;
-    }
-
-    public void setDataPrestito(LocalDate dataPrestito) {
         this.dataPrestito = dataPrestito;
-    }
-
-    public LocalDate getDataScadenza() {
-        return dataScadenza;
-    }
-
-    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
-    }
-
-
-    public LocalDate getDataRestituzione() {
-        return dataRestituzione;
-    }
-
-    public void setDataRestituzione(LocalDate dataRestituzione) {
         this.dataRestituzione = dataRestituzione;
     }
-  
- 
-   public boolean isOverdue(){
-       return dataRestituzione== null && LocalDate.now().isAfter(dataScadenza);
-            
-}
-   public boolean isLent(){
-     return dataRestituzione== null;
-}
-   
-}
 
+    /** @brief Restituisce l'ISBN del libro */
+    public String getLibro() { return libro; }
+
+    /** @brief Imposta l'ISBN del libro */
+    public void setLibro(String libro) { this.libro = libro; }
+
+    /** @brief Restituisce la matricola dell'utente */
+    public String getUtente() { return utente; }
+
+    /** @brief Imposta la matricola dell'utente */
+    public void setUtente(String utente) { this.utente = utente; }
+
+    /** @brief Restituisce la data del prestito */
+    public LocalDate getDataPrestito() { return dataPrestito; }
+
+    /** @brief Imposta la data del prestito */
+    public void setDataPrestito(LocalDate dataPrestito) { this.dataPrestito = dataPrestito; }
+
+    /** @brief Restituisce la data di scadenza del prestito */
+    public LocalDate getDataScadenza() { return dataScadenza; }
+
+    /** @brief Imposta la data di scadenza del prestito */
+    public void setDataScadenza(LocalDate dataScadenza) { this.dataScadenza = dataScadenza; }
+
+    /** @brief Restituisce la data di restituzione */
+    public LocalDate getDataRestituzione() { return dataRestituzione; }
+
+    /** @brief Imposta la data di restituzione */
+    public void setDataRestituzione(LocalDate dataRestituzione) { this.dataRestituzione = dataRestituzione; }
+
+    /**
+     * @brief Controlla se il prestito è scaduto.
+     * @return true se il libro non è stato restituito e la data attuale è successiva alla scadenza
+     */
+    public boolean isOverdue() {
+        return dataRestituzione == null && LocalDate.now().isAfter(dataScadenza);
+    }
+
+    /**
+     * @brief Controlla se il libro è attualmente in prestito.
+     * @return true se il libro non è stato ancora restituito
+     */
+    public boolean isLent() {
+        return dataRestituzione == null;
+    }
+}
