@@ -3,94 +3,64 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.Libro;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author cosim
- */
 public class ModificaLibroControllerTest {
-    
-    public ModificaLibroControllerTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+
+    private Object getPrivateField(Object target, String fieldName) throws Exception {
+        Field field = target.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(target);
     }
 
-    /**
-     * Test of setCatalogo method, of class ModificaLibroController.
-     */
     @Test
-    public void testSetCatalogo() {
-        System.out.println("setCatalogo");
-        CatalogoLibri catalogo = null;
-        ModificaLibroController instance = new ModificaLibroController();
-        instance.setCatalogo(catalogo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetCatalogo() throws Exception {
+        ModificaLibroController controller = new ModificaLibroController();
+        CatalogoLibri catalogo = new CatalogoLibri();
+
+        controller.setCatalogo(catalogo);
+
+        assertSame(catalogo, getPrivateField(controller, "catalogo"));
     }
 
-    /**
-     * Test of setArchivio method, of class ModificaLibroController.
-     */
     @Test
-    public void testSetArchivio() {
-        System.out.println("setArchivio");
-        ArchivioDati archivio = null;
-        ModificaLibroController instance = new ModificaLibroController();
-        instance.setArchivio(archivio);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetArchivio() throws Exception {
+        ModificaLibroController controller = new ModificaLibroController();
+        ArchivioDati archivio = new ArchivioDati();
+
+        controller.setArchivio(archivio);
+
+        assertSame(archivio, getPrivateField(controller, "archivio"));
     }
 
-    /**
-     * Test of setStage method, of class ModificaLibroController.
-     */
     @Test
-    public void testSetStage() {
-        System.out.println("setStage");
+    public void testSetStage() throws Exception {
+        ModificaLibroController controller = new ModificaLibroController();
         Stage stage = null;
-        ModificaLibroController instance = new ModificaLibroController();
-        instance.setStage(stage);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        controller.setStage(stage);
+
+        assertSame(stage, getPrivateField(controller, "stage"));
     }
 
-    /**
-     * Test of setLibro method, of class ModificaLibroController.
-     */
     @Test
     public void testSetLibro() {
-        System.out.println("setLibro");
-        Libro libro = null;
-        ModificaLibroController instance = new ModificaLibroController();
-        instance.setLibro(libro);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ModificaLibroController controller = new ModificaLibroController();
+        Libro libro = new Libro("123", "Titolo", "Autore", 2020, "Cat", 2, 2);
+
+        assertThrows(NullPointerException.class, () -> {
+            controller.setLibro(libro);
+        });
     }
-    
 }

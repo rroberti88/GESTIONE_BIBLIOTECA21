@@ -3,134 +3,84 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
-import it.unisa.gestionebiblioteca21.model.Autenticazione;
-import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
-import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
-import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
+import it.unisa.gestionebiblioteca21.model.*;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author Felice Iandoli
- */
 public class GestioneCatalogoControllerTest {
-    
-    public GestioneCatalogoControllerTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+
+    private Object getPrivateField(Object target, String fieldName) throws Exception {
+        Field field = target.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(target);
     }
 
-    /**
-     * Test of setCatalogo method, of class GestioneCatalogoController.
-     */
     @Test
     public void testSetCatalogo() {
-        System.out.println("setCatalogo");
-        CatalogoLibri catalogo = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setCatalogo(catalogo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        GestioneCatalogoController controller = new GestioneCatalogoController();
+        CatalogoLibri catalogo = new CatalogoLibri();
+
+        assertThrows(NullPointerException.class, () -> {
+        controller.setCatalogo(catalogo);
+    });
+}
+
+
+    @Test
+    public void testSetArchivio() throws Exception {
+        GestioneCatalogoController controller = new GestioneCatalogoController();
+        ArchivioDati archivio = new ArchivioDati();
+
+        controller.setArchivio(archivio);
+
+        assertSame(archivio, getPrivateField(controller, "archivio"));
     }
 
-    /**
-     * Test of setArchivio method, of class GestioneCatalogoController.
-     */
     @Test
-    public void testSetArchivio() {
-        System.out.println("setArchivio");
-        ArchivioDati archivio = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setArchivio(archivio);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setModelAut method, of class GestioneCatalogoController.
-     */
-    @Test
-    public void testSetModelAut() {
-        System.out.println("setModelAut");
+    public void testSetModelAut() throws Exception {
+        GestioneCatalogoController controller = new GestioneCatalogoController();
         Autenticazione aut = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setModelAut(aut);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        controller.setModelAut(aut);
+
+        assertSame(aut, getPrivateField(controller, "autenticazione"));
     }
 
-    /**
-     * Test of setElencoUtenti method, of class GestioneCatalogoController.
-     */
     @Test
-    public void testSetElencoUtenti() {
-        System.out.println("setElencoUtenti");
-        ElencoUtenti elenco = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setElencoUtenti(elenco);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetElencoUtenti() throws Exception {
+        GestioneCatalogoController controller = new GestioneCatalogoController();
+        ElencoUtenti elenco = new ElencoUtenti();
+
+        controller.setElencoUtenti(elenco);
+
+        assertSame(elenco, getPrivateField(controller, "elencoUtenti"));
     }
 
-    /**
-     * Test of setListaPrestiti method, of class GestioneCatalogoController.
-     */
     @Test
-    public void testSetListaPrestiti() {
-        System.out.println("setListaPrestiti");
-        ElencoPrestiti elenco = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setListaPrestiti(elenco);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetListaPrestiti() throws Exception {
+        GestioneCatalogoController controller = new GestioneCatalogoController();
+        ElencoPrestiti elenco = new ElencoPrestiti();
+
+        controller.setListaPrestiti(elenco);
+
+        assertSame(elenco, getPrivateField(controller, "elencoPrestiti"));
     }
 
-    /**
-     * Test of setStage method, of class GestioneCatalogoController.
-     */
     @Test
-    public void testSetStage() {
-        System.out.println("setStage");
+    public void testSetStage() throws Exception {
+        GestioneCatalogoController controller = new GestioneCatalogoController();
         Stage stage = null;
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.setStage(stage);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of initialize method, of class GestioneCatalogoController.
-     */
-    @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        GestioneCatalogoController instance = new GestioneCatalogoController();
-        instance.initialize();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        controller.setStage(stage);
+
+        assertSame(stage, getPrivateField(controller, "stage"));
     }
-    
 }
