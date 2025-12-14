@@ -12,5 +12,19 @@
       "month": 12,
       "day": 15
     }
+  },
+  {
+    "libro": "1234567890123",
+    "utente": "0612709720",
+    "dataPrestito": {
+      "year": 2020,
+      "month": 12,
+      "day": 13
+    },
+    "dataScadenza": {
+      "year": 2025,
+      "month": 12,
+      "day": 24
+    }
   }
 ]

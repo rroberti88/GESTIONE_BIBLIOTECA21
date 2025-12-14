@@ -78,7 +78,7 @@
         </VBox>
 
         <TextField fx:id="txtRicercaUtente"
-                   promptText="Cerca per nome, cognome, matricola o contatto..."
+                   promptText="Cerca per nome, cognome, matricola..."
                    prefWidth="816"
                    style="-fx-background-color: rgba(255,255,255,0.12);
                           -fx-background-radius: 14;

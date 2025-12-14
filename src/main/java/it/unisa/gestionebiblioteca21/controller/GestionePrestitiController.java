@@ -272,6 +272,7 @@ public class GestionePrestitiController {
 
         tableview.getItems().setAll(risultati);
     }
+    
 
     /**
      * @brief Torna alla Dashboard principale del bibliotecario.

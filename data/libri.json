@@ -16,5 +16,14 @@
     "Categoria": "Inf",
     "copieTotali": 4,
     "copieDisponibili": 4
+  },
+  {
+    "ISBN": "1234567890123",
+    "titolo": "vvr",
+    "autore": "rvrvr",
+    "annoPubblicazione": 2020,
+    "Categoria": "narrativa",
+    "copieTotali": 3,
+    "copieDisponibili": 2
   }
 ]
