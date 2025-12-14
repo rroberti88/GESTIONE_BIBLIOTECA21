@@ -86,7 +86,6 @@ public class InserimentoUtenteController {
             mostraErrore(e.getMessage());
         } catch (Exception e) {
             mostraErrore("Errore sconosciuto. Controlla i dati inseriti.");
-            e.printStackTrace();
         }
     }
 

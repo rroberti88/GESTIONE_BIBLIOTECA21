@@ -39,46 +39,60 @@ public class Libro {
         this.copieDisponibili = copieDisponibili;
     }
 
-    /** @brief Restituisce l'ISBN del libro */
+    /**
+     * @return  *  @brief Restituisce l'ISBN del libro */
     public String getISBN() { return ISBN; }
 
-    /** @brief Imposta l'ISBN del libro */
+    /**
+     * @param ISBN *  @brief Imposta l'ISBN del libro */
     public void setISBN(String ISBN) { this.ISBN = ISBN; }
 
-    /** @brief Restituisce il titolo del libro */
+    /**
+     * @return  *  @brief Restituisce il titolo del libro */
     public String getTitolo() { return titolo; }
 
-    /** @brief Imposta il titolo del libro */
+    /**
+     * @param titolo *  @brief Imposta il titolo del libro */
     public void setTitolo(String titolo) { this.titolo = titolo; }
 
-    /** @brief Restituisce l'autore del libro */
+    /**
+     * @return  *  @brief Restituisce l'autore del libro */
     public String getAutore() { return autore; }
 
-    /** @brief Imposta l'autore del libro */
+    /**
+     * @param autore *  @brief Imposta l'autore del libro */
     public void setAutore(String autore) { this.autore = autore; }
 
-    /** @brief Restituisce l'anno di pubblicazione */
+    /**
+     * @return  *  @brief Restituisce l'anno di pubblicazione */
     public int getAnnoPubblicazione() { return annoPubblicazione; }
 
-    /** @brief Imposta l'anno di pubblicazione */
+    /**
+     * @param annoPubblicazione *  @brief Imposta l'anno di pubblicazione */
     public void setAnnoPubblicazione(int annoPubblicazione) { this.annoPubblicazione = annoPubblicazione; }
 
-    /** @brief Restituisce la categoria del libro */
+    /**
+     * @return  *  @brief Restituisce la categoria del libro */
     public String getCategoria() { return Categoria; }
 
-    /** @brief Imposta la categoria del libro */
+    /**
+     * @param Categoria *  @brief Imposta la categoria del libro */
     public void setCategoria(String Categoria) { this.Categoria = Categoria; }
 
-    /** @brief Restituisce il numero totale di copie */
+    /**
+     * @return  *  @brief Restituisce il numero totale di copie */
     public int getCopieTotali() { return copieTotali; }
 
-    /** @brief Imposta il numero totale di copie */
+    /**
+     * @param copieTotali *  @brief Imposta il numero totale di copie */
     public void setCopieTotali(int copieTotali) { this.copieTotali = copieTotali; }
 
-    /** @brief Restituisce il numero di copie disponibili */
+    /**
+     * @return  *  @brief Restituisce il numero di copie disponibili */
     public int getCopieDisponibili() { return copieDisponibili; }
 
-    /** @brief Imposta il numero di copie disponibili */
+    /**
+     * @param copieDisponibili *  @brief Imposta il numero di copie disponibili */
     public void setCopieDisponibili(int copieDisponibili) { this.copieDisponibili = copieDisponibili; }
 
     /**

@@ -8,7 +8,9 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.*;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
+import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,22 +30,28 @@ public class HomeController {
     private ArchivioDati archivio;
     private Stage stage;
 
-    /** Imposta il catalogo dei libri */
+        /** Imposta il catalogo dei libri
+     * @param c */
     public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
 
-    /** Imposta l'elenco degli utenti */
+    /** Imposta l'elenco degli utenti
+     * @param e */
     public void setElencoUtenti(ElencoUtenti e) { this.elencoUtenti = e; }
 
-    /** Imposta la lista dei prestiti */
+    /** Imposta la lista dei prestiti
+     * @param p */
     public void setListaPrestiti(ElencoPrestiti p) { this.elencoPrestiti = p; }
 
-    /** Imposta il modello di autenticazione */
+    /** Imposta il modello di autenticazione
+     * @param a */
     public void setModelAut(Autenticazione a) { this.autenticazione = a; }
 
-    /** Imposta l'archivio dati */
+    /** Imposta l'archivio dati
+     * @param ar */
     public void setArchivio(ArchivioDati ar) { this.archivio = ar; }
 
-    /** Imposta lo stage della finestra */
+    /** Imposta lo stage della finestra
+     * @param stage */
     public void setStage(Stage stage) { this.stage = stage; }
 
     /**
@@ -68,10 +76,13 @@ public class HomeController {
             stage.setTitle("Gestione Catalogo Libri");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Gestione Libri: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+            "Impossibile aprire la finestra Gestione Libri.").showAndWait();
         }
-    }
+        }
+    
 
     /**
      * Gestisce la navigazione verso la schermata di gestione utenti.
@@ -95,8 +106,10 @@ public class HomeController {
             stage.setTitle("Gestione Utenti");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Gestione Utenti: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+            "Impossibile aprire la finestra Gestione Libri.").showAndWait();
         }
     }
 
@@ -122,8 +135,10 @@ public class HomeController {
             stage.setTitle("Gestione Prestiti");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Gestione Prestiti: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+            "Impossibile aprire la finestra Gestione Libri.").showAndWait();
         }
     }
 
@@ -149,8 +164,10 @@ public class HomeController {
             stage.setTitle("Login");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Logout: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+            "Impossibile aprire la finestra Logout.").showAndWait();
         }
     }
 }

@@ -35,34 +35,44 @@ public class Prestito {
         this.dataRestituzione = dataRestituzione;
     }
 
-    /** @brief Restituisce l'ISBN del libro */
+    /**
+     * @return  *  @brief Restituisce l'ISBN del libro */
     public String getLibro() { return libro; }
 
-    /** @brief Imposta l'ISBN del libro */
+    /**
+     * @param libro *  @brief Imposta l'ISBN del libro */
     public void setLibro(String libro) { this.libro = libro; }
 
-    /** @brief Restituisce la matricola dell'utente */
+    /**
+     * @return  *  @brief Restituisce la matricola dell'utente */
     public String getUtente() { return utente; }
 
-    /** @brief Imposta la matricola dell'utente */
+    /**
+     * @param utente *  @brief Imposta la matricola dell'utente */
     public void setUtente(String utente) { this.utente = utente; }
 
-    /** @brief Restituisce la data del prestito */
+    /**
+     * @return  *  @brief Restituisce la data del prestito */
     public LocalDate getDataPrestito() { return dataPrestito; }
 
-    /** @brief Imposta la data del prestito */
+    /**
+     * @param dataPrestito *  @brief Imposta la data del prestito */
     public void setDataPrestito(LocalDate dataPrestito) { this.dataPrestito = dataPrestito; }
 
-    /** @brief Restituisce la data di scadenza del prestito */
+    /**
+     * @return  *  @brief Restituisce la data di scadenza del prestito */
     public LocalDate getDataScadenza() { return dataScadenza; }
 
-    /** @brief Imposta la data di scadenza del prestito */
+    /**
+     * @param dataScadenza *  @brief Imposta la data di scadenza del prestito */
     public void setDataScadenza(LocalDate dataScadenza) { this.dataScadenza = dataScadenza; }
 
-    /** @brief Restituisce la data di restituzione */
+    /**
+     * @return  *  @brief Restituisce la data di restituzione */
     public LocalDate getDataRestituzione() { return dataRestituzione; }
 
-    /** @brief Imposta la data di restituzione */
+    /**
+     * @param dataRestituzione *  @brief Imposta la data di restituzione */
     public void setDataRestituzione(LocalDate dataRestituzione) { this.dataRestituzione = dataRestituzione; }
 
     /**

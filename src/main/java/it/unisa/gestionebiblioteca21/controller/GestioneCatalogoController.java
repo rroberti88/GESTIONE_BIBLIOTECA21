@@ -8,6 +8,7 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.*;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -39,7 +40,8 @@ public class GestioneCatalogoController {
     @FXML private TableColumn<Libro, String> colIsbn;
     @FXML private TableColumn<Libro, Integer> colCopieDisponibili;
 
-    /** Imposta il catalogo da gestire e aggiorna la tabella */
+    /** Imposta il catalogo da gestire e aggiorna la tabella
+     * @param catalogo */
     public void setCatalogo(CatalogoLibri catalogo) {
         this.catalogo = catalogo;
         aggiornaTabella();
@@ -69,7 +71,7 @@ public class GestioneCatalogoController {
             tableview.getItems().setAll(catalogo.getListaLibri());
     }
 
-    /** Verifica se il catalogo Ã¨ stato inizializzato */
+    /** Verifica se il catalogo è stato inizializzato */
     private boolean checkCatalogo() {
         if (catalogo == null) {
             mostraErrore("Catalogo non inizializzato.");
@@ -104,8 +106,10 @@ public class GestioneCatalogoController {
             archivio.salvaLibri(catalogo.getListaLibri());
             aggiornaTabella();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Inserimento Libro " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+             "Impossibile aprire la finestra di inserimento libro.").showAndWait();
         }
     }
 
@@ -143,17 +147,19 @@ public class GestioneCatalogoController {
             archivio.salvaLibri(catalogo.getListaLibri());
             aggiornaTabella();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Modifica Libro " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+             "Impossibile aprire la finestra di modifica del libro.").showAndWait();
         }
     }
 
     /** Cancella il libro selezionato dal catalogo */
     @FXML
     private void handleCancellazioneLibro() {
-
+        
         if (!checkCatalogo()) return;
-
+    try{
         Libro sel = tableview.getSelectionModel().getSelectedItem();
         if (sel == null) {
             mostraWarning("Seleziona un libro da cancellare.");
@@ -169,6 +175,10 @@ public class GestioneCatalogoController {
                 aggiornaTabella();
             }
         });
+    }catch (Exception e) {
+            System.err.println("Errore nella Cancellazione Libro " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile cancellare il libro.").showAndWait();
+        }
     }
 
     /** Ricerca libri filtrando per titolo, autore o ISBN */
@@ -211,9 +221,12 @@ public class GestioneCatalogoController {
             stage.setTitle("Dashboard Bibliotecario");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {
+             System.err.println("Errore apertura finestra Dashboard principale " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+             "Impossibile aprire la finestra della dashboard.").showAndWait();
+}
+
     }
 
     /** Mostra un messaggio di errore */

@@ -74,9 +74,9 @@ public class ArchivioDati {
             return gson.fromJson(r, type);
         } catch (FileNotFoundException e) {
             return gson.fromJson("[]", type);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return gson.fromJson("[]", type);
-        }
+        }catch (Exception e) {
+            throw new RuntimeException("Impossibile convertire il JSON", e);
+}
+
     }
 }

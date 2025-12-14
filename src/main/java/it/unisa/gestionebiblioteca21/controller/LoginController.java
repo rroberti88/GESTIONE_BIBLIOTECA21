@@ -8,6 +8,7 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.*;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -111,8 +112,9 @@ public class LoginController {
             stage.setTitle("Dashboard Bibliotecario");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Dashboard principale " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile aprire la finestra della Dashboard principale.").showAndWait();
         }
     }
 }

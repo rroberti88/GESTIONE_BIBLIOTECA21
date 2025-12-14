@@ -40,34 +40,44 @@ public class Utente {
         this.numeroPrestiti = numeroPrestiti;
     }
 
-    /** @brief Restituisce la matricola dell'utente */
+    /**
+     * @return  *  @brief Restituisce la matricola dell'utente */
     public String getMatricola() { return matricola; }
 
-    /** @brief Imposta la matricola dell'utente */
+    /**
+     * @param matricola *  @brief Imposta la matricola dell'utente */
     public void setMatricola(String matricola) { this.matricola = matricola; }
 
-    /** @brief Restituisce il nome dell'utente */
+    /**
+     * @return  *  @brief Restituisce il nome dell'utente */
     public String getNome() { return nome; }
 
-    /** @brief Imposta il nome dell'utente */
+    /**
+     * @param nome *  @brief Imposta il nome dell'utente */
     public void setNome(String nome) { this.nome = nome; }
 
-    /** @brief Restituisce il cognome dell'utente */
+    /**
+     * @return  *  @brief Restituisce il cognome dell'utente */
     public String getCognome() { return cognome; }
 
-    /** @brief Imposta il cognome dell'utente */
+    /**
+     * @param cognome *  @brief Imposta il cognome dell'utente */
     public void setCognome(String cognome) { this.cognome = cognome; }
 
-    /** @brief Restituisce l'email dell'utente */
+    /**
+     * @return  *  @brief Restituisce l'email dell'utente */
     public String getEmail() { return email; }
 
-    /** @brief Imposta l'email dell'utente */
+    /**
+     * @param email *  @brief Imposta l'email dell'utente */
     public void setEmail(String email) { this.email = email; }
 
-    /** @brief Restituisce il numero di prestiti attivi dell'utente */
+    /**
+     * @return  *  @brief Restituisce il numero di prestiti attivi dell'utente */
     public int getNumeroPrestiti() { return numeroPrestiti; }
 
-    /** @brief Imposta il numero di prestiti attivi dell'utente */
+    /**
+     * @param numeroPrestiti *  @brief Imposta il numero di prestiti attivi dell'utente */
     public void setNumeroPrestiti(int numeroPrestiti) { this.numeroPrestiti = numeroPrestiti; }
 
     /**

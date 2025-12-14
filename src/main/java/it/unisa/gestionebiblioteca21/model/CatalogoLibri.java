@@ -60,7 +60,7 @@ public class CatalogoLibri {
 
         for (Libro l : listaLibri) {
             if (l.getISBN().equals(libro.getISBN())) {
-                throw new IllegalArgumentException("Libro giÃ  presente");
+                throw new IllegalArgumentException("Libro con ISBN già  presente");
             }
         }
         listaLibri.add(libro);

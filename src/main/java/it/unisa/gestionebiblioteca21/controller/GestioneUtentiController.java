@@ -8,6 +8,7 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.*;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -38,33 +39,39 @@ public class GestioneUtentiController {
     @FXML private TableColumn<Utente, String> colMatricola;
     @FXML private TableColumn<Utente, String> colContatti;  
 
-    /** Imposta l'elenco utenti da gestire */
+    /** Imposta l'elenco utenti da gestire
+     * @param elenco */
     public void setElencoUtenti(ElencoUtenti elenco) {
         this.elencoUtenti = elenco;
         aggiorna();
     }
 
-    /** Imposta il catalogo dei libri */
+    /** Imposta il catalogo dei libri
+     * @param c */
     public void setCatalogo(CatalogoLibri c) {
         this.catalogo = c;
     }
 
-    /** Imposta la lista dei prestiti */
+    /** Imposta la lista dei prestiti
+     * @param p */
     public void setListaPrestiti(ElencoPrestiti p) {
         this.elencoPrestiti = p;
     }
 
-    /** Imposta l'archivio dati */
+    /** Imposta l'archivio dati
+     * @param archivio */
     public void setArchivio(ArchivioDati archivio) {
         this.archivio = archivio;
     }
 
-    /** Imposta il modello di autenticazione */
+    /** Imposta il modello di autenticazione
+     * @param modelAut */
     public void setModelAut(Autenticazione modelAut) {
         this.autenticazione = modelAut;
     }
 
-    /** Imposta lo stage della finestra */
+    /** Imposta lo stage della finestra
+     * @param stage */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -112,8 +119,9 @@ public class GestioneUtentiController {
             }
             aggiorna();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Inserimento Utente " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile aprire la finestra di inserimento utente.").showAndWait();
         }
     }
 
@@ -149,8 +157,9 @@ public class GestioneUtentiController {
             }
             aggiorna();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Modifica Utente " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile aprire la finestra di modifica dell'utente.").showAndWait();
         }
     }
 
@@ -176,7 +185,8 @@ public class GestioneUtentiController {
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Errore nella Cancellazione Utente " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile cancellare l'utente.").showAndWait();
         }
     }
 
@@ -213,8 +223,10 @@ public class GestioneUtentiController {
             stage.setTitle("Dashboard Bibliotecario");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Dashboard principale " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+             "Impossibile aprire la finestra della dashboard.").showAndWait();
         }
     }
 }

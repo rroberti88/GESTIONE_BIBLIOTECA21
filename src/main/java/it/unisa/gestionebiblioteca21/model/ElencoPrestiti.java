@@ -42,7 +42,6 @@ public class ElencoPrestiti {
      * @param libro Libro associato al prestito
      * @throws IllegalArgumentException se prestito o libro sono null o campi mancanti
      * @throws IllegalStateException se l'utente ha già 3 prestiti o il libro non ha copie disponibili
-     * @return void
      */
     public void registraPrestito(Prestito prestito, Libro libro) {
 

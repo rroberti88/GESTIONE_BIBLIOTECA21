@@ -8,6 +8,7 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.model.*;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -45,7 +46,6 @@ public class GestionePrestitiController {
     /**
      * @brief Imposta la lista dei prestiti e aggiorna la TableView.
      * @param e Lista dei prestiti da visualizzare
-     * @return void
      */
     public void setListaPrestiti(ElencoPrestiti e) {
         this.elencoPrestiti = e;
@@ -55,42 +55,36 @@ public class GestionePrestitiController {
     /**
      * @brief Imposta il catalogo dei libri.
      * @param c Catalogo dei libri
-     * @return void
      */
     public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
 
     /**
      * @brief Imposta l'elenco degli utenti.
      * @param u Elenco utenti
-     * @return void
      */
     public void setElencoUtenti(ElencoUtenti u) { this.elencoUtenti = u; }
 
     /**
      * @brief Imposta l'archivio dati.
      * @param a Archivio dati
-     * @return void
      */
     public void setArchivio(ArchivioDati a) { this.archivio = a; }
 
     /**
      * @brief Imposta il modello di autenticazione.
      * @param a Modello autenticazione
-     * @return void
      */
     public void setModelAut(Autenticazione a) { this.autenticazione = a; }
 
     /**
      * @brief Imposta lo stage principale dell'applicazione.
      * @param s Stage principale
-     * @return void
      */
     public void setStage(Stage s) { this.stage = s; }
 
     /**
      * @brief Inizializza le colonne della TableView, i colori delle righe
      * e il listener per la ricerca dei prestiti.
-     * @return void
      */
     @FXML
     public void initialize() {
@@ -144,7 +138,6 @@ public class GestionePrestitiController {
     /**
      * @brief Apre la finestra per registrare un nuovo prestito.
      * Salva i dati su archivio dopo la chiusura del popup.
-     * @return void
      */
     @FXML
     public void handleRegistraPrestito() {
@@ -170,15 +163,16 @@ public class GestionePrestitiController {
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
             aggiorna();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Errore apertura finestra Registrazione Prestito: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,
+            "Impossibile aprire la finestra di registrazione del prestito.").showAndWait();
         }
     }
 
     /**
      * @brief Apre la finestra per registrare la restituzione di un prestito.
      * Salva i dati su archivio dopo la chiusura del popup.
-     * @return void
      */
     @FXML
     public void handleRegistraRestituzione() {
@@ -204,16 +198,18 @@ public class GestionePrestitiController {
             archivio.salvaLibri(catalogo.getListaLibri());
             aggiorna();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        }  catch (IOException e) {
+        System.err.println("Errore apertura finestra Registrazione Restituzione: " + e.getMessage());
+        new Alert(Alert.AlertType.ERROR,
+             "Impossibile aprire la finestra di registrazione della restituzione.").showAndWait();
+}
+
     }
 
     /**
      * @brief Elimina il prestito selezionato nella TableView.
      * Aggiorna il numero di copie disponibili del libro associato.
      * Salva i dati modificati su archivio.
-     * @return void
      */
     @FXML
     public void handleCancellazionePrestito() {
@@ -247,14 +243,14 @@ public class GestionePrestitiController {
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Errore nella Cancellazione Prestito " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Impossibile cancellare il prestito.").showAndWait();
         }
     }
 
     /**
      * @brief Esegue la ricerca dei prestiti in base alla chiave inserita.
      * Aggiorna la TableView con i risultati trovati.
-     * @return void
      */
     @FXML
     public void handleRicercaPrestito() {
@@ -277,7 +273,6 @@ public class GestionePrestitiController {
     /**
      * @brief Torna alla Dashboard principale del bibliotecario.
      * Carica la view HomeView e imposta i modelli e dati necessari.
-     * @return void
      */
     @FXML
     public void handleBackDashboard() {
@@ -299,8 +294,11 @@ public class GestionePrestitiController {
             stage.setTitle("Dashboard Bibliotecario");
             stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {
+            System.err.println("Errore durante la cancellazione del prestito: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR,"Errore durante la cancellazione del prestito.")
+            .showAndWait();
+}
+
     }
 }

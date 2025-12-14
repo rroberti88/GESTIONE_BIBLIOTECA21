@@ -73,14 +73,12 @@ public class RegistraPrestitoController {
             String isbn = txtISBN.getText().trim();
             String matricola = txtMatricola.getText().trim();
 
-            // Validazione campi obbligatori
             if (isbn.isEmpty() || matricola.isEmpty() ||
                 txtDataPrestito.getText().trim().isEmpty() || txtDataScadenza.getText().trim().isEmpty()) {
                 mostraErrore("Inserisci tutti i campi: ISBN, Matricola, Data Prestito e Data Scadenza.");
                 return;
             }
 
-            // Parsing date
             LocalDate dataPrestito;
             LocalDate dataScadenza;
             try {
@@ -91,13 +89,11 @@ public class RegistraPrestitoController {
                 return;
             }
 
-            // Controllo logico date
             if (!dataScadenza.isAfter(dataPrestito)) {
                 mostraErrore("La data di scadenza deve essere successiva alla data di prestito.");
                 return;
             }
 
-            // Recupero libro e utente
             Libro libroObj = catalogo.cercaLibroPerISBN(isbn);
             if (libroObj == null) {
                 mostraErrore("Nessun libro trovato con ISBN: " + isbn);
@@ -110,13 +106,10 @@ public class RegistraPrestitoController {
                 return;
             }
 
-            // Creazione prestito
             Prestito prestito = new Prestito(isbn, matricola, dataPrestito, dataScadenza, null);
 
-            // Registrazione prestito
             elencoPrestiti.registraPrestito(prestito, libroObj);
 
-            // Salvataggio su archivio
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
 
             stage.close();
@@ -125,7 +118,6 @@ public class RegistraPrestitoController {
             mostraErrore(e.getMessage());
         } catch (Exception e) {
             mostraErrore("Errore nei dati inseriti. Controlla formati e valori.");
-            e.printStackTrace();
         }
     }
 

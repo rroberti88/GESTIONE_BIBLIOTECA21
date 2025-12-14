@@ -36,28 +36,24 @@ public class RegistraRestituzioneController {
     /**
      * @brief Imposta la lista dei prestiti.
      * @param e ElencoPrestiti da utilizzare
-     * @return void
      */
     public void setListaPrestiti(ElencoPrestiti e) { this.elencoPrestiti = e; }
 
     /**
      * @brief Imposta l'archivio dati.
      * @param a ArchivioDati da utilizzare
-     * @return void
      */
     public void setArchivio(ArchivioDati a) { this.archivio = a; }
 
     /**
      * @brief Imposta il catalogo dei libri.
      * @param c CatalogoLibri da utilizzare
-     * @return void
      */
     public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
 
     /**
      * @brief Imposta lo stage della finestra popup.
      * @param s Stage da utilizzare
-     * @return void
      */
     public void setStage(Stage s) { this.stage = s; }
 
@@ -125,7 +121,6 @@ public class RegistraRestituzioneController {
 
         } catch (Exception e) {
             mostraErrore("Errore durante la restituzione.");
-            e.printStackTrace();
         }
     }
 

@@ -1,9 +1,9 @@
 [
   {
     "matricola": "0612709470",
-    "nome": "mario",
+    "nome": "Mario",
     "cognome": "Rossi",
-    "email": "unadd@uni.it",
+    "email": "mario@uni.it",
     "numeroPrestiti": 0
   },
   {
@@ -11,6 +11,13 @@
     "nome": "Luca",
     "cognome": "Bianchi",
     "email": "luca@uni.it",
+    "numeroPrestiti": 0
+  },
+  {
+    "matricola": "1234567890",
+    "nome": "Andrea",
+    "cognome": "Verdi",
+    "email": "verdia@gmail.com",
     "numeroPrestiti": 0
   }
 ]
