@@ -1,16 +1,1 @@
-[
-  {
-    "libro": "9781234567890",
-    "utente": "U001",
-    "dataPrestito": {
-      "year": 2025,
-      "month": 12,
-      "day": 13
-    },
-    "dataScadenza": {
-      "year": 2025,
-      "month": 12,
-      "day": 20
-    }
-  }
-]
+[]

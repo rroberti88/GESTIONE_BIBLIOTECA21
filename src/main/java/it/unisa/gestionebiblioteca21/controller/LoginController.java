@@ -69,6 +69,15 @@ public class LoginController {
      */
     public void setElencoPrestiti(ElencoPrestiti elenco) { this.elencoPrestiti = elenco; }
 
+    
+      @FXML
+    private void initialize() {
+        btnAccedi.disableProperty().bind(
+            txtUsername.textProperty().isEmpty()
+                .or(txtPassword.textProperty().isEmpty())
+        );
+    }
+    
     /**
      * Gestisce il login del bibliotecario.
      * Controlla le credenziali e, se corrette, apre la schermata principale.

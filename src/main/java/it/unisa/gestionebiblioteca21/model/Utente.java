@@ -72,10 +72,14 @@ public class Utente {
 
     /**
      * @brief Verifica se l'utente ha dati validi
-     * @return true se la matricola Ã¨ valida (10 cifre) e tutti i campi principali non sono null
+     * @return true se la matricola Ã¨ valida (10 cifre), la mail ha il giusto formato e tutti i campi principali non sono null
      */
     public boolean isValid() {
-        return (nome != null && cognome != null && email != null && matricola != null) 
-               && matricola.matches("\\d{10}");
+        return nome != null
+        && cognome != null
+        && email != null
+        && matricola != null
+        && matricola.matches("\\d{10}")
+        && email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
     }
 }
