@@ -1,109 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Pos?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER"
-      spacing="20"
-      prefWidth="500" prefHeight="500"
-      xmlns="http://javafx.com/javafx/25"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaUtenteController"
-      styleClass="root-light"
-      stylesheets="@../css/appstyle.css">
+<StackPane xmlns="http://javafx.com/javafx/25"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="it.unisa.gestionebiblioteca21.controller.ModificaUtenteController"
+           prefWidth="560" prefHeight="520"
+           style="-fx-background-color: linear-gradient(to bottom right, #0B1220, #0E1B2E, #111827);">
 
-    <HBox alignment="CENTER_LEFT"
-          spacing="10"
-          prefHeight="70" prefWidth="450"
-          style="-fx-background-color: #4A4A4C;
-                 -fx-background-radius: 0 0 25 25;
-                 -fx-padding: 0 15;">
+    <VBox alignment="TOP_CENTER"
+          spacing="16"
+          maxWidth="520"
+          prefWidth="520"
+          style="-fx-background-color: rgba(255,255,255,0.08);
+                 -fx-background-radius: 26;
+                 -fx-border-radius: 26;
+                 -fx-border-color: rgba(255,255,255,0.16);
+                 -fx-border-width: 1;
+                 -fx-padding: 22;">
 
-        <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
-            <image>
-                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
-            </image>
-        </ImageView>
+        <effect>
+            <DropShadow radius="30" spread="0.12" offsetY="10" color="#000000AA"/>
+        </effect>
 
-        <Region HBox.hgrow="ALWAYS"/>
+        <HBox alignment="CENTER_LEFT" spacing="14"
+              style="-fx-background-color: rgba(255,255,255,0.06);
+                     -fx-background-radius: 20;
+                     -fx-padding: 14 16;">
 
-        <Label text="Modifica Utente"
-               style="-fx-font-size: 22px;
-                      -fx-font-weight: bold;
-                      -fx-text-fill: white;" />
+            <ImageView fitHeight="42" fitWidth="42" preserveRatio="true">
+                <image>
+                    <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png"/>
+                </image>
+            </ImageView>
 
-        <Region HBox.hgrow="ALWAYS"/>
+            <VBox spacing="2" alignment="CENTER_LEFT">
+                <Label text="Biblioteca"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: 900;
+                              -fx-text-fill: white;"/>
+                <Label text="Modifica utente"
+                       style="-fx-font-size: 12px;
+                              -fx-text-fill: rgba(255,255,255,0.75);"/>
+            </VBox>
 
-        <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
-            <image>
-                <Image url="@/it/unisa/gestionebiblioteca21/assets/logo.png" />
-            </image>
-        </ImageView>
+            <Region HBox.hgrow="ALWAYS"/>
 
-    </HBox>
+            <Label text="EDIT"
+                   style="-fx-font-size: 12px;
+                          -fx-font-weight: 900;
+                          -fx-text-fill: white;
+                          -fx-background-color: rgba(0,122,255,0.35);
+                          -fx-background-radius: 999;
+                          -fx-padding: 6 12;"/>
+        </HBox>
 
-
-    <VBox spacing="12" maxWidth="320">
-
-        <VBox spacing="5">
-            <Label text="Matricola" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
-            <TextField fx:id="txtMatricola"
-                       promptText="Modifica la matricola"
-                       editable="false"
-                       styleClass="apple-textfield"/>
+        <VBox spacing="8" alignment="CENTER_LEFT" prefWidth="476">
+            <Label text="Modifica i dati dell’utente"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: 900;
+                          -fx-text-fill: white;"/>
+            <Label text="Aggiorna i campi modificabili e salva per applicare le modifiche."
+                   wrapText="true"
+                   style="-fx-font-size: 13px;
+                          -fx-text-fill: rgba(255,255,255,0.7);"/>
         </VBox>
 
-        <VBox spacing="5">
-            <Label text="Nome" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
-            <TextField fx:id="txtNome"
-                       promptText="Modifica il nome"
-                       styleClass="apple-textfield"/>
+        <VBox spacing="12" prefWidth="476">
+
+            <VBox spacing="6">
+                <Label text="Matricola"
+                       style="-fx-font-size: 12px;
+                              -fx-font-weight: 800;
+                              -fx-text-fill: rgba(255,255,255,0.88);"/>
+                <TextField fx:id="txtMatricola"
+                           promptText="Matricola"
+                           editable="false"
+                           style="-fx-background-color: rgba(255,255,255,0.08);
+                                  -fx-background-radius: 14;
+                                  -fx-border-radius: 14;
+                                  -fx-border-color: rgba(255,255,255,0.14);
+                                  -fx-text-fill: rgba(255,255,255,0.70);
+                                  -fx-prompt-text-fill: rgba(255,255,255,0.45);
+                                  -fx-padding: 12;
+                                  -fx-font-size: 14px;"/>
+            </VBox>
+
+            <HBox spacing="12">
+                <VBox spacing="6" prefWidth="232">
+                    <Label text="Nome"
+                           style="-fx-font-size: 12px;
+                                  -fx-font-weight: 800;
+                                  -fx-text-fill: rgba(255,255,255,0.88);"/>
+                    <TextField fx:id="txtNome"
+                               promptText="Modifica il nome"
+                               style="-fx-background-color: rgba(255,255,255,0.12);
+                                      -fx-background-radius: 14;
+                                      -fx-border-radius: 14;
+                                      -fx-border-color: rgba(255,255,255,0.18);
+                                      -fx-text-fill: white;
+                                      -fx-prompt-text-fill: rgba(255,255,255,0.55);
+                                      -fx-padding: 12;
+                                      -fx-font-size: 14px;"/>
+                </VBox>
+
+                <VBox spacing="6" prefWidth="232">
+                    <Label text="Cognome"
+                           style="-fx-font-size: 12px;
+                                  -fx-font-weight: 800;
+                                  -fx-text-fill: rgba(255,255,255,0.88);"/>
+                    <TextField fx:id="txtCognome"
+                               promptText="Modifica il cognome"
+                               style="-fx-background-color: rgba(255,255,255,0.12);
+                                      -fx-background-radius: 14;
+                                      -fx-border-radius: 14;
+                                      -fx-border-color: rgba(255,255,255,0.18);
+                                      -fx-text-fill: white;
+                                      -fx-prompt-text-fill: rgba(255,255,255,0.55);
+                                      -fx-padding: 12;
+                                      -fx-font-size: 14px;"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="6">
+                <Label text="Email"
+                       style="-fx-font-size: 12px;
+                              -fx-font-weight: 800;
+                              -fx-text-fill: rgba(255,255,255,0.88);"/>
+                <TextField fx:id="txtEmail"
+                           promptText="Modifica l'email"
+                           style="-fx-background-color: rgba(255,255,255,0.12);
+                                  -fx-background-radius: 14;
+                                  -fx-border-radius: 14;
+                                  -fx-border-color: rgba(255,255,255,0.18);
+                                  -fx-text-fill: white;
+                                  -fx-prompt-text-fill: rgba(255,255,255,0.55);
+                                  -fx-padding: 12;
+                                  -fx-font-size: 14px;"/>
+            </VBox>
+
         </VBox>
 
-        <VBox spacing="5">
-            <Label text="Cognome" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
-            <TextField fx:id="txtCognome"
-                       promptText="Modifica il cognome"
-                       styleClass="apple-textfield"/>
-        </VBox>
+        <HBox spacing="12" alignment="CENTER" prefWidth="476">
+            <Button fx:id="btnSalvaModifiche"
+                    text="Salva Modifiche"
+                    onAction="#handleSalva"
+                    prefWidth="232" prefHeight="44"
+                    style="-fx-background-color: #007AFF;
+                           -fx-background-radius: 14;
+                           -fx-text-fill: white;
+                           -fx-font-weight: 900;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 14, 0.15, 0, 8);"/>
 
-        <VBox spacing="5">
-            <Label text="Email" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
-            <TextField fx:id="txtEmail"
-                       promptText="Modifica l'email"
-                       styleClass="apple-textfield"/>
-        </VBox>
+            <Button fx:id="btnAnnulla"
+                    text="Annulla"
+                    onAction="#handleAnnulla"
+                    prefWidth="232" prefHeight="44"
+                    style="-fx-background-color: linear-gradient(to right, #FF3B30, #FF5A52, #FF7A73);
+                           -fx-background-radius: 14;
+                           -fx-text-fill: white;
+                           -fx-font-weight: 900;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 16, 0.18, 0, 9);"/>
+        </HBox>
 
     </VBox>
-
-
-    <HBox spacing="20" alignment="CENTER">
-
-        <Button fx:id="btnSalvaModifiche"
-                text="Salva Modifiche"
-                onAction="#handleSalva"
-                prefWidth="150" prefHeight="38"
-                style="-fx-background-color: #007AFF;
-                       -fx-background-radius: 12;
-                       -fx-font-size: 16px;
-                       -fx-text-fill: white;
-                       -fx-font-weight: bold;"/>
-
-        <Button fx:id="btnAnnulla"
-                text="Annulla"
-                onAction="#handleAnnulla"
-                prefWidth="120" prefHeight="38"
-                style="-fx-background-color: #FF3B30;
-                       -fx-background-radius: 12;
-                       -fx-font-size: 16px;
-                       -fx-text-fill: white;
-                       -fx-font-weight: bold;"/>
-    </HBox>
-
-</VBox>
+</StackPane>
