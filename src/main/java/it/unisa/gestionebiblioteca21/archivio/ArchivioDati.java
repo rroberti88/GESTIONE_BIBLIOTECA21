@@ -11,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import it.unisa.gestionebiblioteca21.model.*;
 import java.io.*;
+import it.unisa.gestionebiblioteca21.actor.Bibliotecario; 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class ArchivioDati {
     private static final String FILE_UTENTI = "data/utenti.json";
     private static final String FILE_LIBRI = "data/libri.json";
     private static final String FILE_PRESTITI = "data/prestiti.json";
+    private static final String FILE_BIBLIOTECARI = "data/bibliotecari.json";
 
     private final Gson gson;
 
@@ -45,6 +47,10 @@ public class ArchivioDati {
         salva(FILE_PRESTITI, prestiti);
     }
 
+    public void salvaBibliotecari(ArrayList<Bibliotecario> bibliotecari) {
+    salva(FILE_BIBLIOTECARI, bibliotecari);
+}
+    
     private <T> void salva(String path, T lista) {
         try (Writer w = new FileWriter(path)) {
             gson.toJson(lista, w);
@@ -68,6 +74,11 @@ public class ArchivioDati {
         Type type = new TypeToken<ArrayList<Prestito>>() {}.getType();
         return carica(FILE_PRESTITI, type);
     }
+    
+    public ArrayList<Bibliotecario> caricaBibliotecari() {
+    Type type = new TypeToken<ArrayList<Bibliotecario>>() {}.getType();
+    return carica(FILE_BIBLIOTECARI, type);
+}
 
     private <T> T carica(String path, Type type) {
         try (Reader r = new FileReader(path)) {

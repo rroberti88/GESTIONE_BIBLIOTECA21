@@ -12,12 +12,5 @@
     "cognome": "Bianchi",
     "email": "luca@uni.it",
     "numeroPrestiti": 0
-  },
-  {
-    "matricola": "1234567890",
-    "nome": "Andrea",
-    "cognome": "Verdi",
-    "email": "verdia@gmail.com",
-    "numeroPrestiti": 0
   }
 ]

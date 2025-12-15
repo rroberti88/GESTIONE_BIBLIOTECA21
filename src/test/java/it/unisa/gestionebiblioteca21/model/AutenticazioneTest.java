@@ -7,12 +7,10 @@
 package it.unisa.gestionebiblioteca21.model;
 
 import it.unisa.gestionebiblioteca21.actor.Bibliotecario;
+import org.junit.jupiter.api.*;
+
 import java.util.ArrayList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AutenticazioneTest {
@@ -21,19 +19,9 @@ public class AutenticazioneTest {
     private ArrayList<Bibliotecario> utenti;
     private Bibliotecario b1;
 
-    public AutenticazioneTest() {
-    }
-
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
     @BeforeEach
     public void setUp() {
+
         utenti = new ArrayList<>();
 
         b1 = new Bibliotecario(
@@ -53,24 +41,47 @@ public class AutenticazioneTest {
         instance = null;
     }
 
+    
     @Test
     public void testLoginSuccesso() {
         assertTrue(instance.login("admin", "admin123"));
     }
 
+    
     @Test
     public void testLoginPasswordErrata() {
         assertFalse(instance.login("admin", "Admin123"));
     }
 
+    
     @Test
     public void testLoginUtenteNonEsistente() {
         assertFalse(instance.login("fabrizio", "admin123"));
     }
 
+    
+    @Test
+    public void testResetPasswordSuccesso() {
+
+        boolean result = instance.resetPassword("admin", "nuovaPassword");
+
+        assertTrue(result);
+        assertTrue(instance.login("admin", "nuovaPassword"));
+    }
+
+    
+    @Test
+    public void testResetPasswordUtenteNonEsistente() {
+
+        boolean result = instance.resetPassword("inesistente", "password");
+
+        assertFalse(result);
+        assertFalse(instance.login("inesistente", "password"));
+    }
+
+   
     @Test
     public void testLogout() {
         assertTrue(instance.logout("admin"));
-      
     }
 }

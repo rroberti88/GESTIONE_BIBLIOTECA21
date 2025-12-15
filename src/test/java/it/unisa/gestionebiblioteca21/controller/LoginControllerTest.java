@@ -8,17 +8,18 @@ package it.unisa.gestionebiblioteca21.controller;
 
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import it.unisa.gestionebiblioteca21.model.*;
+
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginControllerTest {
 
-   
-    private Object getPrivateField(Object target, String fieldName) throws Exception {
+       private Object getPrivateField(Object target, String fieldName) throws Exception {
         Field field = target.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
         return field.get(target);
@@ -37,7 +38,7 @@ public class LoginControllerTest {
     @Test
     public void testSetStage() throws Exception {
         LoginController controller = new LoginController();
-        Stage stage = null; 
+        Stage stage = null;
 
         controller.setStage(stage);
 
@@ -57,7 +58,8 @@ public class LoginControllerTest {
     @Test
     public void testSetCatalogo() throws Exception {
         LoginController controller = new LoginController();
-        CatalogoLibri catalogo = new CatalogoLibri();
+
+        CatalogoLibri catalogo = new CatalogoLibri(new ArrayList<>());
 
         controller.setCatalogo(catalogo);
 
@@ -67,7 +69,8 @@ public class LoginControllerTest {
     @Test
     public void testSetElencoUtenti() throws Exception {
         LoginController controller = new LoginController();
-        ElencoUtenti elenco = new ElencoUtenti();
+
+        ElencoUtenti elenco = new ElencoUtenti(new ArrayList<>());
 
         controller.setElencoUtenti(elenco);
 
@@ -77,7 +80,8 @@ public class LoginControllerTest {
     @Test
     public void testSetElencoPrestiti() throws Exception {
         LoginController controller = new LoginController();
-        ElencoPrestiti elenco = new ElencoPrestiti();
+
+        ElencoPrestiti elenco = new ElencoPrestiti(new ArrayList<>());
 
         controller.setElencoPrestiti(elenco);
 

@@ -117,7 +117,41 @@ public class LoginController {
             new Alert(Alert.AlertType.ERROR,"Impossibile aprire la finestra della Dashboard principale.").showAndWait();
         }
     }
+    
+    /**
+     * Gestisce il recupero della password in caso di dimenticanza.
+     * Controlla l'username e, se corertto, permette la modifica della password.
+     */
+    @FXML
+    private void handlePasswordDimenticata() {
+
+    TextInputDialog d1 = new TextInputDialog();
+    d1.setTitle("Recupero Password");
+    d1.setHeaderText("Inserisci username");
+    d1.showAndWait();
+    String username = d1.getResult();
+    if (username == null) return;
+
+    TextInputDialog d2 = new TextInputDialog();
+    d2.setTitle("Recupero Password");
+    d2.setHeaderText("Inserisci nuova password");
+    d2.showAndWait();
+    String nuovaPassword = d2.getResult();
+    if (nuovaPassword == null) return;
+
+    boolean ok = autenticazione.resetPassword(username, nuovaPassword);
+
+    if (ok) {
+        new Alert(Alert.AlertType.INFORMATION,
+                "Password modificata con successo").showAndWait();
+    } else {
+        new Alert(Alert.AlertType.ERROR,
+                "Username non trovato").showAndWait();
+    }
 }
+
+}
+
 
 
 

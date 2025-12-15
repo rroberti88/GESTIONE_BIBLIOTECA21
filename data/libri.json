@@ -1,29 +1,20 @@
 [
   {
-    "ISBN": "1234567890123",
-    "titolo": "pinocchio",
-    "autore": "collodi",
-    "annoPubblicazione": 2001,
-    "Categoria": "narrativa",
-    "copieTotali": 4,
-    "copieDisponibili": 3
-  },
-  {
-    "ISBN": "3210987654321",
-    "titolo": "sandokan",
-    "autore": "salgari",
-    "annoPubblicazione": 2002,
-    "Categoria": "avventura",
-    "copieTotali": 4,
-    "copieDisponibili": 3
-  },
-  {
-    "ISBN": "1234567890124",
-    "titolo": "marcovaldo",
-    "autore": "calvino",
-    "annoPubblicazione": 2003,
-    "Categoria": "narrativa",
-    "copieTotali": 6,
+    "ISBN": "9781234567890",
+    "titolo": "Java",
+    "autore": "Autore",
+    "annoPubblicazione": 2020,
+    "Categoria": "Inf",
+    "copieTotali": 5,
     "copieDisponibili": 5
+  },
+  {
+    "ISBN": "9780987654321",
+    "titolo": "DB",
+    "autore": "Autore",
+    "annoPubblicazione": 2019,
+    "Categoria": "Inf",
+    "copieTotali": 4,
+    "copieDisponibili": 4
   }
 ]

@@ -15,38 +15,42 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class Main extends Application {
 
     private ArchivioDati archivio;
+    private Autenticazione autenticazione;
+
     private CatalogoLibri catalogo;
     private ElencoUtenti elencoUtenti;
     private ElencoPrestiti elencoPrestiti;
-    private Autenticazione autenticazione;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         archivio = new ArchivioDati();
 
-        ArrayList<Utente> utentiNormali = archivio.caricaUtenti();
-        ArrayList<Bibliotecario> bibliotecari = new ArrayList<>();
-        bibliotecari.add(new Bibliotecario("admin", "admin", "admin", "1234"));
-        
+        ArrayList<Bibliotecario> bibliotecari = archivio.caricaBibliotecari();
+        if (bibliotecari.isEmpty()) {
+            bibliotecari.add(new Bibliotecario("admin", "admin", "admin", "1234"));
+        }
         autenticazione = new Autenticazione(bibliotecari);
-        elencoUtenti = new ElencoUtenti(utentiNormali);
+
         catalogo = new CatalogoLibri(archivio.caricaLibri());
+        elencoUtenti = new ElencoUtenti(archivio.caricaUtenti());
         elencoPrestiti = new ElencoPrestiti(archivio.caricaPrestiti());
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/it/unisa/gestionebiblioteca21/view/LoginView.fxml"));
         Parent root = loader.load();
-        
+
         LoginController login = loader.getController();
         login.setStage(primaryStage);
         login.setModelAut(autenticazione);
         login.setArchivio(archivio);
+
         login.setCatalogo(catalogo);
         login.setElencoUtenti(elencoUtenti);
         login.setElencoPrestiti(elencoPrestiti);
@@ -56,8 +60,9 @@ public class Main extends Application {
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(e -> {
-            archivio.salvaUtenti(elencoUtenti.getListaUtenti());
+            archivio.salvaBibliotecari(autenticazione.getBibliotecari());
             archivio.salvaLibri(catalogo.getListaLibri());
+            archivio.salvaUtenti(elencoUtenti.getListaUtenti());
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
         });
     }
@@ -66,4 +71,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

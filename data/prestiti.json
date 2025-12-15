@@ -1,44 +1,16 @@
 [
   {
-    "libro": "1234567890123",
-    "utente": "1234567890",
+    "libro": "9781234567890",
+    "utente": "U001",
     "dataPrestito": {
-      "year": 2024,
-      "month": 9,
-      "day": 12
+      "year": 2025,
+      "month": 12,
+      "day": 15
     },
     "dataScadenza": {
       "year": 2025,
       "month": 12,
-      "day": 23
-    }
-  },
-  {
-    "libro": "1234567890124",
-    "utente": "0612709720",
-    "dataPrestito": {
-      "year": 2025,
-      "month": 1,
-      "day": 30
-    },
-    "dataScadenza": {
-      "year": 2025,
-      "month": 9,
-      "day": 20
-    }
-  },
-  {
-    "libro": "3210987654321",
-    "utente": "0612709720",
-    "dataPrestito": {
-      "year": 2025,
-      "month": 10,
-      "day": 12
-    },
-    "dataScadenza": {
-      "year": 2025,
-      "month": 12,
-      "day": 31
+      "day": 22
     }
   }
 ]
