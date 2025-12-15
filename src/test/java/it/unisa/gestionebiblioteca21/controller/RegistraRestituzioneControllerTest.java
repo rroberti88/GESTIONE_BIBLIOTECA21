@@ -9,6 +9,7 @@ package it.unisa.gestionebiblioteca21.controller;
 import it.unisa.gestionebiblioteca21.archivio.ArchivioDati;
 import it.unisa.gestionebiblioteca21.model.CatalogoLibri;
 import it.unisa.gestionebiblioteca21.model.ElencoPrestiti;
+import it.unisa.gestionebiblioteca21.model.ElencoUtenti;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +33,16 @@ public class RegistraRestituzioneControllerTest {
         controller.setListaPrestiti(elenco);
 
         assertSame(elenco, getPrivateField(controller, "elencoPrestiti"));
+    }
+    
+    @Test
+    public void testSetElencoUtenti() throws Exception {
+        RegistraRestituzioneController controller = new RegistraRestituzioneController();
+        ElencoUtenti elencoUtenti = new ElencoUtenti();
+
+        controller.setElencoUtenti(elencoUtenti);
+
+        assertSame(elencoUtenti, getPrivateField(controller, "elencoUtenti"));
     }
 
     @Test

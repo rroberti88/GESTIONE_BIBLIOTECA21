@@ -185,6 +185,7 @@ public class GestionePrestitiController {
             ctrl.setListaPrestiti(elencoPrestiti);
             ctrl.setArchivio(archivio);
             ctrl.setCatalogo(catalogo);
+            ctrl.setElencoUtenti(elencoUtenti);
 
             Stage popup = new Stage();
             ctrl.setStage(popup);

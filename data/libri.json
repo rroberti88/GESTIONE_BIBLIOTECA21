@@ -11,27 +11,27 @@
     "titolo": "IT",
     "autore": "Stephen King",
     "annoPubblicazione": 2019,
-    "copieDisponibili": 4
+    "copieDisponibili": 5
   },
   {
     "ISBN": "1234567890125",
     "titolo": "La Sacra Bibbia",
     "autore": "Gutenberg",
     "annoPubblicazione": 2015,
-    "copieDisponibili": 12
+    "copieDisponibili": 13
   },
   {
     "ISBN": "1234567890126",
     "titolo": "Ingegneria del Software",
     "autore": "I. Sommerville",
     "annoPubblicazione": 2023,
-    "copieDisponibili": 3
+    "copieDisponibili": 4
   },
   {
     "ISBN": "1234567890127",
     "titolo": "Fahreneit 451",
     "autore": "Ray Bradbury",
     "annoPubblicazione": 2019,
-    "copieDisponibili": 7
+    "copieDisponibili": 8
   }
 ]

@@ -51,6 +51,12 @@ public class RegistraRestituzioneController {
      * @param c CatalogoLibri da utilizzare
      */
     public void setCatalogo(CatalogoLibri c) { this.catalogo = c; }
+    
+    /**
+     * @brief Imposta l'elenco utenti.
+     * @param e CatalogoLibri da utilizzare
+     */
+    public void setElencoUtenti(ElencoUtenti e) {this.elencoUtenti = e;}
 
     /**
      * @brief Imposta lo stage della finestra popup.
