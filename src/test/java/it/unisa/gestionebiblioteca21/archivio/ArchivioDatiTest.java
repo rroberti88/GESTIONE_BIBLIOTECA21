@@ -40,8 +40,8 @@ public class ArchivioDatiTest {
         utenti.add(new Utente("0612709470", "Mario", "Rossi", "mario@uni.it", 0));
         utenti.add(new Utente("0612709720", "Luca", "Bianchi", "luca@uni.it", 0));
 
-        libri.add(new Libro("9781234567890", "Java", "Autore", 2020, "Inf", 5, 5));
-        libri.add(new Libro("9780987654321", "DB", "Autore", 2019, "Inf", 4, 4));
+        libri.add(new Libro("9781234567890", "Java", "Autore", 2020, 5));
+        libri.add(new Libro("9780987654321", "DB", "Autore", 2019, 4));
 
         prestiti.add(new Prestito(
                 "9781234567890",

@@ -78,7 +78,7 @@
         </VBox>
 
         <TextField fx:id="txtRicercaPrestito"
-                   promptText="Ricerca per ISBN"
+                   promptText="Ricerca per Titolo, ISBN, Utente..."
                    prefWidth="816"
                    style="-fx-background-color: rgba(255,255,255,0.12);
                           -fx-background-radius: 14;

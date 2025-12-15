@@ -4,17 +4,20 @@
     "titolo": "Java",
     "autore": "Autore",
     "annoPubblicazione": 2020,
-    "Categoria": "Inf",
-    "copieTotali": 5,
-    "copieDisponibili": 5
+    "copieDisponibili": 6
   },
   {
     "ISBN": "9780987654321",
     "titolo": "DB",
     "autore": "Autore",
     "annoPubblicazione": 2019,
-    "Categoria": "Inf",
-    "copieTotali": 4,
     "copieDisponibili": 4
+  },
+  {
+    "ISBN": "1234567890123",
+    "titolo": "uvbevieu",
+    "autore": "eeveve",
+    "annoPubblicazione": 23112,
+    "copieDisponibili": 1230
   }
 ]

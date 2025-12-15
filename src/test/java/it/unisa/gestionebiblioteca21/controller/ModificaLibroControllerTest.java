@@ -57,7 +57,7 @@ public class ModificaLibroControllerTest {
     @Test
     public void testSetLibro() {
         ModificaLibroController controller = new ModificaLibroController();
-        Libro libro = new Libro("123", "Titolo", "Autore", 2020, "Cat", 2, 2);
+        Libro libro = new Libro("123", "Titolo", "Autore", 2020, 2);
 
         assertThrows(NullPointerException.class, () -> {
             controller.setLibro(libro);

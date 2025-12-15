@@ -69,8 +69,6 @@ public class ModificaLibroController {
         txtAutore.setText(libro.getAutore());
         txtISBN.setText(libro.getISBN());
         txtAnnoPubblicazione.setText(String.valueOf(libro.getAnnoPubblicazione()));
-        txtCategoria.setText(libro.getCategoria());
-        txtCopieTotali.setText(String.valueOf(libro.getCopieTotali()));
         txtCopieDisponibili.setText(String.valueOf(libro.getCopieDisponibili()));
     }
 
@@ -89,7 +87,7 @@ public class ModificaLibroController {
             int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
             int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
             int copieTotali = Integer.parseInt(txtCopieTotali.getText());
-            Libro libroModificato = new Libro(ISBN, titolo, autore, annoPubblicazione, categoria, copieTotali, copieDisponibili);
+            Libro libroModificato = new Libro(ISBN, titolo, autore, annoPubblicazione, copieDisponibili);
 
             catalogo.modificaLibro(libroOriginale, libroModificato);
 

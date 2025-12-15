@@ -34,7 +34,7 @@ public class ElencoPrestitiTest {
     @BeforeEach
     public void setUp() {
         instance = new ElencoPrestiti();
-        libroOk = new Libro("9781234567890", "Titolo", "Autore", 2020, "Cat", 10, 2);
+        libroOk = new Libro("9781234567890", "Titolo", "Autore", 2020, 2);
     }
 
     @AfterEach
@@ -70,7 +70,7 @@ public class ElencoPrestitiTest {
 
     @Test
     public void testLimiteTrePrestitiAttivi() {
-        Libro l = new Libro("X", "T", "A", 2020, "C", 10, 10);
+        Libro l = new Libro("X", "T", "A", 2020, 10);
 
         instance.registraPrestito(prestitoAttivo("1", "U", LocalDate.now().plusDays(1)), l);
         instance.registraPrestito(prestitoAttivo("2", "U", LocalDate.now().plusDays(2)), l);
@@ -81,7 +81,7 @@ public class ElencoPrestitiTest {
 
     @Test
     public void testPrestitiRestituitiNonContanoNelLimite() {
-        Libro l = new Libro("X", "T", "A", 2020, "C", 10, 10);
+        Libro l = new Libro("X", "T", "A", 2020, 10);
 
         instance.getListaPrestiti().add(prestitoRestituito("1", "U", LocalDate.now().minusDays(3)));
         instance.getListaPrestiti().add(prestitoRestituito("2", "U", LocalDate.now().minusDays(2)));

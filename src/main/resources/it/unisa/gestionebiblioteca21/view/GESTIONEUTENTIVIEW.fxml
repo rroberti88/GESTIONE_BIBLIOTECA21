@@ -151,6 +151,7 @@
                 <TableColumn fx:id="colCognome" text="Cognome"/>
                 <TableColumn fx:id="colMatricola" text="Matricola"/>
                 <TableColumn fx:id="colContatti" text="Contatti"/>
+                <TableColumn fx:id="colNumeroPrestiti" text="Prestiti Attivi" />
             </columns>
 
             <columnResizePolicy>

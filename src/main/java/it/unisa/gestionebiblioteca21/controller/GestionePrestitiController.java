@@ -256,17 +256,48 @@ public class GestionePrestitiController {
     public void handleRicercaPrestito() {
         if (elencoPrestiti == null) return;
 
-        String key = txtRicercaPrestito.getText();
+    String key = txtRicercaPrestito.getText();
+    if (key == null || key.trim().isEmpty()) {
+        aggiorna();
+        return;
+    }
 
-        if (key == null || key.isEmpty()) {
-            aggiorna();
-            return;
+   String ricerca = key.toLowerCase();
+
+    ArrayList<Prestito> risultati = new ArrayList<>();
+
+    for (Prestito p : elencoPrestiti.getListaPrestiti()) {
+
+        String isbn = "";
+        String titolo = "";
+        String nomeUtente = "";
+
+
+        if (p.getLibro() != null) {
+            isbn = p.getLibro().toLowerCase();
         }
 
-        ArrayList<Prestito> risultati =
-                elencoPrestiti.ricercaPrestito(key, key);
 
-        tableview.getItems().setAll(risultati);
+        Libro l = catalogo.cercaLibroPerISBN(p.getLibro());
+        if (l != null && l.getTitolo() != null) {
+            titolo = l.getTitolo().toLowerCase();
+        }
+
+
+        Utente u = elencoUtenti.cercaPerMatricola(p.getUtente());
+        if (u != null && u.getNome() != null) {
+            nomeUtente = u.getNome().toLowerCase();
+        }
+
+        if (isbn.contains(ricerca)|| 
+            titolo.contains(ricerca) ||
+            nomeUtente.contains(ricerca)) {
+
+            risultati.add(p);
+        }
+    }
+
+    tableview.getItems().setAll(risultati);
     }
     
 

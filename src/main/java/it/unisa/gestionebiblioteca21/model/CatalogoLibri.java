@@ -45,13 +45,8 @@ public class CatalogoLibri {
      * @throws IllegalArgumentException Se i campi sono incompleti o ISBN duplicato
      */
     public void inserimentoLibro(Libro libro) {
-        if (libro.getTitolo().isEmpty() || libro.getAutore().isEmpty()
-                || libro.getCategoria().isEmpty() || libro.getISBN().isEmpty()) {
+        if (libro.getTitolo().isEmpty() || libro.getAutore().isEmpty() || libro.getISBN().isEmpty()) {
             throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
-        }
-
-        if (libro.getCopieDisponibili() > libro.getCopieTotali()) {
-            throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
         }
 
         if (!libro.getISBN().matches("\\d{13}")) {
@@ -82,13 +77,10 @@ public class CatalogoLibri {
      */
     public void modificaLibro(Libro libroOriginale, Libro libroModificato) {
         if (libroModificato.getTitolo().isEmpty() || libroModificato.getAutore().isEmpty()
-                || libroModificato.getCategoria().isEmpty() || libroModificato.getISBN().isEmpty()) {
+                || libroModificato.getISBN().isEmpty()) {
             throw new IllegalArgumentException("Tutti i campi devono essere compilati.");
         }
 
-        if (libroModificato.getCopieDisponibili() > libroModificato.getCopieTotali()) {
-            throw new IllegalArgumentException("Le copie disponibili non possono superare le copie totali.");
-        }
 
         if (!libroModificato.getISBN().matches("\\d{13}")) {
             throw new IllegalArgumentException("L'ISBN deve contenere esattamente 13 cifre numeriche.");
@@ -97,8 +89,6 @@ public class CatalogoLibri {
         libroOriginale.setTitolo(libroModificato.getTitolo());
         libroOriginale.setAutore(libroModificato.getAutore());
         libroOriginale.setAnnoPubblicazione(libroModificato.getAnnoPubblicazione());
-        libroOriginale.setCategoria(libroModificato.getCategoria());
-        libroOriginale.setCopieTotali(libroModificato.getCopieTotali());
         libroOriginale.setCopieDisponibili(libroModificato.getCopieDisponibili());
     }
 

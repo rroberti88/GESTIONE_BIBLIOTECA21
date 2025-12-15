@@ -109,8 +109,13 @@ public class RegistraPrestitoController {
             Prestito prestito = new Prestito(isbn, matricola, dataPrestito, dataScadenza, null);
 
             elencoPrestiti.registraPrestito(prestito, libroObj);
+            
+            utenteObj.setNumeroPrestiti(utenteObj.getNumeroPrestiti() + 1);
+
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
+            archivio.salvaUtenti(elencoUtenti.getListaUtenti());
+
 
             stage.close();
 

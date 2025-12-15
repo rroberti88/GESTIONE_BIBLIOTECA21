@@ -147,41 +147,11 @@
                                       -fx-font-size: 14px;"/>
                 </VBox>
 
-                <VBox spacing="6" prefWidth="252">
-                    <Label text="Categoria"
-                           style="-fx-font-size: 12px;
-                                  -fx-font-weight: 800;
-                                  -fx-text-fill: rgba(255,255,255,0.88);"/>
-                    <TextField fx:id="txtCategoria"
-                               promptText="Es. Narrativa, Saggio..."
-                               style="-fx-background-color: rgba(255,255,255,0.12);
-                                      -fx-background-radius: 14;
-                                      -fx-border-radius: 14;
-                                      -fx-border-color: rgba(255,255,255,0.18);
-                                      -fx-text-fill: white;
-                                      -fx-prompt-text-fill: rgba(255,255,255,0.55);
-                                      -fx-padding: 12;
-                                      -fx-font-size: 14px;"/>
-                </VBox>
+                
             </HBox>
 
             <HBox spacing="12">
-                <VBox spacing="6" prefWidth="252">
-                    <Label text="Copie totali"
-                           style="-fx-font-size: 12px;
-                                  -fx-font-weight: 800;
-                                  -fx-text-fill: rgba(255,255,255,0.88);"/>
-                    <TextField fx:id="txtCopieTotali"
-                               promptText="Numero copie"
-                               style="-fx-background-color: rgba(255,255,255,0.12);
-                                      -fx-background-radius: 14;
-                                      -fx-border-radius: 14;
-                                      -fx-border-color: rgba(255,255,255,0.18);
-                                      -fx-text-fill: white;
-                                      -fx-prompt-text-fill: rgba(255,255,255,0.55);
-                                      -fx-padding: 12;
-                                      -fx-font-size: 14px;"/>
-                </VBox>
+                
 
                 <VBox spacing="6" prefWidth="252">
                     <Label text="Copie disponibili"

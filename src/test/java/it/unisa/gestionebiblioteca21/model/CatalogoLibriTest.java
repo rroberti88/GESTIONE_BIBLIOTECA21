@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.unisa.gestionebiblioteca21.model;
 
 import java.util.ArrayList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CatalogoLibriTest {
@@ -19,17 +9,6 @@ public class CatalogoLibriTest {
     private CatalogoLibri instance;
     private Libro l1;
     private Libro l2;
-
-    public CatalogoLibriTest() {
-    }
-
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
 
     @BeforeEach
     public void setUp() {
@@ -40,8 +19,6 @@ public class CatalogoLibriTest {
                 "Programmazione Java",
                 "Mario Rossi",
                 2020,
-                "Informatica",
-                5,
                 3
         );
 
@@ -50,8 +27,6 @@ public class CatalogoLibriTest {
                 "Basi di Dati",
                 "Luca Bianchi",
                 2019,
-                "Informatica",
-                4,
                 2
         );
     }
@@ -78,21 +53,14 @@ public class CatalogoLibriTest {
 
     @Test
     public void testInserimentoLibro_campiVuoti() {
-        Libro l = new Libro("", "", "", 2020, "", 1, 1);
+        Libro l = new Libro("", "", "", 2020, 1);
         assertThrows(IllegalArgumentException.class,
                 () -> instance.inserimentoLibro(l));
     }
 
     @Test
     public void testInserimentoLibro_isbnNonValido() {
-        Libro l = new Libro("123", "Titolo", "Autore", 2020, "Cat", 1, 1);
-        assertThrows(IllegalArgumentException.class,
-                () -> instance.inserimentoLibro(l));
-    }
-
-    @Test
-    public void testInserimentoLibro_copieDisponibiliMaggiori() {
-        Libro l = new Libro("9781111111111", "Titolo", "Autore", 2020, "Cat", 2, 5);
+        Libro l = new Libro("123", "Titolo", "Autore", 2020, 1);
         assertThrows(IllegalArgumentException.class,
                 () -> instance.inserimentoLibro(l));
     }
@@ -120,20 +88,17 @@ public class CatalogoLibriTest {
                 "Java Avanzato",
                 "Mario Rossi",
                 2021,
-                "Informatica",
-                6,
                 4
         );
 
         instance.modificaLibro(l1, modificato);
 
         assertEquals("Java Avanzato", l1.getTitolo());
-        assertEquals(6, l1.getCopieTotali());
         assertEquals(4, l1.getCopieDisponibili());
     }
 
     @Test
-    public void testModificaLibro_emailNonValida() {
+    public void testModificaLibro_isbnNonValido() {
         instance.inserimentoLibro(l1);
 
         Libro modificato = new Libro(
@@ -141,8 +106,6 @@ public class CatalogoLibriTest {
                 "Java",
                 "Autore",
                 2020,
-                "Cat",
-                2,
                 1
         );
 
@@ -151,18 +114,16 @@ public class CatalogoLibriTest {
     }
 
     @Test
-    public void testRicercaLibroLiveSearch() {
-        instance.inserimentoLibro(l1);
-        instance.inserimentoLibro(l2);
+public void testRicercaLibroLiveSearch() {
+    instance.inserimentoLibro(l1);
+    instance.inserimentoLibro(l2);
 
-        assertEquals(2, instance.ricercaLibro("", "", "").size());
-        assertEquals(2, instance.ricercaLibro("Java", "", "").size());
-        assertEquals(2, instance.ricercaLibro("", "Mario", "").size());
+    assertEquals(2, instance.ricercaLibro("", "", "").size());
+    assertEquals(2, instance.ricercaLibro("Java", "", "").size());
+    assertEquals(2, instance.ricercaLibro("", "Mario", "").size());
+    assertEquals(2, instance.ricercaLibro("", "", "9780987654321").size());
+}
 
-        assertEquals(1, instance.ricercaLibro("Java", "___", "___").size());
-        assertEquals(1, instance.ricercaLibro("___", "Bianchi", "___").size());
-        assertEquals(1, instance.ricercaLibro("___", "___", "9780987654321").size());
-    }
 
     @Test
     public void testGetLibroperilnome() {

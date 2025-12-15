@@ -24,14 +24,15 @@ import java.time.LocalDate;
  */
 public class RegistraRestituzioneController {
 
-    private ElencoPrestiti elencoPrestiti; ///< Lista dei prestiti
-    private ArchivioDati archivio; ///< Archivio dati per salvataggio e caricamento
-    private Stage stage; ///< Stage della finestra popup
-    private CatalogoLibri catalogo; ///< Catalogo dei libri
+    private ElencoPrestiti elencoPrestiti; 
+    private ArchivioDati archivio;
+    private Stage stage;
+    private CatalogoLibri catalogo; 
+    private ElencoUtenti elencoUtenti;
 
-    @FXML private TextField txtLibro; ///< Campo per inserire ISBN del libro
-    @FXML private TextField txtUtente; ///< Campo per inserire matricola utente
-    @FXML private TextField txtDatadiScadenza; ///< Campo per inserire data di scadenza
+    @FXML private TextField txtLibro; 
+    @FXML private TextField txtUtente; 
+    @FXML private TextField txtDatadiScadenza; 
 
     /**
      * @brief Imposta la lista dei prestiti.
@@ -113,9 +114,15 @@ public class RegistraRestituzioneController {
             if (libro != null) {
                 libro.setCopieDisponibili((libro.getCopieDisponibili() + 1));
             }
+            Utente utente = elencoUtenti.cercaPerMatricola(matricola);
+            if (utente != null && utente.getNumeroPrestiti() > 0) {
+                utente.setNumeroPrestiti(utente.getNumeroPrestiti() - 1);
+            }
 
             archivio.salvaPrestiti(elencoPrestiti.getListaPrestiti());
             archivio.salvaLibri(catalogo.getListaLibri());
+            archivio.salvaUtenti(elencoUtenti.getListaUtenti());
+
 
             stage.close();
 

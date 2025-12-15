@@ -37,7 +37,9 @@ public class GestioneUtentiController {
     @FXML private TableColumn<Utente, String> colNome;
     @FXML private TableColumn<Utente, String> colCognome;
     @FXML private TableColumn<Utente, String> colMatricola;
-    @FXML private TableColumn<Utente, String> colContatti;  
+    @FXML private TableColumn<Utente, String> colContatti; 
+    @FXML private TableColumn<Utente, Integer> colNumeroPrestiti;
+
 
     /** Imposta l'elenco utenti da gestire
      * @param elenco */
@@ -79,13 +81,16 @@ public class GestioneUtentiController {
     /** Inizializza la tabella utenti e la ricerca dinamica */
     @FXML
     public void initialize() {
-        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colCognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
-        colMatricola.setCellValueFactory(new PropertyValueFactory<>("matricola"));
-        colContatti.setCellValueFactory(new PropertyValueFactory<>("email")); 
+    colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+    colCognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+    colMatricola.setCellValueFactory(new PropertyValueFactory<>("matricola"));
+    colContatti.setCellValueFactory(new PropertyValueFactory<>("email"));
+    colNumeroPrestiti.setCellValueFactory(new PropertyValueFactory<>("numeroPrestiti"));
 
-        txtRicercaUtente.textProperty().addListener((obs, o, n) -> handleRicercaUtente());
+    txtRicercaUtente.textProperty()
+            .addListener((obs, o, n) -> handleRicercaUtente());
     }
+
 
     /** Aggiorna la tabella con l'elenco completo degli utenti */
     private void aggiorna() {

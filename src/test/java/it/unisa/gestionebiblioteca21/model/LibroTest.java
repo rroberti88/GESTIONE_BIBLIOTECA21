@@ -30,8 +30,6 @@ public class LibroTest {
                 "Il Nome della Rosa",
                 "Umberto Eco",
                 1980,
-                "Narrativa",
-                10,
                 5
         );
     }
@@ -101,35 +99,6 @@ public class LibroTest {
         assertEquals(2020, instance.getAnnoPubblicazione());
     }
 
-   
-    @Test
-    public void testGetCategoria() {
-        System.out.println("getCategoria");
-        assertEquals("Narrativa", instance.getCategoria());
-    }
-
-    
-    @Test
-    public void testSetCategoria() {
-        System.out.println("setCategoria");
-        instance.setCategoria("Saggio");
-        assertEquals("Saggio", instance.getCategoria());
-    }
-
-    
-    @Test
-    public void testGetCopieTotali() {
-        System.out.println("getCopieTotali");
-        assertEquals(10, instance.getCopieTotali());
-    }
-
-    
-    @Test
-    public void testSetCopieTotali() {
-        System.out.println("setCopieTotali");
-        instance.setCopieTotali(20);
-        assertEquals(20, instance.getCopieTotali());
-    }
 
     
     @Test
@@ -166,11 +135,6 @@ public class LibroTest {
 
         setUp();
         instance.setAnnoPubblicazione(0);
-        assertFalse(instance.isValid());
-
-        
-        setUp();
-        instance.setCopieTotali(0);
         assertFalse(instance.isValid());
 
         setUp();

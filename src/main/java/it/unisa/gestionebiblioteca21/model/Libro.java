@@ -15,8 +15,6 @@ public class Libro {
     private String titolo; /**< Titolo del libro */
     private String autore; /**< Autore del libro */
     private int annoPubblicazione; /**< Anno di pubblicazione */
-    private String Categoria; /**< Categoria o genere del libro */
-    private int copieTotali; /**< Numero totale di copie */
     private int copieDisponibili; /**< Numero di copie disponibili per il prestito */
 
     /**
@@ -25,17 +23,13 @@ public class Libro {
      * @param titolo Titolo del libro
      * @param autore Autore del libro
      * @param annoPubblicazione Anno di pubblicazione
-     * @param Categoria Categoria del libro
-     * @param copieTotali Numero totale di copie
      * @param copieDisponibili Numero di copie disponibili
      */
-    public Libro(String ISBN, String titolo, String autore, int annoPubblicazione, String Categoria, int copieTotali, int copieDisponibili) {
+    public Libro(String ISBN, String titolo, String autore, int annoPubblicazione, int copieDisponibili) {
         this.ISBN = ISBN;
         this.titolo = titolo;
         this.autore = autore;
         this.annoPubblicazione = annoPubblicazione;
-        this.Categoria = Categoria;
-        this.copieTotali = copieTotali;
         this.copieDisponibili = copieDisponibili;
     }
 
@@ -71,21 +65,6 @@ public class Libro {
      * @param annoPubblicazione *  @brief Imposta l'anno di pubblicazione */
     public void setAnnoPubblicazione(int annoPubblicazione) { this.annoPubblicazione = annoPubblicazione; }
 
-    /**
-     * @return  *  @brief Restituisce la categoria del libro */
-    public String getCategoria() { return Categoria; }
-
-    /**
-     * @param Categoria *  @brief Imposta la categoria del libro */
-    public void setCategoria(String Categoria) { this.Categoria = Categoria; }
-
-    /**
-     * @return  *  @brief Restituisce il numero totale di copie */
-    public int getCopieTotali() { return copieTotali; }
-
-    /**
-     * @param copieTotali *  @brief Imposta il numero totale di copie */
-    public void setCopieTotali(int copieTotali) { this.copieTotali = copieTotali; }
 
     /**
      * @return  *  @brief Restituisce il numero di copie disponibili */
@@ -101,7 +80,7 @@ public class Libro {
      */
     public boolean isValid() {
         if (titolo != null && autore != null && annoPubblicazione > 0
-            && ISBN != null && copieDisponibili > 0 && copieTotali > 0) {
+            && ISBN != null && copieDisponibili > 0) {
             return ISBN.matches("\\d{13}");
         }
         return false;
