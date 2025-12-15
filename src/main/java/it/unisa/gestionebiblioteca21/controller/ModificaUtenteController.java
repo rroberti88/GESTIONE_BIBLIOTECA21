@@ -56,7 +56,6 @@ public class ModificaUtenteController {
 
         if (utente != null) {
             txtMatricola.setText(utente.getMatricola());
-            txtMatricola.setDisable(true);
             txtNome.setText(utente.getNome());
             txtCognome.setText(utente.getCognome());
             txtEmail.setText(utente.getEmail());

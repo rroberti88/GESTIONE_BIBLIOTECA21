@@ -1,16 +1,72 @@
 [
   {
-    "libro": "1234567890123",
-    "utente": "0612709720",
+    "libro": "1234567890124",
+    "utente": "0612709470",
     "dataPrestito": {
-      "year": 2020,
+      "year": 2025,
       "month": 12,
-      "day": 12
+      "day": 15
     },
     "dataScadenza": {
       "year": 2025,
       "month": 12,
-      "day": 12
+      "day": 22
+    }
+  },
+  {
+    "libro": "1234567890125",
+    "utente": "0612709720",
+    "dataPrestito": {
+      "year": 2025,
+      "month": 12,
+      "day": 15
+    },
+    "dataScadenza": {
+      "year": 2026,
+      "month": 1,
+      "day": 9
+    }
+  },
+  {
+    "libro": "1234567890127",
+    "utente": "0612708916",
+    "dataPrestito": {
+      "year": 2025,
+      "month": 12,
+      "day": 15
+    },
+    "dataScadenza": {
+      "year": 2026,
+      "month": 4,
+      "day": 17
+    }
+  },
+  {
+    "libro": "1234567890126",
+    "utente": "0612709557",
+    "dataPrestito": {
+      "year": 2025,
+      "month": 12,
+      "day": 15
+    },
+    "dataScadenza": {
+      "year": 2025,
+      "month": 12,
+      "day": 27
+    }
+  },
+  {
+    "libro": "1234567890123",
+    "utente": "0612709468",
+    "dataPrestito": {
+      "year": 2025,
+      "month": 12,
+      "day": 15
+    },
+    "dataScadenza": {
+      "year": 2025,
+      "month": 12,
+      "day": 15
     }
   }
 ]

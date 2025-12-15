@@ -85,7 +85,6 @@
                               -fx-text-fill: rgba(255,255,255,0.88);"/>
                 <TextField fx:id="txtMatricola"
                            promptText="Matricola"
-                           editable="false"
                            style="-fx-background-color: rgba(255,255,255,0.08);
                                   -fx-background-radius: 14;
                                   -fx-border-radius: 14;

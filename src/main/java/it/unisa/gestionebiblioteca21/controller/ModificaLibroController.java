@@ -82,11 +82,9 @@ public class ModificaLibroController {
             String titolo = txtTitolo.getText();
             String autore = txtAutore.getText();
             String ISBN = txtISBN.getText();
-            String categoria = txtCategoria.getText();
 
             int annoPubblicazione = Integer.parseInt(txtAnnoPubblicazione.getText());
             int copieDisponibili = Integer.parseInt(txtCopieDisponibili.getText());
-            int copieTotali = Integer.parseInt(txtCopieTotali.getText());
             Libro libroModificato = new Libro(ISBN, titolo, autore, annoPubblicazione, copieDisponibili);
 
             catalogo.modificaLibro(libroOriginale, libroModificato);

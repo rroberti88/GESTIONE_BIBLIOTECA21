@@ -1,23 +1,37 @@
 [
   {
-    "ISBN": "9781234567890",
-    "titolo": "Java",
-    "autore": "Autore",
-    "annoPubblicazione": 2020,
-    "copieDisponibili": 6
+    "ISBN": "1234567890123",
+    "titolo": "Pinocchio",
+    "autore": "Carlo Collodi",
+    "annoPubblicazione": 1988,
+    "copieDisponibili": 5
   },
   {
-    "ISBN": "9780987654321",
-    "titolo": "DB",
-    "autore": "Autore",
+    "ISBN": "1234567890124",
+    "titolo": "IT",
+    "autore": "Stephen King",
     "annoPubblicazione": 2019,
     "copieDisponibili": 4
   },
   {
-    "ISBN": "1234567890123",
-    "titolo": "uvbevieu",
-    "autore": "eeveve",
-    "annoPubblicazione": 23112,
-    "copieDisponibili": 1230
+    "ISBN": "1234567890125",
+    "titolo": "La Sacra Bibbia",
+    "autore": "Gutenberg",
+    "annoPubblicazione": 2015,
+    "copieDisponibili": 12
+  },
+  {
+    "ISBN": "1234567890126",
+    "titolo": "Ingegneria del Software",
+    "autore": "I. Sommerville",
+    "annoPubblicazione": 2023,
+    "copieDisponibili": 3
+  },
+  {
+    "ISBN": "1234567890127",
+    "titolo": "Fahreneit 451",
+    "autore": "Ray Bradbury",
+    "annoPubblicazione": 2019,
+    "copieDisponibili": 7
   }
 ]

@@ -1,16 +1,37 @@
 [
   {
     "matricola": "0612709470",
-    "nome": "Mario",
-    "cognome": "Rossi",
-    "email": "mario@uni.it",
-    "numeroPrestiti": 0
+    "nome": "Roberto",
+    "cognome": "Roberti",
+    "email": "r.roberti@studenti.unisa.it",
+    "numeroPrestiti": 1
   },
   {
     "matricola": "0612709720",
-    "nome": "Luca",
-    "cognome": "Bianchi",
-    "email": "luca@uni.it",
+    "nome": "Felice",
+    "cognome": "Iandoli",
+    "email": "f.iandoli@stuendi.unisa.it",
     "numeroPrestiti": 1
+  },
+  {
+    "matricola": "0612708916",
+    "nome": "Cosimo",
+    "cognome": "Rivellini",
+    "email": "c.rivellini@stuendi.unisa.it",
+    "numeroPrestiti": 1
+  },
+  {
+    "matricola": "0612709557",
+    "nome": "Jacopo Pio",
+    "cognome": "RIcciardelli",
+    "email": "j.ricciardelli@stuendi.unisa.it",
+    "numeroPrestiti": 1
+  },
+  {
+    "matricola": "0612709468",
+    "nome": "Mario",
+    "cognome": "Mele",
+    "email": "m.mele@stuendi.unisa.it",
+    "numeroPrestiti": 0
   }
 ]

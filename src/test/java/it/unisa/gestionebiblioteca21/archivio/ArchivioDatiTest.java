@@ -37,17 +37,51 @@ public class ArchivioDatiTest {
         prestiti = new ArrayList<>();
         bibliotecari = new ArrayList<>();
 
-        utenti.add(new Utente("0612709470", "Mario", "Rossi", "mario@uni.it", 0));
-        utenti.add(new Utente("0612709720", "Luca", "Bianchi", "luca@uni.it", 0));
+        utenti.add(new Utente("0612709470", "Roberto", "Roberti", "r.roberti@studenti.unisa.it", 1));
+        utenti.add(new Utente("0612709720", "Felice", "Iandoli", "f.iandoli@stuendi.unisa.it", 1));
+        utenti.add(new Utente("0612708916", "Cosimo", "Rivellini", "c.rivellini@stuendi.unisa.it", 1));
+        utenti.add(new Utente("0612709557", "Jacopo Pio", "RIcciardelli", "j.ricciardelli@stuendi.unisa.it", 1));
+        utenti.add(new Utente("0612709468", "Mario", "Mele", "m.mele@stuendi.unisa.it", 0));
 
-        libri.add(new Libro("9781234567890", "Java", "Autore", 2020, 5));
-        libri.add(new Libro("9780987654321", "DB", "Autore", 2019, 4));
-
+        libri.add(new Libro("1234567890123", "Pinocchio", "Carlo Collodi", 1988, 5));
+        libri.add(new Libro("1234567890124", "IT", "Stephen King", 2019, 4));
+        libri.add(new Libro("1234567890125", "La Sacra Bibbia", "Gutenberg", 2015, 12));
+        libri.add(new Libro("1234567890126", "Ingegneria del Software", "I. Sommerville", 2023, 3));
+        libri.add(new Libro("1234567890127", "Fahreneit 451", "Ray Bradbury", 2019, 7));
+        
         prestiti.add(new Prestito(
-                "9781234567890",
-                "U001",
+                "1234567890124",
+                "0612709470",
                 LocalDate.now(),
                 LocalDate.now().plusDays(7),
+                null
+        ));
+        prestiti.add(new Prestito(
+                "1234567890125",
+                "0612709720",
+                LocalDate.now(),
+                LocalDate.now().plusDays(25),
+                null
+        ));
+        prestiti.add(new Prestito(
+                "1234567890127",
+                "0612708916",
+                LocalDate.now(),
+                LocalDate.now().plusDays(123),
+                null
+        ));
+        prestiti.add(new Prestito(
+                "1234567890126",
+                "0612709557",
+                LocalDate.now(),
+                LocalDate.now().plusDays(12),
+                null
+        ));
+        prestiti.add(new Prestito(
+                "1234567890123",
+                "0612709468",
+                LocalDate.now(),
+                LocalDate.now().plusDays(0),
                 null
         ));
 
@@ -64,7 +98,7 @@ public class ArchivioDatiTest {
         ArrayList<Utente> caricati = archivio.caricaUtenti();
 
         assertNotNull(caricati);
-        assertEquals(2, caricati.size());
+        assertEquals(5, caricati.size());
     }
 
     @Test
@@ -72,7 +106,7 @@ public class ArchivioDatiTest {
         ArrayList<Libro> caricati = archivio.caricaLibri();
 
         assertNotNull(caricati);
-        assertEquals(2, caricati.size());
+        assertEquals(5, caricati.size());
     }
 
     @Test
@@ -80,7 +114,7 @@ public class ArchivioDatiTest {
         ArrayList<Prestito> caricati = archivio.caricaPrestiti();
 
         assertNotNull(caricati);
-        assertEquals(1, caricati.size());
+        assertEquals(5, caricati.size());
     }
 
     @Test
