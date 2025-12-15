@@ -13,11 +13,11 @@ import java.time.LocalDate;
  * @brief Rappresenta un prestito di un libro effettuato da un utente.
  */
 public class Prestito {
-    private String libro; /**< ISBN del libro prestato */
-    private String utente; /**< Matricola dell'utente */
-    private LocalDate dataPrestito; /**< Data in cui il prestito è stato effettuato */
-    private LocalDate dataScadenza; /**< Data di scadenza del prestito */
-    private LocalDate dataRestituzione; /**< Data di restituzione del libro, null se non restituito */
+    private String libro; 
+    private String utente; 
+    private LocalDate dataPrestito; 
+    private LocalDate dataScadenza; 
+    private LocalDate dataRestituzione; 
 
     /**
      * @brief Costruttore della classe Prestito.

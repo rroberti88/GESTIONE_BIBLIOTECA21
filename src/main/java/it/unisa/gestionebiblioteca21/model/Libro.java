@@ -11,11 +11,11 @@ package it.unisa.gestionebiblioteca21.model;
  * @brief Rappresenta un libro presente nel catalogo della biblioteca.
  */
 public class Libro {
-    private String ISBN; /**< Codice ISBN del libro */
-    private String titolo; /**< Titolo del libro */
-    private String autore; /**< Autore del libro */
-    private int annoPubblicazione; /**< Anno di pubblicazione */
-    private int copieDisponibili; /**< Numero di copie disponibili per il prestito */
+    private String ISBN; 
+    private String titolo; 
+    private String autore; 
+    private int annoPubblicazione; 
+    private int copieDisponibili; 
 
     /**
      * @brief Costruttore della classe Libro.

@@ -12,11 +12,11 @@ package it.unisa.gestionebiblioteca21.model;
  */
 public class Utente {
 
-    private String matricola; /**< Matricola dell'utente (10 cifre) */
-    private String nome; /**< Nome dell'utente */
-    private String cognome; /**< Cognome dell'utente */
-    private String email; /**< Email dell'utente */
-    private int numeroPrestiti; /**< Numero di prestiti attivi dell'utente */
+    private String matricola; 
+    private String nome; 
+    private String cognome; 
+    private String email; 
+    private int numeroPrestiti;
 
     /** 
      * @brief Costruttore vuoto
