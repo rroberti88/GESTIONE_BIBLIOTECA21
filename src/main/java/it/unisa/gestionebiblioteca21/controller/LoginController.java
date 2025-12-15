@@ -138,6 +138,13 @@ public class LoginController {
     d2.showAndWait();
     String nuovaPassword = d2.getResult();
     if (nuovaPassword == null) return;
+    if (nuovaPassword.length() < 4) {
+        new Alert(
+            Alert.AlertType.WARNING,
+            "La password deve contenere almeno 4 caratteri."
+        ).showAndWait();
+        return;
+    }
 
     boolean ok = autenticazione.resetPassword(username, nuovaPassword);
 
